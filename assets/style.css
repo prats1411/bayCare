@@ -1,0 +1,122 @@
+@font-face {
+  font-family: system;
+  font-style: normal;
+  font-weight: 300;
+  src: local(".SFNSText-Light"), local(".HelveticaNeueDeskInterface-Light"), local(".LucidaGrandeUI"), local("Ubuntu Light"), local("Segoe UI Light"), local("Roboto-Light"), local("DroidSans"), local("Tahoma");
+}
+
+body {
+    font-family: 'system';
+    font-size: 16px;
+	line-height: 150%;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+	/*-moz-osx-font-smoothing: grayscale;*/
+	text-rendering: optimizeLegibility;
+	overflow-x: hidden !important;
+}
+
+#note {
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+}
+
+#note p {
+    margin-bottom: 0;
+}
+
+#note span {
+    font-weight: 700;
+    margin: 0 5px;
+}
+
+ #search {
+    min-height: 500px;
+    background: linear-gradient(rgba(255,255,255,.7),rgba(255,255,255,.7)),url(images/slider-2.jpg);
+    background-position: 50% 0;
+    background-attachment: fixed;
+    padding-top: 78px !important;
+    padding-bottom: 75px !important;
+    border-bottom: 1px solid #ddd;
+}
+
+#search-box {
+    background-color: rgba(241,241,241,0.7);
+    padding: 40px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.inner {
+    padding: 50px 0;
+}
+
+#search-box label {
+    letter-spacing: 2px;
+}
+
+.form-horizontal .radio, .form-horizontal .checkbox, .form-horizontal .radio-inline, .form-horizontal .checkbox-inline {
+    margin-left: 0;
+    margin-right: 10px;
+}
+
+.chosen-container-single .chosen-single {
+    display: block !important;
+    width: 100% !important;
+    height: 34px !important;
+    padding: 6px 12px !important;
+    font-size: 14px !important;
+    line-height: 1.42857143 !important;
+    color: #555 !important;
+    background-color: #fff !important;
+    background-image: none !important;
+    border: 1px solid #ccc !important;
+    border-radius: 4px !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    position: relative !important;
+}
+.panel {
+    box-shadow: none;
+    margin-bottom: 0;
+    -webkit-box-shadow: none;
+}
+.panel-recomend>.panel-heading {
+	color: #00415d;
+	background-color: #fff;
+	border-color: #fff;
+	text-align:center;
+}
+.panel-recomend>.panel-heading a{
+	text-decoration: none;
+	color: #666;
+	font-weight: bold;
+	font-size: 15px;
+	-webkit-transition: all 0.1s linear;
+	-moz-transition: all 0.1s linear;
+	transition: all 0.1s linear;
+}
+.panel-recomend>.panel-heading a.active{
+	color: #029f5b;
+	font-size: 18px;
+}
+
+.recomend-box {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin: 3px;
+    min-height: 145px;
+    border-radius: 4px;
+}
+.logo {
+    max-width: 200px;
+    height: 70px;
+    margin: auto;
+    display: block
+}
+
+.recomend-box:hover {
+    box-shadow: 0px 2px 15px rgba(0,0,0,0.2);
+    -webkit-transition: all 200ms ease-in;
+}
