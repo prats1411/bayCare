@@ -1,3 +1,26 @@
+<?php
+
+require_once "config.php";
+
+$statement = $conn->prepare("INSERT INTO `companies` (`name`, `pr`, `link`, `text`, `image`, `work_mobile`, `qualification`, `prefecture`, `service_type`, `job_category`, `additional_info`, `additional_text`) 
+        VALUES(:name_company, :pr, :link, :text, :image, :work_mobile, :qualification, :prefecture, :service_type, :job_category, :additional_info, :additional_text)");
+$statement->execute(array(
+    "name_company" => $_POST['name'],
+    "pr" => $_POST['pr'],
+    "link" => $_POST['link'],
+    "text" => $_POST['text'],
+    "image" => $_POST['image'],
+    "work_mobile" => $_POST['work_mobile'],
+    "qualification" => $_POST['qualification'],
+    "prefecture" => $_POST['prefecture'],
+    "service_type" => $_POST['service_type'],
+    "job_category" => $_POST['job_category'],
+    "additional_info" => $_POST['additional_info'],
+    "additional_text" => $_POST['additional_text'],
+));
+
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -57,13 +80,13 @@
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">Text on Button</label>
                                         <div class="col-sm-10">
-                                            <input name="" required="required" class="form-control" placeholder="Text on Link" />
+                                            <input name="text" required="required" class="form-control" placeholder="Text on Link" />
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">Image Source</label>
                                         <div class="col-sm-10">
-                                            <input name="" required="required" class="form-control" placeholder="Text on Link" />
+                                            <input name="image" required="required" class="form-control" placeholder="Text on Link" />
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -80,22 +103,22 @@
                                                 <tr/>
                                                 <tr>
                                                     <td>
-                                                        <input type="checkbox" checked data-toggle="toggle" />
+                                                        <input type="checkbox" name="work_mobile" checked data-toggle="toggle" />
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" checked data-toggle="toggle" />
+                                                        <input type="checkbox" name="qualification" checked data-toggle="toggle" />
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" checked data-toggle="toggle" />
+                                                        <input type="checkbox" name="prefecture" checked data-toggle="toggle" />
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" checked data-toggle="toggle" />
+                                                        <input type="checkbox" name="service_type" checked data-toggle="toggle" />
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" checked data-toggle="toggle" />
+                                                        <input type="checkbox" name="job_category" checked data-toggle="toggle" />
                                                     </td>
                                                     <td id="info1">
-                                                        <input type="checkbox" data-toggle="toggle" />
+                                                        <input type="checkbox" name="additional_info" data-toggle="toggle" />
                                                     </td>
                                                 <tr/>
                                             </table>
@@ -103,37 +126,37 @@
                                                 <tr>
                                                     <th>仕事携帯</th>
                                                     <td>
-                                                        <input type="checkbox" checked data-toggle="toggle" />
+                                                        <input type="checkbox" name="work_mobile" checked data-toggle="toggle" />
                                                     </td>
                                                 <tr/>
                                                 <tr>
                                                     <th>資格</th>
                                                     <td>
-                                                        <input type="checkbox" checked data-toggle="toggle" />
+                                                        <input type="checkbox" name="qualification" checked data-toggle="toggle" />
                                                     </td>
                                                 <tr/>
                                                 <tr>
                                                     <th>都道府県</th>
                                                     <td>
-                                                        <input type="checkbox" checked data-toggle="toggle" />
+                                                        <input type="checkbox" name="prefecture" checked data-toggle="toggle" />
                                                     </td>
                                                 <tr/>
                                                 <tr>
                                                     <th>サービス種別</th>
                                                     <td>
-                                                        <input type="checkbox" checked data-toggle="toggle" />
+                                                        <input type="checkbox" name="service_type" checked data-toggle="toggle" />
                                                     </td>
                                                 <tr/>
                                                 <tr>
                                                     <th>職種</th>
                                                     <td>
-                                                        <input type="checkbox" checked data-toggle="toggle" />
+                                                        <input type="checkbox" name="job_category" checked data-toggle="toggle" />
                                                     </td>
                                                 <tr/>
                                                 <tr>
                                                     <th>Additional Information</th>
                                                     <td id="info2" >
-                                                        <input type="checkbox" data-toggle="toggle" />
+                                                        <input type="checkbox" name="additional_info" data-toggle="toggle" />
                                                     </td>
                                                 <tr/>
                                             </table>
@@ -142,11 +165,7 @@
                                     <div id="div-info" class="form-group">
                                         <label class="col-sm-2 control-label">Additional Information</label>
                                         <div class="container1 col-sm-10">
-                                            <input name="" style="margin-bottom: 10px;" required="required" class="form-control" placeholder="Info Heading" />
-                                            <textarea name="pr" style="margin-bottom: 20px;" required="required" class="form-control" placeholder="Info Content" id="remarks" rows="4" aria-required="true"></textarea>
-                                        </div>
-                                        <div class="text-right">
-                                            <button class="add_form_field">Add New Field &nbsp; <span style="font-size:16px; font-weight:bold;">+ </span></button>
+                                            <textarea name="additional_text" style="margin-bottom: 20px;" required="required" class="form-control" placeholder="Info Content" id="remarks" rows="4" aria-required="true"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group" align="center">
