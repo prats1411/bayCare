@@ -36,13 +36,13 @@
                 <h4> Kidnly select from the below option for the best search results. </h4>
                 <hr/>
                 <div class="row">
-                    <form method="get" class="form-horizontal">
+                    <form method="post" class="form-horizontal">
                         <div class="form-group"><label class="col-sm-2 control-label">仕事携帯 :</label>
                             <div class="col-sm-10">
-                                <label class="checkbox-inline"><input type="checkbox" value="">正社員・職員</label>
-                                <label class="checkbox-inline"><input type="checkbox" value="">契約社員</label>
-                                <label class="checkbox-inline"><input type="checkbox" value="">派遣・パート</label>
-                                <label class="checkbox-inline"><input type="checkbox" value="">紹介予定派遣</label> 
+                                <label class="checkbox-inline"><input type="checkbox" name="checkbox1" value="">正社員・職員</label>
+                                <label class="checkbox-inline"><input type="checkbox" name="checkbox1" value="">契約社員</label>
+                                <label class="checkbox-inline"><input type="checkbox" name="checkbox1" value="">派遣・パート</label>
+                                <label class="checkbox-inline"><input type="checkbox" name="checkbox1" value="">紹介予定派遣</label>
                             </div>                           
                         </div>
                         <div class="form-group"><label class="col-sm-2 control-label">資格 :</label>
