@@ -12,6 +12,9 @@
             <li <?php echo ($page == 'two') ? "class='active'" : ""; ?> >
                 <a href="add.php"><i class="fa fa-plus"></i> <span class="nav-label">Add Company</span></a>
             </li>
+            <li <?php echo ($page == 'three') ? "class='active'" : ""; ?> >
+                <a href="list.php"><i class="fa fa-pencil-square-o"></i> <span class="nav-label">Company List</span></a>
+            </li>
         </ul>
 
     </div>
