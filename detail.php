@@ -32,9 +32,11 @@
         <p> <i class="fa fa-bell"></i><span> Notice! </span> We are a 3rd party here to find you the best Home care.   </p>
     </div>
 </section>
-
 <!-- Search -->
-<section id="search">
+<section id="search" style="padding-top: 30px !important;">
+    <div class="text-right" style="position: relative;">
+        <button id="close"  class="btn btn_close" style="margin: 0 50px 10px 0;" > Close <i class="fa fa-times"></i></button>
+    </div>
     <div class="container">
         <div id="search-box">
             <h4> Kindly select from the below option for the best search results. </h4>
@@ -111,11 +113,9 @@
                     </div>
                 </form>
             </div>
-            <div style="margin-top:20px;" class="text-center">
-                <a style="text-decoration: none;" href="#more">
-                    <h4 style="margin-bottom: 0;">Scroll for More Info</h4>
-                    <i class="fa fa-3x fa-angle-down"></i>
-                </a>
+            <div id="scroll_info" style="margin-top:20px;" class="text-center">
+                <h4 style="margin-bottom: 0;">Scroll for More Info</h4>
+                <i class="fa fa-3x fa-angle-down"></i>
             </div>
         </div>
     </div>
@@ -123,6 +123,9 @@
 
 <section id="more">
     <div class="container">
+        <div id="open" class="text-right hidden" style="position: relative;">
+            <button class="btn btn-smart" style="margin: 20px 50px 10px 0;" >Search Again <i class="fa fa-search"></i></button>
+        </div>
         <div class="row">
             <div class="col-md-8">
                 <div class="row">
@@ -249,6 +252,19 @@
     for (var selector in config) {
         $(selector).chosen(config[selector]);
     }
+    $('#close').on('click', function(e) {
+        $('#search').fadeOut("slow");
+        $("div#open").removeClass("hidden");
+    });
+    $('#open').on('click', function() {
+        $('#search').fadeIn("slow");
+        $("div#open").addClass("hidden");
+    });
+    $("#scroll_info").click(function() {
+        $('html, body').animate({
+            scrollTop: $("#more").offset().top
+        }, 1000);
+    });
 </script>
 </body>
 

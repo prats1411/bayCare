@@ -5066,3 +5066,15 @@ table {
 .fa-trash{
   color: #d43f3a;
 }
+
+.btn-link {
+  border: 1px solid #e37667 ;
+  color: #e37667;
+  margin:0 5px !important;
+  border-radius: 19px ;
+}
+
+.btn-link:hover {
+  background-color: #e37667;
+  color: #fff;
+}
