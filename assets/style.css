@@ -35,7 +35,7 @@ body {
 }
 
 #search {
-    min-height: 500px;
+    min-height: 100vh;
     background: linear-gradient(rgba(255,255,255,.5),rgba(255,255,255,.5)),url(images/2.jpg);
     background-position: 50% 0;
     background-attachment: fixed;
@@ -312,24 +312,24 @@ body {
 .box th, .box td {
     text-align: center;
 }
-.box .fa-check {
+.fa-check {
     color: #66cc66;
 }
-.box .fa-times-circle-o {
+.fa-times-circle-o {
     color: #fb7773;
 }
 
 .box p{
     font-size:14px;
 }
-.box .btn-gray {
+.btn-gray {
     display: inline-block;
     background-color: #ddd;
     vertical-align: bottom;
     font-size:16px;
 }
 
-.box .btn-smart {
+.btn-smart {
     display: inline-block;
     background-color: #e37667;
     color: #fff;
@@ -350,8 +350,27 @@ body {
     right: -.7em;
 }
 
-.box .img-responsive {
+.img-responsive {
     display: block;
     margin:auto;
     max-height:200px;
+}
+
+.scroll-box {
+    background-color: rgba(241,241,241,0.9);
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    max-width:250px;
+    display: block;
+    margin:auto;
+}
+
+.logo-img{
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    max-width: 200px;
+    max-height: 200px;
+    margin-bottom: 10px;
 }

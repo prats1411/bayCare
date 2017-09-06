@@ -15,7 +15,16 @@
             <li <?php echo ($page == 'three') ? "class='active'" : ""; ?> >
                 <a href="list.php"><i class="fa fa-pencil-square-o"></i> <span class="nav-label">Company List</span></a>
             </li>
+            <li <?php echo ($page == 'four') ? "class='active'" : ""; ?> >
+                <a href="#"><i class="fa fa-user"></i> <span class="nav-label">Users</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li><a href="user.php">Add</a></li>
+                    <li><a href="delete.php">Manage</a></li>
+                </ul>
+            </li>
+            <li <?php echo ($page == 'five') ? "class='active'" : ""; ?> >
+                <a href="setting.php"><i class="fa fa-cog"></i> <span class="nav-label">Settings</span></a>
+            </li>
         </ul>
-
     </div>
 </nav>
