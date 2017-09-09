@@ -1,3 +1,13 @@
+<?php
+require_once "application_top.php";
+
+$statement = $conn->prepare("select `id` as id, `name` as name, `username` as username, `email` as email from `users`");
+$statement->execute();
+$users = $statement->fetchAll();
+
+
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -47,30 +57,27 @@
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    <?php foreach ($users as $user): ?>
                                     <tr data-expanded="true">
-                                        <td>Dennise</td>
-                                        <td>Fuhrman</td>
-                                        <td>Dennis.fuhrman@gmail.com</td>
-                                        <td> <span type="button" id="delete-button"><i class="fa fa-2x fa-trash"></i></span> </td>
+                                        <td><?php echo $user['name']; ?></td>
+                                        <td><?php echo $user['username']; ?></td>
+                                        <td><?php echo $user['email']; ?></td>
+                                        <td><a href="userDelete.php?id=<?php echo $user['id']; ?>"><i class="fa fa-2x fa-trash"></i></a></td>
                                     </tr>
-                                    <tr>
-                                        <td>Dennise</td>
-                                        <td>Fuhrman</td>
-                                        <td>Dennis.fuhrman@gmail.com</td>
-                                        <td> <span type="button" id="delete-button"><i class="fa fa-2x fa-trash"></i></span> </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Dennise</td>
-                                        <td>Fuhrman</td>
-                                        <td>Dennis.fuhrman@gmail.com</td>
-                                        <td> <span type="button" id="delete-button"><i class="fa fa-2x fa-trash"></i></span> </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Dennise</td>
-                                        <td>Fuhrman</td>
-                                        <td>Dennis.fuhrman@gmail.com</td>
-                                        <td> <span type="button" id="delete-button"><i class="fa fa-2x fa-trash"></i></span> </td>
-                                    </tr>
+                                    <?php endforeach; ?>
+<!--                                    <script>-->
+<!--                                        $('#delete-button').click(function() {-->
+<!---->
+<!--                                            $.ajax({-->
+<!--                                                type: "POST",-->
+<!--                                                url: "deleteUser.php",-->
+<!--                                                data: { name: "John" }-->
+<!--                                            }).done(function( msg ) {-->
+<!--                                                alert( "Data Saved: " + msg );-->
+<!--                                            });-->
+<!---->
+<!--                                        });-->
+<!--                                    </script>-->
                                     </tbody>
                                 </table>
                             </div>

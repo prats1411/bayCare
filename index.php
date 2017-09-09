@@ -43,10 +43,10 @@
                     <form method="post" class="form-horizontal" action="result.php">
                         <div class="form-group"><label class="col-sm-2 control-label">仕事携帯 :</label>
                             <div class="col-sm-10">
-                                <label class="checkbox-inline"><input type="checkbox" name="work_type" value="1">正社員・職員</label>
-                                <label class="checkbox-inline"><input type="checkbox" name="work_type" value="1">契約社員</label>
-                                <label class="checkbox-inline"><input type="checkbox" name="work_type" value="1">派遣・パート</label>
-                                <label class="checkbox-inline"><input type="checkbox" name="work_type" value="1">紹介予定派遣</label>
+                                <label class="checkbox-inline"><input type="checkbox" name="work_mobile" value="1">正社員・職員</label>
+                                <label class="checkbox-inline"><input type="checkbox" name="work_mobile" value="1">契約社員</label>
+                                <label class="checkbox-inline"><input type="checkbox" name="work_mobile" value="1">派遣・パート</label>
+                                <label class="checkbox-inline"><input type="checkbox" name="work_mobile" value="1">紹介予定派遣</label>
                             </div>                           
                         </div>
                         <div class="form-group"><label class="col-sm-2 control-label">資格 :</label>

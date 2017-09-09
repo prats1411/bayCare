@@ -1,3 +1,29 @@
+<?php
+//error_reporting(E_ALL); ini_set('display_errors', 1);
+
+require_once "config.php";
+
+if (isset($_POST['submit'])){
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $statement = $conn->prepare("select `name` as name, `username` as username, `password` as password from `users` WHERE `username` LIKE :username AND `password` LIKE :password");
+    $statement->execute(array(
+            "username" => $username,
+            "password" => $password
+    ));
+    $users = $statement->fetchAll();
+
+    if (!empty($users)){
+        session_start();
+        $_SESSION['loginUser'] = $users[0]['name'];
+        header('Location: index.php');
+    } else {
+        echo "Incorrect ID or Password";
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -29,14 +55,14 @@
             <p>
             </p>
             <p>Login in..</p>
-            <form class="m-t" role="form" action="index.html">
+            <form class="m-t" role="form" method="post">
                 <div class="form-group">
-                    <input type="email" class="form-control" placeholder="Username" required="">
+                    <input type="text" name="username" class="form-control" placeholder="Username" required="">
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Password" required="">
+                    <input type="password" name="password" class="form-control" placeholder="Password" required="">
                 </div>
-                <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
+                <button type="submit" name="submit" class="btn btn-primary block full-width m-b">Login</button>
             </form>
 
         </div>

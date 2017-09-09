@@ -1,3 +1,48 @@
+<?php
+require_once "admin/config.php";
+
+//error_reporting(E_ALL); ini_set('display_errors', 1);
+
+$mobile = 0;
+$qualification = 0;
+$prefecture = 0;
+$service_type = 0;
+$job_category = 0;
+
+if (!empty($_POST)){
+
+    if ($_POST['work_mobile']){
+        $mobile = $_POST['work_mobile'];
+    }
+    if ($_POST['qualification']) {
+        $qualification = $_POST['qualification'];
+    }
+    if ($_POST['prefecture']) {
+        $prefecture = $_POST['prefecture'];
+    }
+    if ($_POST['service_type']) {
+        $service_type = $_POST['service_type'];
+    }
+    if ($_POST['job_category']) {
+        $job_category = $_POST['job_category'];
+    }
+
+
+//    var_dump($_POST);die;
+    $statement = $conn->prepare("
+select id as id, `name` as name, `pr` as pr, `link` as link, `text` as text, `image` as image, `work_mobile` as work_mobile,
+`qualification` as qualification, `prefecture` as prefecture, `service_type` as service_type, `job_category` as job_category,
+`additional_info` as additional_info, `additional_text` as additional_text from `companies` 
+WHERE `work_mobile` = :work_mobile AND `qualification` = :qualification AND `prefecture` = :prefecture AND `service_type` = :service_type AND `job_category` = :job_category");
+    $statement->execute(array(':work_mobile' => $mobile,':qualification' => $qualification,':prefecture' => $prefecture,':service_type' => $service_type,':job_category' => $job_category));
+    $companies = $statement->fetchAll();
+} else {
+    header('Location: admin/404.php');
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -102,7 +147,7 @@
                     </div>
                 </div>
                 <div class="text-center">
-                    <button type="submit" name="submit" class="btn btn-default btn-submit">Search <i class="fa fa-chevron-right"></i></button>
+                    <button type="submit" name="submit" class="btn btn-default btn-submit"> Search<i class="fa fa-chevron-right"></i></button>
                     <a style="margin-top: 10px;" id="cancel" name="cancel" class="btn btn-default">Cancel<i class="fa fa-times"></i></a>
                 </div>
             </form>
@@ -132,8 +177,9 @@
                     <div id="result">
                         <h1> Results :- </h1>
                         <hr/>
+                        <?php foreach ($companies as $company): ?>
                         <div class="box row">
-                            <h3 class="text-center">BayCare</h3>
+                            <h3 class="text-center"><?php echo $company['name']; ?></h3>
                             <hr/>
                             <div class="col-sm-4">
                                 <img class="img-responsive" src="assets/images/logo/logo.png" />
@@ -146,256 +192,67 @@
                                         <th>都道府県</th>
                                         <th>サービス種別</th>
                                         <th>職種</th>
-                                    <tr/>
+                                    </tr>
                                     <tr>
+                                        <?php if ($company['work_mobile'] == 1): ?>
                                         <td>
                                             <i class="fa fa-lg fa-check" aria-hidden="true"></i>
                                         </td>
-                                        <td>
-                                            <i class="fa fa-lg fa-check" aria-hidden="true"></i>
-                                        </td>
+                                        <?php else: ?>
                                         <td>
                                             <i class="fa fa-lg fa-times-circle-o" aria-hidden="true"></i>
                                         </td>
-                                        <td>
-                                            <i class="fa fa-lg fa-times-circle-o" aria-hidden="true"></i>
-                                        </td>
-                                        <td>
-                                            <i class="fa fa-lg fa-check" aria-hidden="true"></i>
-                                        </td>
-                                    <tr/>
+                                        <?php endif; ?>
+                                        <?php if ($company['qualification'] == 1): ?>
+                                            <td>
+                                                <i class="fa fa-lg fa-check" aria-hidden="true"></i>
+                                            </td>
+                                        <?php else: ?>
+                                            <td>
+                                                <i class="fa fa-lg fa-times-circle-o" aria-hidden="true"></i>
+                                            </td>
+                                        <?php endif; ?>
+                                        <?php if ($company['prefecture'] == 1): ?>
+                                            <td>
+                                                <i class="fa fa-lg fa-check" aria-hidden="true"></i>
+                                            </td>
+                                        <?php else: ?>
+                                            <td>
+                                                <i class="fa fa-lg fa-times-circle-o" aria-hidden="true"></i>
+                                            </td>
+                                        <?php endif; ?>
+                                        <?php if ($company['service_type'] == 1): ?>
+                                            <td>
+                                                <i class="fa fa-lg fa-check" aria-hidden="true"></i>
+                                            </td>
+                                        <?php else: ?>
+                                            <td>
+                                                <i class="fa fa-lg fa-times-circle-o" aria-hidden="true"></i>
+                                            </td>
+                                        <?php endif; ?>
+                                        <?php if ($company['job_category'] == 1): ?>
+                                            <td>
+                                                <i class="fa fa-lg fa-check" aria-hidden="true"></i>
+                                            </td>
+                                        <?php else: ?>
+                                            <td>
+                                                <i class="fa fa-lg fa-times-circle-o" aria-hidden="true"></i>
+                                            </td>
+                                        <?php endif; ?>
+                                    </tr>
                                 </table>
                                 <p class="text-left">
-                                    進研ゼミでおなじみのベネッセグループの介護士求人紹介サービスです。
-                                    <br/>介護福祉士（介護士）やホームヘルパー、ケアマネージャーなど、介護職の求人転職情報をご紹介。
-                                    <br/>さまざまな勤務形態から、ご自身にあった介護の職場をお探しいただけます。
+                                    <?php echo $company['pr']; ?>
                                 </p>
                             </div>
                             <div class="">
+                                <?php if ($company['additional_info'] == 1): ?>
                                 <button class="btn btn-gray"> READ MORE <i class="fa fa-angle-double-right"></i></button>
+                                <?php endif; ?>
                                 <button class="btn btn-smart"> GO TO WEBSITE  <i class="fa fa-link"></i></button>
                             </div>
                         </div>
-                        <div class="box row">
-                            <h3 class="text-center">BayCare</h3>
-                            <hr/>
-                            <div class="col-sm-4">
-                                <img class="img-responsive" src="assets/images/logo/logo2.png" />
-                            </div>
-                            <div class="col-sm-8">
-                                <table class="table table-bordered">
-                                    <tr>
-                                        <th>仕事携帯</th>
-                                        <th>資格</th>
-                                        <th>都道府県</th>
-                                        <th>サービス種別</th>
-                                        <th>職種</th>
-                                    <tr/>
-                                    <tr>
-                                        <td>
-                                            <i class="fa fa-lg fa-check" aria-hidden="true"></i>
-                                        </td>
-                                        <td>
-                                            <i class="fa fa-lg fa-check" aria-hidden="true"></i>
-                                        </td>
-                                        <td>
-                                            <i class="fa fa-lg fa-times-circle-o" aria-hidden="true"></i>
-                                        </td>
-                                        <td>
-                                            <i class="fa fa-lg fa-times-circle-o" aria-hidden="true"></i>
-                                        </td>
-                                        <td>
-                                            <i class="fa fa-lg fa-check" aria-hidden="true"></i>
-                                        </td>
-                                    <tr/>
-                                </table>
-                                <p class="text-left">
-                                    進研ゼミでおなじみのベネッセグループの介護士求人紹介サービスです。
-                                    <br/>介護福祉士（介護士）やホームヘルパー、ケアマネージャーなど、介護職の求人転職情報をご紹介。
-                                    <br/>さまざまな勤務形態から、ご自身にあった介護の職場をお探しいただけます。
-                                </p>
-                            </div>
-                            <div class="">
-                                <button class="btn btn-gray"> READ MORE <i class="fa fa-angle-double-right"></i></button>
-                                <button class="btn btn-smart"> GO TO WEBSITE  <i class="fa fa-link"></i></button>
-                            </div>
-                        </div>
-                        <div class="box row">
-                            <h3 class="text-center">BayCare</h3>
-                            <hr/>
-                            <div class="col-sm-4">
-                                <img class="img-responsive" src="assets/images/logo/logo3.png" />
-                            </div>
-                            <div class="col-sm-8">
-                                <table class="table table-bordered">
-                                    <tr>
-                                        <th>仕事携帯</th>
-                                        <th>資格</th>
-                                        <th>都道府県</th>
-                                        <th>サービス種別</th>
-                                        <th>職種</th>
-                                    <tr/>
-                                    <tr>
-                                        <td>
-                                            <i class="fa fa-lg fa-check" aria-hidden="true"></i>
-                                        </td>
-                                        <td>
-                                            <i class="fa fa-lg fa-check" aria-hidden="true"></i>
-                                        </td>
-                                        <td>
-                                            <i class="fa fa-lg fa-times-circle-o" aria-hidden="true"></i>
-                                        </td>
-                                        <td>
-                                            <i class="fa fa-lg fa-times-circle-o" aria-hidden="true"></i>
-                                        </td>
-                                        <td>
-                                            <i class="fa fa-lg fa-check" aria-hidden="true"></i>
-                                        </td>
-                                    <tr/>
-                                </table>
-                                <p class="text-left">
-                                    進研ゼミでおなじみのベネッセグループの介護士求人紹介サービスです。
-                                    <br/>介護福祉士（介護士）やホームヘルパー、ケアマネージャーなど、介護職の求人転職情報をご紹介。
-                                    <br/>さまざまな勤務形態から、ご自身にあった介護の職場をお探しいただけます。
-                                </p>
-                            </div>
-                            <div class="">
-                                <button class="btn btn-gray"> READ MORE <i class="fa fa-angle-double-right"></i></button>
-                                <button class="btn btn-smart"> GO TO WEBSITE  <i class="fa fa-link"></i></button>
-                            </div>
-                        </div>
-                        <div class="box row">
-                            <h3 class="text-center">BayCare</h3>
-                            <hr/>
-                            <div class="col-sm-4">
-                                <img class="img-responsive" src="assets/images/logo/logo4.png" />
-                            </div>
-                            <div class="col-sm-8">
-                                <table class="table table-bordered">
-                                    <tr>
-                                        <th>仕事携帯</th>
-                                        <th>資格</th>
-                                        <th>都道府県</th>
-                                        <th>サービス種別</th>
-                                        <th>職種</th>
-                                    <tr/>
-                                    <tr>
-                                        <td>
-                                            <i class="fa fa-lg fa-check" aria-hidden="true"></i>
-                                        </td>
-                                        <td>
-                                            <i class="fa fa-lg fa-check" aria-hidden="true"></i>
-                                        </td>
-                                        <td>
-                                            <i class="fa fa-lg fa-times-circle-o" aria-hidden="true"></i>
-                                        </td>
-                                        <td>
-                                            <i class="fa fa-lg fa-times-circle-o" aria-hidden="true"></i>
-                                        </td>
-                                        <td>
-                                            <i class="fa fa-lg fa-check" aria-hidden="true"></i>
-                                        </td>
-                                    <tr/>
-                                </table>
-                                <p class="text-left">
-                                    進研ゼミでおなじみのベネッセグループの介護士求人紹介サービスです。
-                                    <br/>介護福祉士（介護士）やホームヘルパー、ケアマネージャーなど、介護職の求人転職情報をご紹介。
-                                    <br/>さまざまな勤務形態から、ご自身にあった介護の職場をお探しいただけます。
-                                </p>
-                            </div>
-                            <div class="">
-                                <button class="btn btn-gray"> READ MORE <i class="fa fa-angle-double-right"></i></button>
-                                <button class="btn btn-smart"> GO TO WEBSITE  <i class="fa fa-link"></i></button>
-                            </div>
-                        </div>
-                        <div class="box row">
-                            <h3 class="text-center">BayCare</h3>
-                            <hr/>
-                            <div class="col-sm-4">
-                                <img class="img-responsive" src="assets/images/logo/logo5.png" />
-                            </div>
-                            <div class="col-sm-8">
-                                <table class="table table-bordered">
-                                    <tr>
-                                        <th>仕事携帯</th>
-                                        <th>資格</th>
-                                        <th>都道府県</th>
-                                        <th>サービス種別</th>
-                                        <th>職種</th>
-                                    <tr/>
-                                    <tr>
-                                        <td>
-                                            <i class="fa fa-lg fa-check" aria-hidden="true"></i>
-                                        </td>
-                                        <td>
-                                            <i class="fa fa-lg fa-check" aria-hidden="true"></i>
-                                        </td>
-                                        <td>
-                                            <i class="fa fa-lg fa-times-circle-o" aria-hidden="true"></i>
-                                        </td>
-                                        <td>
-                                            <i class="fa fa-lg fa-times-circle-o" aria-hidden="true"></i>
-                                        </td>
-                                        <td>
-                                            <i class="fa fa-lg fa-check" aria-hidden="true"></i>
-                                        </td>
-                                    <tr/>
-                                </table>
-                                <p class="text-left">
-                                    進研ゼミでおなじみのベネッセグループの介護士求人紹介サービスです。
-                                    <br/>介護福祉士（介護士）やホームヘルパー、ケアマネージャーなど、介護職の求人転職情報をご紹介。
-                                    <br/>さまざまな勤務形態から、ご自身にあった介護の職場をお探しいただけます。
-                                </p>
-                            </div>
-                            <div class="">
-                                <button class="btn btn-gray"> READ MORE <i class="fa fa-angle-double-right"></i></button>
-                                <button class="btn btn-smart"> GO TO WEBSITE  <i class="fa fa-link"></i></button>
-                            </div>
-                        </div>
-                        <div class="box row">
-                            <h3 class="text-center">BayCare</h3>
-                            <hr/>
-                            <div class="col-sm-4">
-                                <img class="img-responsive" src="assets/images/logo/logo6.png" />
-                            </div>
-                            <div class="col-sm-8">
-                                <table class="table table-bordered">
-                                    <tr>
-                                        <th>仕事携帯</th>
-                                        <th>資格</th>
-                                        <th>都道府県</th>
-                                        <th>サービス種別</th>
-                                        <th>職種</th>
-                                    <tr/>
-                                    <tr>
-                                        <td>
-                                            <i class="fa fa-lg fa-check" aria-hidden="true"></i>
-                                        </td>
-                                        <td>
-                                            <i class="fa fa-lg fa-check" aria-hidden="true"></i>
-                                        </td>
-                                        <td>
-                                            <i class="fa fa-lg fa-times-circle-o" aria-hidden="true"></i>
-                                        </td>
-                                        <td>
-                                            <i class="fa fa-lg fa-times-circle-o" aria-hidden="true"></i>
-                                        </td>
-                                        <td>
-                                            <i class="fa fa-lg fa-check" aria-hidden="true"></i>
-                                        </td>
-                                    <tr/>
-                                </table>
-                                <p class="text-left">
-                                    進研ゼミでおなじみのベネッセグループの介護士求人紹介サービスです。
-                                    <br/>介護福祉士（介護士）やホームヘルパー、ケアマネージャーなど、介護職の求人転職情報をご紹介。
-                                    <br/>さまざまな勤務形態から、ご自身にあった介護の職場をお探しいただけます。
-                                </p>
-                            </div>
-                            <div class="">
-                                <button class="btn btn-gray"> READ MORE <i class="fa fa-angle-double-right"></i></button>
-                                <button class="btn btn-smart"> GO TO WEBSITE  <i class="fa fa-link"></i></button>
-                            </div>
-                        </div>
+                        <?php endforeach; ?>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -485,5 +342,4 @@
     }
 </script>
 </body>
-
 </html>

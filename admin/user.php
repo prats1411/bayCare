@@ -1,3 +1,23 @@
+<?php
+
+require_once "application_top.php";
+
+if (isset($_POST['submit'])){
+    $statement1 = $conn->prepare("INSERT INTO `users` (`name`, `username`, `password`, `email`, `created`) 
+          VALUES(:nameOfUser, :username, :password, :email, :created)");
+    $statement1->execute(array(
+        "nameOfUser" => $_POST['name'],
+        "username" => $_POST['username'],
+        "password" => $_POST['password'],
+        "email" => $_POST['email'],
+        "created" => date('Y-m-d')
+    ));
+} elseif (isset($_POST['cancel'])) {
+    header("Refresh:0");
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -36,12 +56,12 @@
                             <h5>Following is the list of all the companies.</h5>
                         </div>
                         <div class="ibox-content">
-                            <form method="get" class="form-horizontal">
+                            <form method="post" class="form-horizontal">
                                 <div class="form-group"><label class="col-sm-2 control-label">Name</label>
                                     <div class="col-sm-10"><input placeholder="Enter the name" type="text" name="name" class="form-control"></div>
                                 </div>
                                 <div class="form-group"><label class="col-sm-2 control-label">Username</label>
-                                    <div class="col-sm-10"><input placeholder="Enter the Username" type="text" class="form-control" name="address"></div>
+                                    <div class="col-sm-10"><input placeholder="Enter the Username" type="text" class="form-control" name="username"></div>
                                 </div>
                                 <div class="form-group"><label class="col-sm-2 control-label">Password </label>
                                     <div class="col-sm-10">
@@ -55,8 +75,8 @@
                                 </div>
                                 <div class="form-group" align="center">
                                     <div class="col-sm-12">
-                                        <button class="btn btn-white" type="submit">Cancel</button>
-                                        <button class="btn btn-primary" type="submit">Save changes</button>
+                                        <button class="btn btn-white" name="cancel" type="submit">Cancel</button>
+                                        <button class="btn btn-primary" name="submit" type="submit">Save changes</button>
                                     </div>
                                 </div>
                             </form>
