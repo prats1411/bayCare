@@ -1,7 +1,7 @@
 <?php
 require_once "admin/config.php";
 
-//error_reporting(E_ALL); ini_set('display_errors', 1);
+error_reporting(E_ALL); ini_set('display_errors', 1);
 
 $mobile = 0;
 $qualification = 0;
@@ -40,7 +40,14 @@ WHERE `work_mobile` = :work_mobile AND `qualification` = :qualification AND `pre
     header('Location: admin/404.php');
 }
 
+$latest = $conn->prepare("
+select id as id, `name` as name, `pr` as pr, `link` as link, `text` as text, `image` as image, `work_mobile` as work_mobile,
+`qualification` as qualification, `prefecture` as prefecture, `service_type` as service_type, `job_category` as job_category,
+`additional_info` as additional_info, `additional_text` as additional_text from `companies` ORDER BY `id` DESC LIMIT 3");
+$latest->execute();
+$companiesLatest = $statement->fetchAll();
 
+var_dump($companiesLatest);die;
 ?>
 
 <!DOCTYPE html>
@@ -182,7 +189,7 @@ WHERE `work_mobile` = :work_mobile AND `qualification` = :qualification AND `pre
                             <h3 class="text-center"><?php echo $company['name']; ?></h3>
                             <hr/>
                             <div class="col-sm-4">
-                                <img class="img-responsive" src="assets/images/logo/logo.png" />
+                                <img class="img-responsive" src="<?php echo $company['image']; ?>" />
                             </div>
                             <div class="col-sm-8">
                                 <table class="table table-bordered">

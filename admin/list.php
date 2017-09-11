@@ -1,3 +1,17 @@
+<?php
+
+require_once "application_top.php";
+
+$statement = $conn->prepare("
+select id as id, `name` as name, `pr` as pr, `link` as link, `text` as text, `image` as image, `work_mobile` as work_mobile,
+`qualification` as qualification, `prefecture` as prefecture, `service_type` as service_type, `job_category` as job_category,
+`additional_info` as additional_info, `additional_text` as additional_text from `companies` 
+");
+$statement->execute();
+$companies = $statement->fetchAll();
+
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -44,6 +58,7 @@
                                 </div>
                             </div>
                             <div class="table-responsive">
+                                <form method="post" class="form-horizontal" action="edit.php">
                                 <table class="table table-striped">
                                     <thead>
                                     <tr>
@@ -59,77 +74,49 @@
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    <?php foreach ($companies as $company): ?>
                                     <tr>
-                                        <td><input type="radio" checked class="i-checks" name="input[]"></td>
-                                        <td> 株式会社ベネッセＭＣＭ </td>
-                                        <td><i class="fa fa-check"></i></td>
-                                        <td><i class="fa fa-check"></i></td>
-                                        <td><i class="fa fa-times-circle-o"></i></td>
-                                        <td><i class="fa fa-times-circle-o"></i></td>
-                                        <td><i class="fa fa-check"></i></td>
-                                        <td><i class="fa fa-check"></i></td>
+                                        <td><input type="radio" class="i-checks" name="input" value="<?php echo $company['id'] ?>"></td>
+                                        <td> <?php echo $company['name'] ?> </td>
+                                        <?php if ($company['work_mobile'] == 1): ?>
+                                            <td><i class="fa fa-check"></i></td>
+                                        <?php else: ?>
+                                            <td><i class="fa fa-times-circle-o"></i></td>
+                                        <?php endif; ?>
+                                        <?php if ($company['qualification'] == 1): ?>
+                                            <td><i class="fa fa-check"></i></td>
+                                        <?php else: ?>
+                                            <td><i class="fa fa-times-circle-o"></i></td>
+                                        <?php endif; ?>
+                                        <?php if ($company['prefecture'] == 1): ?>
+                                            <td><i class="fa fa-check"></i></td>
+                                        <?php else: ?>
+                                            <td><i class="fa fa-times-circle-o"></i></td>
+                                        <?php endif; ?>
+                                        <?php if ($company['service_type'] == 1): ?>
+                                            <td><i class="fa fa-check"></i></td>
+                                        <?php else: ?>
+                                            <td><i class="fa fa-times-circle-o"></i></td>
+                                        <?php endif; ?>
+                                        <?php if ($company['job_category'] == 1): ?>
+                                            <td><i class="fa fa-check"></i></td>
+                                        <?php else: ?>
+                                            <td><i class="fa fa-times-circle-o"></i></td>
+                                        <?php endif; ?>
+                                        <?php if ($company['additional_info'] == 1): ?>
+                                            <td><i class="fa fa-check"></i></td>
+                                        <?php else: ?>
+                                            <td><i class="fa fa-times-circle-o"></i></td>
+                                        <?php endif; ?>
                                         <td> 20 </td>
                                     </tr>
-                                    <tr>
-                                        <td><input type="radio" class="i-checks" name="input[]"></td>
-                                        <td> 株式会社マイナビ </td>
-                                        <td><i class="fa fa-check"></i></td>
-                                        <td><i class="fa fa-check"></i></td>
-                                        <td><i class="fa fa-times-circle-o"></i></td>
-                                        <td><i class="fa fa-times-circle-o"></i></td>
-                                        <td><i class="fa fa-check"></i></td>
-                                        <td><i class="fa fa-check"></i></td>
-                                        <td> 20 </td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="radio" class="i-checks" name="input[]"></td>
-                                        <td> 株式会社メドレー </td>
-                                        <td><i class="fa fa-check"></i></td>
-                                        <td><i class="fa fa-check"></i></td>
-                                        <td><i class="fa fa-times-circle-o"></i></td>
-                                        <td><i class="fa fa-times-circle-o"></i></td>
-                                        <td><i class="fa fa-check"></i></td>
-                                        <td><i class="fa fa-check"></i></td>
-                                        <td> 20 </td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="radio" class="i-checks" name="input[]"></td>
-                                        <td> 株式会社フェスコム </td>
-                                        <td><i class="fa fa-check"></i></td>
-                                        <td><i class="fa fa-check"></i></td>
-                                        <td><i class="fa fa-times-circle-o"></i></td>
-                                        <td><i class="fa fa-times-circle-o"></i></td>
-                                        <td><i class="fa fa-check"></i></td>
-                                        <td><i class="fa fa-check"></i></td>
-                                        <td> 20 </td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="radio" class="i-checks" name="input[]"></td>
-                                        <td> 株式会社ニッソーネット </td>
-                                        <td><i class="fa fa-check"></i></td>
-                                        <td><i class="fa fa-check"></i></td>
-                                        <td><i class="fa fa-times-circle-o"></i></td>
-                                        <td><i class="fa fa-times-circle-o"></i></td>
-                                        <td><i class="fa fa-check"></i></td>
-                                        <td><i class="fa fa-check"></i></td>
-                                        <td> 20 </td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="radio" class="i-checks" name="input[]"></td>
-                                        <td> 株式会社プロトコーポレーション </td>
-                                        <td><i class="fa fa-check"></i></td>
-                                        <td><i class="fa fa-check"></i></td>
-                                        <td><i class="fa fa-times-circle-o"></i></td>
-                                        <td><i class="fa fa-times-circle-o"></i></td>
-                                        <td><i class="fa fa-check"></i></td>
-                                        <td><i class="fa fa-check"></i></td>
-                                        <td> 20 </td>
-                                    </tr>
+                                    <?php endforeach; ?>
                                     </tbody>
                                 </table>
                                 <div class="text-center">
-                                    <button type="button" class="btn btn-sm btn-primary"> Edit / Delete </button> </span>
+                                    <button type="submit" id="button-edit" class="btn btn-sm btn-primary"> Edit / Delete </button> </span>
                                 </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -163,6 +150,10 @@
             radioClass: 'iradio_square-green',
         });
     });
+
+//    $( "#button-edit" ).click(function() {
+//        $('input[name=input]:checked').val();
+//    });
 </script>
 
 </body>

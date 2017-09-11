@@ -1,6 +1,19 @@
 <?php
 require_once "application_top.php";
 
+if ($_POST['input']) {
+
+    $id = $_POST['input'];
+    $statement = $conn->prepare("
+select `name` as name, `pr` as pr, `link` as link, `text` as text, `image` as image, `work_mobile` as work_mobile,
+`qualification` as qualification, `prefecture` as prefecture, `service_type` as service_type, `job_category` as job_category,
+`additional_info` as additional_info, `additional_text` as additional_text from `companies` WHERE `id` = '$id'");
+    $statement->execute();
+    $company = $statement->fetch();
+} else {
+    header('Location: 404.php');
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -41,35 +54,35 @@ require_once "application_top.php";
                             <h5>Edit Company Information</h5>
                         </div>
                         <div class="ibox-content">
-                            <form enctype="multipart/form-data" method="post" accept-charset="utf-8" id="form" class="form-horizontal" action="/apartments/add">
+                            <form enctype="multipart/form-data" method="post" accept-charset="utf-8" id="form" class="form-horizontal">
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Company Name</label>
                                     <div class="col-sm-10">
-                                        <input name="name" required="required" class="form-control" placeholder="Company Name" maxlength="255" id="name"/>
+                                        <input name="name" required="required" class="form-control" placeholder="<?php echo $company['name'] ?>" maxlength="255" id="name"/>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">PR of the company</label>
                                     <div class="col-sm-10">
-                                        <textarea name="pr" required="required" class="form-control" placeholder="PR of the Company" id="remarks" rows="4" aria-required="true"></textarea>
+                                        <textarea name="pr" required="required" class="form-control" placeholder="<?php echo $company['pr'] ?>" id="remarks" rows="4" aria-required="true"></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Link</label>
                                     <div class="col-sm-10">
-                                        <input name="link" required="required" class="form-control" placeholder="Anchor Link" />
+                                        <input name="link" required="required" class="form-control" placeholder="<?php echo $company['link'] ?>" />
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Text on Button</label>
                                     <div class="col-sm-10">
-                                        <input name="text" required="required" class="form-control" placeholder="Text on Link" />
+                                        <input name="text" required="required" class="form-control" placeholder="<?php echo $company['text'] ?>" />
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Image Source</label>
                                     <div class="col-sm-10">
-                                        <input name="image" required="required" class="form-control" placeholder="Text on Link" />
+                                        <input name="image" required="required" class="form-control" placeholder="<?php echo $company['image'] ?>" />
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -85,62 +98,134 @@ require_once "application_top.php";
                                                 <th>Additional Information</th>
                                             <tr/>
                                             <tr>
-                                                <td>
-                                                    <input type="checkbox" name="work_mobile" checked data-toggle="toggle" />
-                                                </td>
-                                                <td>
-                                                    <input type="checkbox" name="qualification" checked data-toggle="toggle" />
-                                                </td>
-                                                <td>
-                                                    <input type="checkbox" name="prefecture" checked data-toggle="toggle" />
-                                                </td>
-                                                <td>
-                                                    <input type="checkbox" name="service_type" checked data-toggle="toggle" />
-                                                </td>
-                                                <td>
-                                                    <input type="checkbox" name="job_category" checked data-toggle="toggle" />
-                                                </td>
-                                                <td id="info1">
-                                                    <input type="checkbox" name="additional_info" data-toggle="toggle" />
-                                                </td>
+                                                <?php if ($company['work_mobile'] == 1): ?>
+                                                    <td>
+                                                        <input type="checkbox" name="work_mobile" checked data-toggle="toggle" />
+                                                    </td>
+                                                <?php else: ?>
+                                                    <td>
+                                                        <input type="checkbox" name="work_mobile" data-toggle="toggle" />
+                                                    </td>
+                                                <?php endif; ?>
+                                                <?php if ($company['qualification'] == 1): ?>
+                                                    <td>
+                                                        <input type="checkbox" name="qualification" checked data-toggle="toggle" />
+                                                    </td>
+                                                <?php else: ?>
+                                                    <td>
+                                                        <input type="checkbox" name="qualification" data-toggle="toggle" />
+                                                    </td>
+                                                <?php endif; ?>
+                                                <?php if ($company['prefecture'] == 1): ?>
+                                                    <td>
+                                                        <input type="checkbox" name="prefecture" checked data-toggle="toggle" />
+                                                    </td>
+                                                <?php else: ?>
+                                                    <td>
+                                                        <input type="checkbox" name="prefecture" data-toggle="toggle" />
+                                                    </td>
+                                                <?php endif; ?>
+                                                <?php if ($company['service_type'] == 1): ?>
+                                                    <td>
+                                                        <input type="checkbox" name="service_type" checked data-toggle="toggle" />
+                                                    </td>
+                                                <?php else: ?>
+                                                    <td>
+                                                        <input type="checkbox" name="service_type" data-toggle="toggle" />
+                                                    </td>
+                                                <?php endif; ?>
+                                                <?php if ($company['job_category'] == 1): ?>
+                                                    <td>
+                                                        <input type="checkbox" name="job_category" checked data-toggle="toggle" />
+                                                    </td>
+                                                <?php else: ?>
+                                                    <td>
+                                                        <input type="checkbox" name="job_category" data-toggle="toggle" />
+                                                    </td>
+                                                <?php endif; ?>
+                                                <?php if ($company['additional_info'] == 1): ?>
+                                                    <td id="info1">
+                                                        <input type="checkbox" name="additional_info" checked data-toggle="toggle" />
+                                                    </td>
+                                                <?php else: ?>
+                                                    <td id="info1">
+                                                        <input type="checkbox" name="additional_info" data-toggle="toggle" />
+                                                    </td>
+                                                <?php endif; ?>
                                             <tr/>
                                         </table>
                                         <table class="table table-bordered toggle hidden-lg ">
                                             <tr>
                                                 <th>仕事携帯</th>
-                                                <td>
-                                                    <input type="checkbox" name="work_mobile" checked data-toggle="toggle" />
-                                                </td>
+                                                <?php if ($company['work_mobile'] == 1): ?>
+                                                    <td>
+                                                        <input type="checkbox" name="work_mobile" checked data-toggle="toggle" />
+                                                    </td>
+                                                <?php else: ?>
+                                                    <td>
+                                                        <input type="checkbox" name="work_mobile" data-toggle="toggle" />
+                                                    </td>
+                                                <?php endif; ?>
                                             <tr/>
                                             <tr>
                                                 <th>資格</th>
-                                                <td>
-                                                    <input type="checkbox" name="qualification" checked data-toggle="toggle" />
-                                                </td>
+                                                <?php if ($company['qualification'] == 1): ?>
+                                                    <td>
+                                                        <input type="checkbox" name="qualification" checked data-toggle="toggle" />
+                                                    </td>
+                                                <?php else: ?>
+                                                    <td>
+                                                        <input type="checkbox" name="qualification" data-toggle="toggle" />
+                                                    </td>
+                                                <?php endif; ?>
                                             <tr/>
                                             <tr>
                                                 <th>都道府県</th>
-                                                <td>
-                                                    <input type="checkbox" name="prefecture" checked data-toggle="toggle" />
-                                                </td>
+                                                <?php if ($company['prefecture'] == 1): ?>
+                                                    <td>
+                                                        <input type="checkbox" name="prefecture" checked data-toggle="toggle" />
+                                                    </td>
+                                                <?php else: ?>
+                                                    <td>
+                                                        <input type="checkbox" name="prefecture" data-toggle="toggle" />
+                                                    </td>
+                                                <?php endif; ?>
                                             <tr/>
                                             <tr>
                                                 <th>サービス種別</th>
-                                                <td>
-                                                    <input type="checkbox" name="service_type" checked data-toggle="toggle" />
-                                                </td>
+                                                <?php if ($company['service_type'] == 1): ?>
+                                                    <td>
+                                                        <input type="checkbox" name="service_type" checked data-toggle="toggle" />
+                                                    </td>
+                                                <?php else: ?>
+                                                    <td>
+                                                        <input type="checkbox" name="service_type" data-toggle="toggle" />
+                                                    </td>
+                                                <?php endif; ?>
                                             <tr/>
                                             <tr>
                                                 <th>職種</th>
-                                                <td>
-                                                    <input type="checkbox" name="job_category" checked data-toggle="toggle" />
-                                                </td>
+                                                <?php if ($company['job_category'] == 1): ?>
+                                                    <td>
+                                                        <input type="checkbox" name="job_category" checked data-toggle="toggle" />
+                                                    </td>
+                                                <?php else: ?>
+                                                    <td>
+                                                        <input type="checkbox" name="job_category" data-toggle="toggle" />
+                                                    </td>
+                                                <?php endif; ?>
                                             <tr/>
                                             <tr>
                                                 <th>Additional Information</th>
-                                                <td id="info2" >
-                                                    <input type="checkbox" name="additional_info" data-toggle="toggle" />
-                                                </td>
+                                                <?php if ($company['additional_info'] == 1): ?>
+                                                    <td id="info1">
+                                                        <input type="checkbox" name="additional_info" checked data-toggle="toggle" />
+                                                    </td>
+                                                <?php else: ?>
+                                                    <td id="info1">
+                                                        <input type="checkbox" name="additional_info" data-toggle="toggle" />
+                                                    </td>
+                                                <?php endif; ?>
                                             <tr/>
                                         </table>
                                     </div>
@@ -148,7 +233,7 @@ require_once "application_top.php";
                                 <div id="div-info" class="form-group">
                                     <label class="col-sm-2 control-label">Additional Information</label>
                                     <div class="container1 col-sm-10">
-                                        <textarea name="additional_text" style="margin-bottom: 20px;" required="required" class="form-control" placeholder="Info Content" id="remarks" rows="4" aria-required="true"></textarea>
+                                        <textarea name="additional_text" style="margin-bottom: 20px;" required="required" class="form-control" placeholder="<?php $company['additional_text'] ?>" id="remarks" rows="4" aria-required="true"></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group">
