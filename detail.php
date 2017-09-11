@@ -107,7 +107,7 @@
                         </div>
                     </div>
                     <div class="text-center">
-                        <a href="result.html">
+                        <a href="result.php">
                             <p name="submit" class="btn btn-default btn-submit arrow ">Search <i class="fa fa-chevron-right"></i></p>
                         </a>
                     </div>

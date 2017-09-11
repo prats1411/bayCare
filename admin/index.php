@@ -1,3 +1,7 @@
+<?php
+require_once "application_top.php";
+
+?>
 <!DOCTYPE html>
 <html>
 
