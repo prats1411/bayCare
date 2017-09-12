@@ -34,8 +34,10 @@ $statement->execute(array(
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
     <link href="css/animate.css" rel="stylesheet">
-    <link href="css/bootstrap-toggle.css" rel="stylesheet">
+    <link href="css/plugins/summernote/summernote-bs4.css" rel="stylesheet">
+    <link href="css/plugins/summernote/summernote.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/plugins/switchery/switchery.css" rel="stylesheet">
 
 </head>
 
@@ -92,71 +94,41 @@ $statement->execute(array(
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">Choose </label>
                                         <div class="col-sm-10">
-                                            <table class="table table-bordered toggle hidden-md hidden-sm hidden-xs">
-                                                <tr>
-                                                    <th>仕事携帯</th>
-                                                    <th>資格</th>
-                                                    <th>都道府県</th>
-                                                    <th>サービス種別</th>
-                                                    <th>職種</th>
-                                                    <th>Additional Information</th>
-                                                <tr/>
-                                                <tr>
-                                                    <td>
-                                                        <input type="checkbox" name="work_mobile" checked data-toggle="toggle" />
-                                                    </td>
-                                                    <td>
-                                                        <input type="checkbox" name="qualification" checked data-toggle="toggle" />
-                                                    </td>
-                                                    <td>
-                                                        <input type="checkbox" name="prefecture" checked data-toggle="toggle" />
-                                                    </td>
-                                                    <td>
-                                                        <input type="checkbox" name="service_type" checked data-toggle="toggle" />
-                                                    </td>
-                                                    <td>
-                                                        <input type="checkbox" name="job_category" checked data-toggle="toggle" />
-                                                    </td>
-                                                    <td id="info1">
-                                                        <input type="checkbox" name="additional_info" data-toggle="toggle" />
-                                                    </td>
-                                                <tr/>
-                                            </table>
-                                            <table class="table table-bordered toggle hidden-lg ">
+                                            <table class="table table-bordered">
                                                 <tr>
                                                     <th>仕事携帯</th>
                                                     <td>
-                                                        <input type="checkbox" name="work_mobile" checked data-toggle="toggle" />
+                                                        <input type="checkbox" class="js-switch" name="work_mobile" />
                                                     </td>
                                                 <tr/>
                                                 <tr>
                                                     <th>資格</th>
                                                     <td>
-                                                        <input type="checkbox" name="qualification" checked data-toggle="toggle" />
+                                                        <input type="checkbox" class="js-switch" name="qualification"/>
                                                     </td>
                                                 <tr/>
                                                 <tr>
                                                     <th>都道府県</th>
                                                     <td>
-                                                        <input type="checkbox" name="prefecture" checked data-toggle="toggle" />
+                                                        <input type="checkbox" class="js-switch" name="prefecture" />
                                                     </td>
                                                 <tr/>
                                                 <tr>
                                                     <th>サービス種別</th>
                                                     <td>
-                                                        <input type="checkbox" name="service_type" checked data-toggle="toggle" />
+                                                        <input type="checkbox" class="js-switch" name="service_type" />
                                                     </td>
                                                 <tr/>
                                                 <tr>
                                                     <th>職種</th>
                                                     <td>
-                                                        <input type="checkbox" name="job_category" checked data-toggle="toggle" />
+                                                        <input type="checkbox" class="js-switch" name="job_category" />
                                                     </td>
                                                 <tr/>
                                                 <tr>
                                                     <th>Additional Information</th>
                                                     <td id="info2" >
-                                                        <input type="checkbox" name="additional_info" data-toggle="toggle" />
+                                                        <input type="checkbox" class="js-check-change" name="additional_info" />
                                                     </td>
                                                 <tr/>
                                             </table>
@@ -165,7 +137,7 @@ $statement->execute(array(
                                     <div id="div-info" class="form-group">
                                         <label class="col-sm-2 control-label">Additional Information</label>
                                         <div class="container1 col-sm-10">
-                                            <textarea name="additional_text" style="margin-bottom: 20px;" required="required" class="form-control" placeholder="Info Content" id="remarks" rows="4" aria-required="true"></textarea>
+                                            <textarea name="additional_text" style="margin-bottom: 20px;" required="required" class="form-control" placeholder="Info Content" id="infoadd" rows="4" aria-required="true"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group" align="center">
@@ -189,33 +161,35 @@ $statement->execute(array(
     <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
     <script src="js/inspinia.js"></script>
     <script src="js/plugins/pace/pace.min.js"></script>
-    <script src="js/bootstrap-toggle.js"></script>
+    <script src="js/plugins/switchery/switchery.js"></script>
+    <script src="js/plugins/summernote/summernote.js"></script>
 
     <script>
-        $(function() {
-            $('#toggle-one').bootstrapToggle();
-        })
-        $(document).ready(function() {
-            var max_fields      = 10;
-            var wrapper         = $(".container1");
-            var add_button      = $(".add_form_field");
+        var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
 
-            var x = 1;
-            $(add_button).click(function(e){
-                e.preventDefault();
-                if(x < max_fields){
-                    x++;
-                    $(wrapper).append('<div><input name="" style="margin-bottom: 10px;" required="required" class="form-control" placeholder="Info Heading" /> <textarea name="pr" style="margin-bottom: 10px;" required="required" class="form-control" placeholder="Info Content" id="remarks" rows="4" aria-required="true"></textarea> <a href="#" class="delete">Delete</a></div>');
-                }
-                else
-                {
-                    alert('You Reached the limits')
-                }
-            });
+        elems.forEach(function(html) {
+            var switchery = new Switchery(html);
+        });
 
-            $(wrapper).on("click",".delete", function(e){
-                e.preventDefault(); $(this).parent('div').remove(); x--;
-            })
+        var elem = Array.prototype.slice.call(document.querySelectorAll('.js-check-change'));
+
+        elem.forEach(function(html) {
+            var switchery = new Switchery(html);
+        });
+
+        var changeCheckbox = document.querySelector('.js-check-change');
+        $("#div-info").hide();
+        changeCheckbox.onchange = function() {
+            if(changeCheckbox.checked == true){
+                $("#div-info").show(500);
+            } else {
+                $("#div-info").hide(500);
+            }
+        };
+        $('#infoadd').summernote({
+            placeholder: 'Add additional information.',
+            tabsize: 5,
+            height: 300
         });
     </script>
 
