@@ -2783,8 +2783,14 @@ video {
 /* Summernote text editor  */
 .note-editor {
   height: auto;
-  min-height: 300px;
+  border: 1px solid #ddd;
 }
+.note-editor button {
+  border: 1px solid #ddd;
+  background-color: #fff;
+  color: #000;
+}
+
 /* MODAL */
 .modal-content {
   background-clip: padding-box;
