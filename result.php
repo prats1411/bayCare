@@ -1,7 +1,8 @@
 <?php
 require_once "admin/config.php";
+require_once "recom.php";
 
-error_reporting(E_ALL); ini_set('display_errors', 1);
+//error_reporting(E_ALL); ini_set('display_errors', 1);
 
 $mobile = 0;
 $qualification = 0;
@@ -40,14 +41,8 @@ WHERE `work_mobile` = :work_mobile AND `qualification` = :qualification AND `pre
     header('Location: admin/404.php');
 }
 
-$latest = $conn->prepare("
-select id as id, `name` as name, `pr` as pr, `link` as link, `text` as text, `image` as image, `work_mobile` as work_mobile,
-`qualification` as qualification, `prefecture` as prefecture, `service_type` as service_type, `job_category` as job_category,
-`additional_info` as additional_info, `additional_text` as additional_text from `companies` ORDER BY `id` DESC LIMIT 3");
-$latest->execute();
-$companiesLatest = $statement->fetchAll();
 
-var_dump($companiesLatest);die;
+
 ?>
 
 <!DOCTYPE html>
@@ -254,9 +249,9 @@ var_dump($companiesLatest);die;
                             </div>
                             <div class="">
                                 <?php if ($company['additional_info'] == 1): ?>
-                                <button class="btn btn-gray"> READ MORE <i class="fa fa-angle-double-right"></i></button>
+                                <a href="<?php echo 'detail.php?id='.$company['id']; ?>" class="btn btn-smart" target="_blank"> READ MORE <i class="fa fa-angle-double-right"></i></a>
                                 <?php endif; ?>
-                                <button class="btn btn-smart"> GO TO WEBSITE  <i class="fa fa-link"></i></button>
+                                <a href="<?php echo $company['link']; ?>" class="btn btn-smart" target="_blank"> GO TO WEBSITE  <i class="fa fa-link"></i></a>
                             </div>
                         </div>
                         <?php endforeach; ?>
@@ -269,43 +264,23 @@ var_dump($companiesLatest);die;
                             <h3>Our Recommendations</h3>
                             <hr/>
                             <p>What's New</p>
+                            <?php foreach ($companiesLatest as $latest): ?>
                             <div class="recomend-box">
                                 <div class="text-center">
-                                    <img class="img-responsive logo" src="assets/images/logo/logo.png">
-                                    <h4 class="text-center">BayCare</h4>
+                                    <img class="img-responsive logo" src="<?php echo $latest['image']; ?>">
+                                    <h4 class="text-center"><?php echo $latest['name']; ?></h4>
                                 </div>
                             </div>
-                            <div class="recomend-box">
-                                <div class="text-center">
-                                    <img class="img-responsive logo" src="assets/images/logo/logo2.png">
-                                    <h4 class="text-center">Home Hero</h4>
-                                </div>
-                            </div>
-                            <div class="recomend-box">
-                                <div class="text-center">
-                                    <img class="img-responsive logo" src="assets/images/logo/logo3.png">
-                                    <h4 class="text-center">Japanese Name</h4>
-                                </div>
-                            </div>
+                            <?php endforeach; ?>
                             <p>Most Popular</p>
+                            <?php foreach ($companiesPopular as $popular): ?>
                             <div class="recomend-box">
                                 <div class="text-center">
-                                    <img class="img-responsive logo" src="assets/images/logo/logo4.png">
-                                    <h4 class="text-center">BayCare</h4>
+                                    <img class="img-responsive logo" src="<?php echo $popular['image']; ?>">
+                                    <h4 class="text-center"><?php echo $popular['name']; ?></h4>
                                 </div>
                             </div>
-                            <div class="recomend-box">
-                                <div class="text-center">
-                                    <img class="img-responsive logo" src="assets/images/logo/logo5.png">
-                                    <h4 class="text-center">Home Hero</h4>
-                                </div>
-                            </div>
-                            <div class="recomend-box">
-                                <div class="text-center">
-                                    <img class="img-responsive logo" src="assets/images/logo/logo6.png">
-                                    <h4 class="text-center">Japanese Name</h4>
-                                </div>
-                            </div>
+                            <?php endforeach; ?>
                         </div>
                     </div>
                 </div>
