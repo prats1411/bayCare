@@ -1,3 +1,25 @@
+<?php
+
+if ($_GET['id']){
+
+    require_once "admin/config.php";
+    require_once "recom.php";
+    $id = $_GET['id'];
+
+    $statement = $conn->prepare("
+select `name` as name, `pr` as pr, `link` as link, `text` as text, `image` as image, `work_mobile` as work_mobile,
+`qualification` as qualification, `prefecture` as prefecture, `service_type` as service_type, `job_category` as job_category,
+`additional_info` as additional_info, `additional_text` as additional_text from `companies` WHERE `id` = '$id'");
+    $statement->execute();
+    $company = $statement->fetch();
+
+} else {
+    header('Location: 404.php');
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -129,13 +151,11 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="row">
-                    <h3 class="text-center">BayCare</h3>
+                    <h3 class="text-center"><?php echo $company['name']; ?></h3>
                     <hr/>
                     <div class="col-sm-8">
                         <p class="text-left">
-                            進研ゼミでおなじみのベネッセグループの介護士求人紹介サービスです。
-                            <br/>介護福祉士（介護士）やホームヘルパー、ケアマネージャーなど、介護職の求人転職情報をご紹介。
-                            <br/>さまざまな勤務形態から、ご自身にあった介護の職場をお探しいただけます。
+                            <?php echo $company['pr']; ?>
                         </p>
                     </div>
                     <div class="logo-img col-sm-4">
@@ -151,35 +171,59 @@
                                 <th>職種</th>
                             <tr/>
                             <tr>
-                                <td>
-                                    <i class="fa fa-lg fa-check" aria-hidden="true"></i>
-                                </td>
-                                <td>
-                                    <i class="fa fa-lg fa-check" aria-hidden="true"></i>
-                                </td>
-                                <td>
-                                    <i class="fa fa-lg fa-times-circle-o" aria-hidden="true"></i>
-                                </td>
-                                <td>
-                                    <i class="fa fa-lg fa-times-circle-o" aria-hidden="true"></i>
-                                </td>
-                                <td>
-                                    <i class="fa fa-lg fa-check" aria-hidden="true"></i>
-                                </td>
-                            <tr/>
+                                <?php if ($company['work_mobile'] == 1): ?>
+                                    <td>
+                                        <i class="fa fa-lg fa-check" aria-hidden="true"></i>
+                                    </td>
+                                <?php else: ?>
+                                    <td>
+                                        <i class="fa fa-lg fa-times-circle-o" aria-hidden="true"></i>
+                                    </td>
+                                <?php endif; ?>
+                                <?php if ($company['qualification'] == 1): ?>
+                                    <td>
+                                        <i class="fa fa-lg fa-check" aria-hidden="true"></i>
+                                    </td>
+                                <?php else: ?>
+                                    <td>
+                                        <i class="fa fa-lg fa-times-circle-o" aria-hidden="true"></i>
+                                    </td>
+                                <?php endif; ?>
+                                <?php if ($company['prefecture'] == 1): ?>
+                                    <td>
+                                        <i class="fa fa-lg fa-check" aria-hidden="true"></i>
+                                    </td>
+                                <?php else: ?>
+                                    <td>
+                                        <i class="fa fa-lg fa-times-circle-o" aria-hidden="true"></i>
+                                    </td>
+                                <?php endif; ?>
+                                <?php if ($company['service_type'] == 1): ?>
+                                    <td>
+                                        <i class="fa fa-lg fa-check" aria-hidden="true"></i>
+                                    </td>
+                                <?php else: ?>
+                                    <td>
+                                        <i class="fa fa-lg fa-times-circle-o" aria-hidden="true"></i>
+                                    </td>
+                                <?php endif; ?>
+                                <?php if ($company['job_category'] == 1): ?>
+                                    <td>
+                                        <i class="fa fa-lg fa-check" aria-hidden="true"></i>
+                                    </td>
+                                <?php else: ?>
+                                    <td>
+                                        <i class="fa fa-lg fa-times-circle-o" aria-hidden="true"></i>
+                                    </td>
+                                <?php endif; ?>
+                            </tr>
                         </table>
                     </div>
                     <div class="col-xs-12">
-                        <h4>Definitions</h4>
-                        <p> The use of ur-asahiservice.com, herein referred to as the ‘site’, and the use of all the site’s content and features including all the information, tools, services available, herein referred collectively as the ‘service’, is governed by the following Terms of Use. </p>
-                        <h4>Personal information</h4>
-                        <p>
-                            Generally, personal information about customers is not required for access to this site, but depending on the content of the services used (request for specific information, etc.) would requires the name, address, e-mail address, telephone number. We may also need some other personal information of customers while booking the apartments with UR Residence. In ASC, whenever we request your personal information, we will clearly indicate the purpose of use.
-                            Some pages provided by the site use cookies. Cookie is the information that the site provider sends to the user's browser from the server to accumulate on the user's computer to identify the user's computer. ASC may use cookies to gather information on the number of visits to your computer, the pages visited, etc.
-                        </p>
+                        <?php echo $company['additional_text']; ?>
                     </div>
                     <div class="col-xs-12 text-center">
-                        <button class="btn btn-smart"> GO TO WEBSITE  <i class="fa fa-link"></i></button>
+                        <a href="<?php echo $company['link']; ?>" class="btn btn-smart" target="_blank"> GO TO WEBSITE  <i class="fa fa-link"></i></a>
                     </div>
                 </div>
             </div>
@@ -190,43 +234,23 @@
                         <h3>Our Recommendations</h3>
                         <hr/>
                         <p>What's New</p>
-                        <div class="recomend-box">
-                            <div class="text-center">
-                                <img class="img-responsive logo" src="assets/images/logo/logo.png">
-                                <h4 class="text-center">BayCare</h4>
+                        <?php foreach ($companiesLatest as $latest): ?>
+                            <div class="recomend-box">
+                                <div class="text-center">
+                                    <img class="img-responsive logo" src="<?php echo $latest['image']; ?>">
+                                    <h4 class="text-center"><?php echo $latest['name']; ?></h4>
+                                </div>
                             </div>
-                        </div>
-                        <div class="recomend-box">
-                            <div class="text-center">
-                                <img class="img-responsive logo" src="assets/images/logo/logo2.png">
-                                <h4 class="text-center">Home Hero</h4>
-                            </div>
-                        </div>
-                        <div class="recomend-box">
-                            <div class="text-center">
-                                <img class="img-responsive logo" src="assets/images/logo/logo3.png">
-                                <h4 class="text-center">Japanese Name</h4>
-                            </div>
-                        </div>
+                        <?php endforeach; ?>
                         <p>Most Popular</p>
-                        <div class="recomend-box">
-                            <div class="text-center">
-                                <img class="img-responsive logo" src="assets/images/logo/logo4.png">
-                                <h4 class="text-center">BayCare</h4>
+                        <?php foreach ($companiesPopular as $popular): ?>
+                            <div class="recomend-box">
+                                <div class="text-center">
+                                    <img class="img-responsive logo" src="<?php echo $popular['image']; ?>">
+                                    <h4 class="text-center"><?php echo $popular['name']; ?></h4>
+                                </div>
                             </div>
-                        </div>
-                        <div class="recomend-box">
-                            <div class="text-center">
-                                <img class="img-responsive logo" src="assets/images/logo/logo5.png">
-                                <h4 class="text-center">Home Hero</h4>
-                            </div>
-                        </div>
-                        <div class="recomend-box">
-                            <div class="text-center">
-                                <img class="img-responsive logo" src="assets/images/logo/logo6.png">
-                                <h4 class="text-center">Japanese Name</h4>
-                            </div>
-                        </div>
+                        <?php endforeach; ?>
                     </div>
                 </div>
             </div>

@@ -62,7 +62,7 @@
                         </div>
                         <div class="form-group"><label class="col-sm-2 control-label">都道府県 :</label>
                             <div class="col-sm-10">
-                                <select data-placeholder="Choose a Country..." class="chosen-select" style="width:100%;" tabindex="2">
+                                <select data-placeholder="Choose a Country..." name="prefecture" class="chosen-select" style="width:100%;" tabindex="2">
                                     <option style="display:none;" value="-">選びなさい</option>
                                     <option value="1">北海道・東北</option>
                                     <option value="1">関東</option>
@@ -76,7 +76,7 @@
                         </div>
                         <div class="form-group"><label class="col-sm-2 control-label">サービス種別 :</label>
                             <div class="col-sm-10">
-                                <select data-placeholder="選びなさい" class="chosen-select" style="width:100%;" tabindex="2">
+                                <select data-placeholder="選びなさい" class="chosen-select" name="service_type" style="width:100%;" tabindex="2">
                                     <option style="display:none;" value="-">選びなさい</option>
                                     <option value="1">特別養護法人ホーム</option>
                                     <option value="1">介護老人保健施設</option>

@@ -1,6 +1,63 @@
 <?php
 require_once "application_top.php";
 
+if ($_GET['input']) {
+
+    $id = $_GET['input'];
+    $statement = $conn->prepare("
+select `name` as name, `pr` as pr, `link` as link, `text` as text, `image` as image, `work_mobile` as work_mobile,
+`qualification` as qualification, `prefecture` as prefecture, `service_type` as service_type, `job_category` as job_category,
+`additional_info` as additional_info, `additional_text` as additional_text from `companies` WHERE `id` = '$id'");
+    $statement->execute();
+    $company = $statement->fetch();
+} else {
+    header('Location: 404.php');
+}
+
+
+if (isset($_POST['submit'])) {
+
+    if ($_POST['work_mobile']){
+        $work_mobile = 1;
+    }
+    if ($_POST['qualification']){
+        $qualification = 1;
+    }
+    if ($_POST['service_type']){
+        $service_type = 1;
+    }
+    if ($_POST['job_category']){
+        $job_category = 1;
+    }
+    if ($_POST['prefecture']){
+        $prefecture = 1;
+    }
+    if ($_POST['additional_info']){
+        $additional_info = 1;
+    }
+
+    $statement = $conn->prepare("UPDATE `companies` SET (`name`, `pr`, `link`, `text`, `image`, `work_mobile`, `qualification`, `prefecture`, `service_type`, `job_category`, `additional_info`, `additional_text`, `count`) 
+            VALUES(:name_company, :pr, :link, :text, :image, :work_mobile, :qualification, :prefecture, :service_type, :job_category, :additional_info, :additional_text, :countClick)");
+    $statement->execute(array(
+        "name_company" => $_POST['name'],
+        "pr" => $_POST['pr'],
+        "link" => $_POST['link'],
+        "text" => $_POST['text'],
+        "image" => $_POST['image'],
+        "work_mobile" => $work_mobile,
+        "qualification" => $qualification,
+        "prefecture" => $prefecture,
+        "service_type" => $service_type,
+        "job_category" => $job_category,
+        "additional_info" => $additional_info,
+        "additional_text" => $_POST['additional_text'],
+        "countClick" => $_POST['count']
+    ));
+}
+//elseif (isset($_POST['cancel'])) {
+//    header('Location: add.php');
+//}
+
 ?>
 
 <!DOCTYPE html>
@@ -62,35 +119,35 @@ require_once "application_top.php";
                             <h5>Edit Company Information</h5>
                         </div>
                         <div class="ibox-content">
-                            <form enctype="multipart/form-data" method="post" accept-charset="utf-8" id="form" class="form-horizontal" action="/apartments/add">
+                            <form enctype="multipart/form-data" method="post" accept-charset="utf-8" id="form" class="form-horizontal">
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Company Name</label>
                                     <div class="col-sm-10">
-                                        <input name="name" required="required" class="form-control" placeholder="Company Name" maxlength="255" id="name"/>
+                                        <input name="name" required="required" class="form-control" value="<?php echo $company['name']; ?>" placeholder="<?php echo $company['name'] ?>" maxlength="255" id="name"/>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">PR of the company</label>
                                     <div class="col-sm-10">
-                                        <textarea name="pr" required="required" class="form-control" placeholder="PR of the Company" id="remarks" rows="4" aria-required="true"></textarea>
+                                        <textarea name="pr" required="required" class="form-control" placeholder="<?php echo $company['pr'] ?>" id="remarks" rows="4" aria-required="true"><?php echo $company['pr'] ?></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Link</label>
                                     <div class="col-sm-10">
-                                        <input name="link" required="required" class="form-control" placeholder="Anchor Link" />
+                                        <input name="link" required="required" class="form-control" value="<?php echo $company['link']; ?>" placeholder="<?php echo $company['link'] ?>" />
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Text on Button</label>
                                     <div class="col-sm-10">
-                                        <input name="text" required="required" class="form-control" placeholder="Text on Link" />
+                                        <input name="text" required="required" class="form-control" value="<?php echo $company['text']; ?>" placeholder="<?php echo $company['text'] ?>" />
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Image Source</label>
                                     <div class="col-sm-10">
-                                        <input name="image" required="required" class="form-control" placeholder="Text on Link" />
+                                        <input name="image" required="required" class="form-control" value="<?php echo $company['image']; ?>" placeholder="<?php echo $company['image'] ?>" />
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -99,39 +156,75 @@ require_once "application_top.php";
                                         <table class="table table-bordered">
                                             <tr>
                                                 <th>仕事携帯</th>
-                                                <td>
-                                                    <input type="checkbox" class="js-switch" name="work_mobile" />
-                                                </td>
+                                                <?php if ($company['work_mobile'] == 1): ?>
+                                                    <td>
+                                                        <input type="checkbox" name="work_mobile" checked data-toggle="toggle" />
+                                                    </td>
+                                                <?php else: ?>
+                                                    <td>
+                                                        <input type="checkbox" name="work_mobile" data-toggle="toggle" />
+                                                    </td>
+                                                <?php endif; ?>
                                             <tr/>
                                             <tr>
                                                 <th>資格</th>
-                                                <td>
-                                                    <input type="checkbox" class="js-switch" name="qualification"/>
-                                                </td>
+                                                <?php if ($company['qualification'] == 1): ?>
+                                                    <td>
+                                                        <input type="checkbox" name="qualification" checked data-toggle="toggle" />
+                                                    </td>
+                                                <?php else: ?>
+                                                    <td>
+                                                        <input type="checkbox" name="qualification" data-toggle="toggle" />
+                                                    </td>
+                                                <?php endif; ?>
                                             <tr/>
                                             <tr>
                                                 <th>都道府県</th>
-                                                <td>
-                                                    <input type="checkbox" class="js-switch" name="prefecture" />
-                                                </td>
+                                                <?php if ($company['prefecture'] == 1): ?>
+                                                    <td>
+                                                        <input type="checkbox" name="prefecture" checked data-toggle="toggle" />
+                                                    </td>
+                                                <?php else: ?>
+                                                    <td>
+                                                        <input type="checkbox" name="prefecture" data-toggle="toggle" />
+                                                    </td>
+                                                <?php endif; ?>
                                             <tr/>
                                             <tr>
                                                 <th>サービス種別</th>
-                                                <td>
-                                                    <input type="checkbox" class="js-switch" name="service_type" />
-                                                </td>
+                                                <?php if ($company['service_type'] == 1): ?>
+                                                    <td>
+                                                        <input type="checkbox" name="service_type" checked data-toggle="toggle" />
+                                                    </td>
+                                                <?php else: ?>
+                                                    <td>
+                                                        <input type="checkbox" name="service_type" data-toggle="toggle" />
+                                                    </td>
+                                                <?php endif; ?>
                                             <tr/>
                                             <tr>
                                                 <th>職種</th>
-                                                <td>
-                                                    <input type="checkbox" class="js-switch" name="job_category" />
-                                                </td>
+                                                <?php if ($company['job_category'] == 1): ?>
+                                                    <td>
+                                                        <input type="checkbox" name="job_category" checked data-toggle="toggle" />
+                                                    </td>
+                                                <?php else: ?>
+                                                    <td>
+                                                        <input type="checkbox" name="job_category" data-toggle="toggle" />
+                                                    </td>
+                                                <?php endif; ?>
                                             <tr/>
                                             <tr>
                                                 <th>Additional Information</th>
-                                                <td id="info2" >
-                                                    <input type="checkbox" class="js-check-change" name="additional_info" />
-                                                </td>
+                                                <?php if ($company['additional_info'] == 1): ?>
+                                                    <td id="info1">
+                                                        <input type="checkbox" name="additional_info" checked data-toggle="toggle" />
+                                                    </td>
+                                                <?php else: ?>
+                                                    <td id="info1">
+                                                        <input type="checkbox" name="additional_info" data-toggle="toggle" />
+                                                    </td>
+                                                <?php endif; ?>
                                             <tr/>
                                         </table>
                                     </div>
@@ -139,18 +232,18 @@ require_once "application_top.php";
                                 <div id="div-info" class="form-group">
                                     <label class="col-sm-2 control-label">Additional Information</label>
                                     <div class="container1 col-sm-10">
-                                        <textarea name="additional_text" style="margin-bottom: 20px;" required="required" class="form-control" placeholder="Info Content" id="infoadd" rows="4" aria-required="true"></textarea>
+                                        <textarea name="additional_text" style="margin-bottom: 20px;" required="required" class="form-control" placeholder="<?php $company['additional_text'] ?>" id="infoadd" rows="4" aria-required="true"></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Count</label>
                                     <div class="col-sm-10">
-                                        <input class="touchspin1" type="text" value="" name="demo1">
+                                        <input class="touchspin1" type="text" value="" name="count">
                                     </div>
                                 </div>
                                 <div class="form-group" align="center">
                                     <div class="col-sm-12">
-                                        <button class="btn btn-primary" name="save" type="submit">Done.</button>
+                                        <button class="btn btn-primary" name="submit" type="submit">Done</button>
                                     </div>
                                 </div>
                             </form>

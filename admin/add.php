@@ -2,22 +2,48 @@
 
 require_once "application_top.php";
 
-$statement = $conn->prepare("INSERT INTO `companies` (`name`, `pr`, `link`, `text`, `image`, `work_mobile`, `qualification`, `prefecture`, `service_type`, `job_category`, `additional_info`, `additional_text`) 
-        VALUES(:name_company, :pr, :link, :text, :image, :work_mobile, :qualification, :prefecture, :service_type, :job_category, :additional_info, :additional_text)");
-$statement->execute(array(
-    "name_company" => $_POST['name'],
-    "pr" => $_POST['pr'],
-    "link" => $_POST['link'],
-    "text" => $_POST['text'],
-    "image" => $_POST['image'],
-    "work_mobile" => $_POST['work_mobile'],
-    "qualification" => $_POST['qualification'],
-    "prefecture" => $_POST['prefecture'],
-    "service_type" => $_POST['service_type'],
-    "job_category" => $_POST['job_category'],
-    "additional_info" => $_POST['additional_info'],
-    "additional_text" => $_POST['additional_text'],
-));
+
+if (isset($_POST['submit'])) {
+
+    if ($_POST['work_mobile']){
+        $work_mobile = 1;
+    }
+    if ($_POST['qualification']){
+        $qualification = 1;
+    }
+    if ($_POST['service_type']){
+        $service_type = 1;
+    }
+    if ($_POST['job_category']){
+        $job_category = 1;
+    }
+    if ($_POST['prefecture']){
+        $prefecture = 1;
+    }
+    if ($_POST['additional_info']){
+        $additional_info = 1;
+    }
+
+    $statement = $conn->prepare("INSERT INTO `companies` (`name`, `pr`, `link`, `text`, `image`, `work_mobile`, `qualification`, `prefecture`, `service_type`, `job_category`, `additional_info`, `additional_text`, `count`) 
+            VALUES(:name_company, :pr, :link, :text, :image, :work_mobile, :qualification, :prefecture, :service_type, :job_category, :additional_info, :additional_text, :countClick)");
+    $statement->execute(array(
+        "name_company" => $_POST['name'],
+        "pr" => $_POST['pr'],
+        "link" => $_POST['link'],
+        "text" => $_POST['text'],
+        "image" => $_POST['image'],
+        "work_mobile" => $work_mobile,
+        "qualification" => $qualification,
+        "prefecture" => $prefecture,
+        "service_type" => $service_type,
+        "job_category" => $job_category,
+        "additional_info" => $additional_info,
+        "additional_text" => $_POST['additional_text'],
+        "countClick" => 0
+    ));
+} elseif (isset($_POST['cancel'])) {
+    header('Location: add.php');
+}
 
 ?>
 
@@ -60,7 +86,7 @@ $statement->execute(array(
                                 <h5>Fill the Company Details</h5>
                             </div>
                             <div class="ibox-content">
-                                <form enctype="multipart/form-data" method="post" accept-charset="utf-8" id="form" class="form-horizontal" action="/apartments/add">
+                                <form enctype="multipart/form-data" method="post" accept-charset="utf-8" id="form" class="form-horizontal" action="add.php">
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">Company Name</label>
                                         <div class="col-sm-10">
@@ -142,8 +168,8 @@ $statement->execute(array(
                                     </div>
                                     <div class="form-group" align="center">
                                         <div class="col-sm-12">
-                                            <a href="/">Cancel</a>
-                                            <button class="btn btn-primary" name="save" type="submit">Add Company</button>
+                                            <button class="btn btn-white" name="cancel" type="submit">Cancel</button>
+                                            <button class="btn btn-primary" name="submit" type="submit">Add Company</button>
                                         </div>
                                     </div>
                                 </form>
