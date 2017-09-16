@@ -158,11 +158,11 @@ if (isset($_POST['submit'])) {
                                                 <th>仕事携帯</th>
                                                 <?php if ($company['work_mobile'] == 1): ?>
                                                     <td>
-                                                        <input type="checkbox" name="work_mobile" checked data-toggle="toggle" />
+                                                        <input class="js-switch" type="checkbox" name="work_mobile" checked />
                                                     </td>
                                                 <?php else: ?>
                                                     <td>
-                                                        <input type="checkbox" name="work_mobile" data-toggle="toggle" />
+                                                        <input class="js-switch" type="checkbox" name="work_mobile"/>
                                                     </td>
                                                 <?php endif; ?>
                                             <tr/>
@@ -170,11 +170,11 @@ if (isset($_POST['submit'])) {
                                                 <th>資格</th>
                                                 <?php if ($company['qualification'] == 1): ?>
                                                     <td>
-                                                        <input type="checkbox" name="qualification" checked data-toggle="toggle" />
+                                                        <input class="js-switch" type="checkbox" name="qualification" checked/>
                                                     </td>
                                                 <?php else: ?>
                                                     <td>
-                                                        <input type="checkbox" name="qualification" data-toggle="toggle" />
+                                                        <input class="js-switch" type="checkbox" name="qualification"/>
                                                     </td>
                                                 <?php endif; ?>
                                             <tr/>
@@ -182,11 +182,11 @@ if (isset($_POST['submit'])) {
                                                 <th>都道府県</th>
                                                 <?php if ($company['prefecture'] == 1): ?>
                                                     <td>
-                                                        <input type="checkbox" name="prefecture" checked data-toggle="toggle" />
+                                                        <input class="js-switch" type="checkbox" name="prefecture" checked/>
                                                     </td>
                                                 <?php else: ?>
                                                     <td>
-                                                        <input type="checkbox" name="prefecture" data-toggle="toggle" />
+                                                        <input class="js-switch" type="checkbox" name="prefecture"/>
                                                     </td>
                                                 <?php endif; ?>
                                             <tr/>
@@ -194,11 +194,11 @@ if (isset($_POST['submit'])) {
                                                 <th>サービス種別</th>
                                                 <?php if ($company['service_type'] == 1): ?>
                                                     <td>
-                                                        <input type="checkbox" name="service_type" checked data-toggle="toggle" />
+                                                        <input class="js-switch" type="checkbox" name="service_type"/>
                                                     </td>
                                                 <?php else: ?>
                                                     <td>
-                                                        <input type="checkbox" name="service_type" data-toggle="toggle" />
+                                                        <input class="js-switch" type="checkbox" name="service_type" />
                                                     </td>
                                                 <?php endif; ?>
                                             <tr/>
@@ -206,11 +206,11 @@ if (isset($_POST['submit'])) {
                                                 <th>職種</th>
                                                 <?php if ($company['job_category'] == 1): ?>
                                                     <td>
-                                                        <input type="checkbox" name="job_category" checked data-toggle="toggle" />
+                                                        <input class="js-switch" type="checkbox" name="job_category" checked/>
                                                     </td>
                                                 <?php else: ?>
                                                     <td>
-                                                        <input type="checkbox" name="job_category" data-toggle="toggle" />
+                                                        <input class="js-switch" type="checkbox" name="job_category" />
                                                     </td>
                                                 <?php endif; ?>
                                             <tr/>
@@ -218,11 +218,11 @@ if (isset($_POST['submit'])) {
                                                 <th>Additional Information</th>
                                                 <?php if ($company['additional_info'] == 1): ?>
                                                     <td id="info1">
-                                                        <input type="checkbox" name="additional_info" checked data-toggle="toggle" />
+                                                        <input class="js-check-change" type="checkbox" name="additional_info" checked/>
                                                     </td>
                                                 <?php else: ?>
                                                     <td id="info1">
-                                                        <input type="checkbox" name="additional_info" data-toggle="toggle" />
+                                                        <input class="js-check-change" type="checkbox" name="additional_info"/>
                                                     </td>
                                                 <?php endif; ?>
                                             <tr/>
