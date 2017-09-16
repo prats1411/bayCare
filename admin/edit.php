@@ -7,7 +7,7 @@ if ($_GET['input']) {
     $statement = $conn->prepare("
 select `name` as name, `pr` as pr, `link` as link, `text` as text, `image` as image, `work_mobile` as work_mobile,
 `qualification` as qualification, `prefecture` as prefecture, `service_type` as service_type, `job_category` as job_category,
-`additional_info` as additional_info, `additional_text` as additional_text from `companies` WHERE `id` = '$id'");
+`additional_info` as additional_info, `additional_text` as additional_text, `count` as clicks from `companies` WHERE `id` = '$id'");
     $statement->execute();
     $company = $statement->fetch();
 } else {
@@ -19,25 +19,50 @@ if (isset($_POST['submit'])) {
 
     if ($_POST['work_mobile']){
         $work_mobile = 1;
+    } else {
+        $work_mobile = $company['work_mobile'];
     }
-    if ($_POST['qualification']){
+    if (isset($_POST['qualification'])){
         $qualification = 1;
+    } else {
+        $qualification = $company['qualification'];
     }
-    if ($_POST['service_type']){
+    if (isset($_POST['service_type'])){
         $service_type = 1;
+    } else {
+        $service_type = $company['service_type'];
     }
-    if ($_POST['job_category']){
+    if (isset($_POST['job_category'])){
         $job_category = 1;
+    } else {
+        $job_category = $company['job_category'];
     }
-    if ($_POST['prefecture']){
+    if (isset($_POST['prefecture'])){
         $prefecture = 1;
+    } else {
+        $prefecture = $company['prefecture'];
     }
-    if ($_POST['additional_info']){
+    if (isset($_POST['additional_info'])){
         $additional_info = 1;
+    } else {
+        $additional_info = $company['additional_info'];
+    }
+    if (isset($_POST['additional_text'])){
+        $additional_text = 1;
+    } else {
+        $additional_text = $company['additional_text'];
+    }
+    if (isset($_POST['clicks'])){
+        $count = $_POST['clicks'];
+    } else {
+        $count = $company['clicks'];
     }
 
-    $statement = $conn->prepare("UPDATE `companies` SET (`name`, `pr`, `link`, `text`, `image`, `work_mobile`, `qualification`, `prefecture`, `service_type`, `job_category`, `additional_info`, `additional_text`, `count`) 
-            VALUES(:name_company, :pr, :link, :text, :image, :work_mobile, :qualification, :prefecture, :service_type, :job_category, :additional_info, :additional_text, :countClick)");
+    $statement = $conn->prepare("UPDATE `companies` SET `name` = :name_company, `pr` = :pr, `link` = :link, `text` = :text,
+`image` = :image, `work_mobile` = :work_mobile, `qualification` = :qualification, `prefecture` = :prefecture,
+`service_type` = :service_type, `job_category` = :job_category, `additional_info` = :additional_info, `additional_text` = :additional_text,
+`count` = :countClick WHERE `id` = '$id'");
+
     $statement->execute(array(
         "name_company" => $_POST['name'],
         "pr" => $_POST['pr'],
@@ -50,13 +75,11 @@ if (isset($_POST['submit'])) {
         "service_type" => $service_type,
         "job_category" => $job_category,
         "additional_info" => $additional_info,
-        "additional_text" => $_POST['additional_text'],
-        "countClick" => $_POST['count']
+        "additional_text" => $additional_text,
+        "countClick" => $count
     ));
+    header('Location: list.php');
 }
-//elseif (isset($_POST['cancel'])) {
-//    header('Location: add.php');
-//}
 
 ?>
 
@@ -232,13 +255,13 @@ if (isset($_POST['submit'])) {
                                 <div id="div-info" class="form-group">
                                     <label class="col-sm-2 control-label">Additional Information</label>
                                     <div class="container1 col-sm-10">
-                                        <textarea name="additional_text" style="margin-bottom: 20px;" required="required" class="form-control" placeholder="<?php $company['additional_text'] ?>" id="infoadd" rows="4" aria-required="true"></textarea>
+                                        <textarea name="additional_text" style="margin-bottom: 20px;" class="form-control" placeholder="<?php $company['additional_text'] ?>" id="infoadd" rows="4" aria-required="true"></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Count</label>
                                     <div class="col-sm-10">
-                                        <input class="touchspin1" type="text" value="" name="count">
+                                        <input class="touchspin1" type="text" value="<?php echo $company['clicks']; ?>" placeholder="<?php echo $company['clicks']; ?>" name="clicks">
                                     </div>
                                 </div>
                                 <div class="form-group" align="center">
