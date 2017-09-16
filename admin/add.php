@@ -5,20 +5,23 @@ require_once "application_top.php";
 
 if (isset($_POST['submit'])) {
 
-    if ($_POST['work_mobile'] == 'on'){
+    if ($_POST['work_mobile']){
         $work_mobile = 1;
     }
-    if ($_POST['qualification'] == 'on'){
+    if ($_POST['qualification']){
         $qualification = 1;
     }
-    if ($_POST['service_type'] == 'on'){
+    if ($_POST['service_type']){
         $service_type = 1;
     }
-    if ($_POST['job_category'] == 'on'){
+    if ($_POST['job_category']){
         $job_category = 1;
     }
     if ($_POST['prefecture']){
         $prefecture = 1;
+    }
+    if ($_POST['additional_info']){
+        $additional_info = 1;
     }
 
     $statement = $conn->prepare("INSERT INTO `companies` (`name`, `pr`, `link`, `text`, `image`, `work_mobile`, `qualification`, `prefecture`, `service_type`, `job_category`, `additional_info`, `additional_text`, `count`) 
@@ -34,7 +37,7 @@ if (isset($_POST['submit'])) {
         "prefecture" => $prefecture,
         "service_type" => $service_type,
         "job_category" => $job_category,
-        "additional_info" => $_POST['additional_info'],
+        "additional_info" => $additional_info,
         "additional_text" => $_POST['additional_text'],
         "countClick" => 0
     ));

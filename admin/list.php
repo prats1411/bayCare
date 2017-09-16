@@ -58,7 +58,7 @@ $companies = $statement->fetchAll();
                                 </div>
                             </div>
                             <div class="table-responsive">
-                                <form method="post" class="form-horizontal" action="edit.php">
+                                <form method="get" class="form-horizontal" action="edit.php">
                                 <table class="table table-striped">
                                     <thead>
                                     <tr>

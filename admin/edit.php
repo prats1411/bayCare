@@ -1,9 +1,9 @@
 <?php
 require_once "application_top.php";
 
-if ($_POST['input']) {
+if ($_GET['input']) {
 
-    $id = $_POST['input'];
+    $id = $_GET['input'];
     $statement = $conn->prepare("
 select `name` as name, `pr` as pr, `link` as link, `text` as text, `image` as image, `work_mobile` as work_mobile,
 `qualification` as qualification, `prefecture` as prefecture, `service_type` as service_type, `job_category` as job_category,
@@ -13,6 +13,50 @@ select `name` as name, `pr` as pr, `link` as link, `text` as text, `image` as im
 } else {
     header('Location: 404.php');
 }
+
+
+if (isset($_POST['submit'])) {
+
+    if ($_POST['work_mobile']){
+        $work_mobile = 1;
+    }
+    if ($_POST['qualification']){
+        $qualification = 1;
+    }
+    if ($_POST['service_type']){
+        $service_type = 1;
+    }
+    if ($_POST['job_category']){
+        $job_category = 1;
+    }
+    if ($_POST['prefecture']){
+        $prefecture = 1;
+    }
+    if ($_POST['additional_info']){
+        $additional_info = 1;
+    }
+
+    $statement = $conn->prepare("UPDATE `companies` SET (`name`, `pr`, `link`, `text`, `image`, `work_mobile`, `qualification`, `prefecture`, `service_type`, `job_category`, `additional_info`, `additional_text`, `count`) 
+            VALUES(:name_company, :pr, :link, :text, :image, :work_mobile, :qualification, :prefecture, :service_type, :job_category, :additional_info, :additional_text, :countClick)");
+    $statement->execute(array(
+        "name_company" => $_POST['name'],
+        "pr" => $_POST['pr'],
+        "link" => $_POST['link'],
+        "text" => $_POST['text'],
+        "image" => $_POST['image'],
+        "work_mobile" => $work_mobile,
+        "qualification" => $qualification,
+        "prefecture" => $prefecture,
+        "service_type" => $service_type,
+        "job_category" => $job_category,
+        "additional_info" => $additional_info,
+        "additional_text" => $_POST['additional_text'],
+        "countClick" => $_POST['count']
+    ));
+}
+//elseif (isset($_POST['cancel'])) {
+//    header('Location: add.php');
+//}
 
 ?>
 
@@ -58,31 +102,31 @@ select `name` as name, `pr` as pr, `link` as link, `text` as text, `image` as im
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Company Name</label>
                                     <div class="col-sm-10">
-                                        <input name="name" required="required" class="form-control" placeholder="<?php echo $company['name'] ?>" maxlength="255" id="name"/>
+                                        <input name="name" required="required" class="form-control" value="<?php echo $company['name']; ?>" placeholder="<?php echo $company['name'] ?>" maxlength="255" id="name"/>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">PR of the company</label>
                                     <div class="col-sm-10">
-                                        <textarea name="pr" required="required" class="form-control" placeholder="<?php echo $company['pr'] ?>" id="remarks" rows="4" aria-required="true"></textarea>
+                                        <textarea name="pr" required="required" class="form-control" placeholder="<?php echo $company['pr'] ?>" id="remarks" rows="4" aria-required="true"><?php echo $company['pr'] ?></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Link</label>
                                     <div class="col-sm-10">
-                                        <input name="link" required="required" class="form-control" placeholder="<?php echo $company['link'] ?>" />
+                                        <input name="link" required="required" class="form-control" value="<?php echo $company['link']; ?>" placeholder="<?php echo $company['link'] ?>" />
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Text on Button</label>
                                     <div class="col-sm-10">
-                                        <input name="text" required="required" class="form-control" placeholder="<?php echo $company['text'] ?>" />
+                                        <input name="text" required="required" class="form-control" value="<?php echo $company['text']; ?>" placeholder="<?php echo $company['text'] ?>" />
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Image Source</label>
                                     <div class="col-sm-10">
-                                        <input name="image" required="required" class="form-control" placeholder="<?php echo $company['image'] ?>" />
+                                        <input name="image" required="required" class="form-control" value="<?php echo $company['image']; ?>" placeholder="<?php echo $company['image'] ?>" />
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -239,13 +283,13 @@ select `name` as name, `pr` as pr, `link` as link, `text` as text, `image` as im
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Count</label>
                                     <div class="col-sm-10">
-                                        <input class="touchspin1" type="text" value="" name="demo1">
+                                        <input class="touchspin1" type="text" value="" name="count">
                                     </div>
                                 </div>
                                 <div class="form-group" align="center">
                                     <div class="col-sm-12">
                                         <a href="/">Cancel</a>
-                                        <button class="btn btn-primary" name="save" type="submit">Add Company</button>
+                                        <button class="btn btn-primary" name="submit" type="submit">Add Company</button>
                                     </div>
                                 </div>
                             </form>
