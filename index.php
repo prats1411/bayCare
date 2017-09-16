@@ -105,7 +105,7 @@
                             </div>
                         </div>
                         <div class="text-center">
-                                <input type="submit" name="submit" value="Search" class="btn btn-default btn-submit arrow "> <i class="fa fa-chevron-right"></i></input>
+                            <input type="submit" name="submit" value="Search" class="btn btn-default btn-submit arrow">
                         </div>
                     </form>
                 </div>

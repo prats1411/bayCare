@@ -34,6 +34,26 @@ require_once "application_top.php";
                 <h2>Edit Company Information</h2>
             </div>
         </div>
+        <div style="padding: 20px 10px 0" class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div style="margin-bottom: 0;" class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Danger Zone</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="danger">
+                                <h3> Delete the company </h3>
+                                <p>Once you delete a repository, there is no going back. Please be certain.</p>
+                                <div align="center">
+                                    <button class="btn btn-primary" name="save" type="submit">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="wrapper wrapper-content animated fadeInRight">
             <div class="row">
                 <div class="col-lg-12">
@@ -130,8 +150,7 @@ require_once "application_top.php";
                                 </div>
                                 <div class="form-group" align="center">
                                     <div class="col-sm-12">
-                                        <a href="/">Cancel</a>
-                                        <button class="btn btn-primary" name="save" type="submit">Add Company</button>
+                                        <button class="btn btn-primary" name="save" type="submit">Done.</button>
                                     </div>
                                 </div>
                             </form>

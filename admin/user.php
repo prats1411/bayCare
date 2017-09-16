@@ -58,20 +58,31 @@ if (isset($_POST['submit'])){
                         <div class="ibox-content">
                             <form method="post" class="form-horizontal">
                                 <div class="form-group"><label class="col-sm-2 control-label">Name</label>
-                                    <div class="col-sm-10"><input placeholder="Enter the name" type="text" name="name" class="form-control"></div>
-                                </div>
-                                <div class="form-group"><label class="col-sm-2 control-label">Username</label>
-                                    <div class="col-sm-10"><input placeholder="Enter the Username" type="text" class="form-control" name="username"></div>
-                                </div>
-                                <div class="form-group"><label class="col-sm-2 control-label">Password </label>
                                     <div class="col-sm-10">
-                                        <div class="input-group"><input placeholder="Password" name="password" type="" class="form-control" rel="gp" data-size="10" data-character-set="a-z,A-Z,0-9,#">
-                                            <span class="input-group-btn"> <button type="button" class="btn btn-primary getNewPass"><i class="fa fa-magic" aria-hidden="true"></i></button> </span>
-                                        </div>
+                                        <input placeholder="Enter the name" type="text" name="name" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group"><label class="col-sm-2 control-label">Email</label>
-                                    <div class="col-sm-10"><input placeholder="Enter the Email Address" type="email" class="form-control" name="email"></div>
+                                    <div class="col-sm-10">
+                                        <input placeholder="Enter the Email Address" type="email" class="form-control" name="email">
+                                        <span id="name_status"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group"><label class="col-sm-2 control-label">Username</label>
+                                    <div class="col-sm-10">
+                                        <input id="username" onkeyup="checkname();" placeholder="Enter the Username" type="text" class="form-control" name="username">
+                                        <span id="name_status"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group"><label class="col-sm-2 control-label">Password </label>
+                                    <div class="col-sm-10">
+                                        <div class="input-group">
+                                            <input placeholder="Password" name="password" type="" class="form-control" rel="gp" data-size="10" data-character-set="a-z,A-Z,0-9,#">
+                                            <span class="input-group-btn">
+                                                <button type="button" class="btn btn-primary getNewPass"><i class="fa fa-magic" aria-hidden="true"></i></button>
+                                            </span>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="form-group" align="center">
                                     <div class="col-sm-12">
@@ -115,6 +126,7 @@ if (isset($_POST['submit'])){
         '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
         '.chosen-select-width'     : {width:"95%"}
     }
+
     for (var selector in config) {
         $(selector).chosen(config[selector]);
     }
@@ -133,11 +145,13 @@ if (isset($_POST['submit'])){
             $('#validity_chosen').show();
         }
     });
+
     // Create a new password
     $(".getNewPass").click(function(){
         var field = $(this).closest('div').find('input[rel="gp"]');
         field.val(randString(field));
     });
+
     // Generate a password string
     function randString(id){
         var dataSet = $(id).attr('data-character-set').split(',');
@@ -160,6 +174,80 @@ if (isset($_POST['submit'])){
         }
         return text;
     }
+
+    function checkname()
+    {
+        var name = document.getElementById( "username" ).value;
+
+        if(name) {
+            $.ajax({
+                type: 'post',
+                url: 'checkdata.php',
+                data: {
+                    user_name:name,
+                },
+                success: function (response) {
+                    $( '#name_status' ).html(response);
+                    if(response=="OK") {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            });
+        } else {
+            $( '#name_status' ).html("");
+            return false;
+        }
+    }
+
+    function checkemail()
+    {
+        var email=document.getElementById( "UserEmail" ).value;
+
+        if(email)
+        {
+            $.ajax({
+                type: 'post',
+                url: 'checkdata.php',
+                data: {
+                    user_email:email,
+                },
+                success: function (response) {
+                    $( '#email_status' ).html(response);
+                    if(response=="OK")
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            });
+        }
+        else
+        {
+            $( '#email_status' ).html("");
+            return false;
+        }
+    }
+
+    function checkall()
+    {
+        var namehtml=document.getElementById("name_status").innerHTML;
+        var emailhtml=document.getElementById("email_status").innerHTML;
+
+        if((namehtml && emailhtml)=="OK")
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
 </script>
 
 </body>

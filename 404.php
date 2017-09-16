@@ -6,13 +6,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>INSPINIA | 404 Error</title>
+    <title> 404 Error </title>
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
-
-    <link href="css/animate.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="assets/style.css" rel="stylesheet">
 
 </head>
 
@@ -25,6 +23,7 @@
 
         <div class="error-desc">
             Sorry, but the page you are looking for has not been found. Try checking the URL for error, then hit the refresh button on your browser.
+            <br/><br/><a href="index.php" class="btn btn-submit">Top Page</a>
         </div>
     </div>
 

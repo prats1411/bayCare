@@ -5084,3 +5084,8 @@ table {
   background-color: #e37667;
   color: #fff;
 }
+
+.danger {
+  border:1px solid #e37667 ;
+  padding:10px 30px;
+}
