@@ -54,7 +54,7 @@ if (isset($_POST['submit'])){
             <h3>Welcome to Admin Page</h3>
             <p>
             </p>
-            <p>Login in..</p>
+            <p>Log In.....</p>
             <form class="m-t" role="form" method="post">
                 <div class="form-group">
                     <input type="text" name="username" class="form-control" placeholder="Username" required="">

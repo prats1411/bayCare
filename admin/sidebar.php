@@ -22,9 +22,6 @@
                     <li><a href="delete.php">Manage</a></li>
                 </ul>
             </li>
-            <li <?php echo ($page == 'five') ? "class='active'" : ""; ?> >
-                <a href="setting.php"><i class="fa fa-cog"></i> <span class="nav-label">Settings</span></a>
-            </li>
         </ul>
     </div>
 </nav>

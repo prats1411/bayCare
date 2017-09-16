@@ -5077,10 +5077,15 @@ table {
   border: 1px solid #e37667 ;
   color: #e37667;
   margin:0 5px !important;
-  border-radius: 19px ;
+  border-radius: 20px !important ;
 }
 
 .btn-link:hover {
   background-color: #e37667;
   color: #fff;
+}
+
+.danger {
+  border:1px solid #e37667 ;
+  padding:10px 30px;
 }

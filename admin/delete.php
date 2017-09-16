@@ -65,19 +65,6 @@ $users = $statement->fetchAll();
                                         <td><a href="userDelete.php?id=<?php echo $user['id']; ?>"><i class="fa fa-2x fa-trash"></i></a></td>
                                     </tr>
                                     <?php endforeach; ?>
-<!--                                    <script>-->
-<!--                                        $('#delete-button').click(function() {-->
-<!---->
-<!--                                            $.ajax({-->
-<!--                                                type: "POST",-->
-<!--                                                url: "deleteUser.php",-->
-<!--                                                data: { name: "John" }-->
-<!--                                            }).done(function( msg ) {-->
-<!--                                                alert( "Data Saved: " + msg );-->
-<!--                                            });-->
-<!---->
-<!--                                        });-->
-<!--                                    </script>-->
                                     </tbody>
                                 </table>
                             </div>
