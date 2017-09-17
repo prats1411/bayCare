@@ -49,12 +49,6 @@ $companies = $statement->fetchAll();
                             <h5>Following is the list of all the companies.</h5>
                         </div>
                         <div class="ibox-content">
-                            <div id="search" class="text-right row" style="margin-bottom: 25px;">
-                                <div class="input-group">
-                                    <input type="text" placeholder="Search by name" class="input-sm form-control"> <span class="input-group-btn">
-                                    <button type="button" class="btn btn-sm btn-primary"> Go!</button> </span>
-                                </div>
-                            </div>
                             <div class="table-responsive">
                                 <form method="get" class="form-horizontal" action="edit.php">
                                 <table class="table table-striped">

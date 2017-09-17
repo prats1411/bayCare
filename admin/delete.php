@@ -62,8 +62,19 @@ $users = $statement->fetchAll();
                                         <td><?php echo $user['name']; ?></td>
                                         <td><?php echo $user['username']; ?></td>
                                         <td><?php echo $user['email']; ?></td>
-                                        <td><a href="userDelete.php?id=<?php echo $user['id']; ?>"><i class="fa fa-2x fa-trash"></i></a></td>
+                                        <td><span type="button" id="delete-button"><i class="fa fa-2x fa-trash"></i></span></td>
                                     </tr>
+                                        <div id="confirm" class="modal animate fade-in-right">
+                                            <div class="modal-content">
+                                                <div class="modal-body">
+                                                    <h3>Are you sure you want to delete this user?</h3>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" data-dismiss="modal" class="btn">Cancel</button>
+                                                    <a href="userDelete.php?id=<?php echo $user['id']; ?>" class="btn btn-danger">Delete</a>
+                                                </div>
+                                            </div>
+                                        </div>
                                     <?php endforeach; ?>
                                     </tbody>
                                 </table>
@@ -95,7 +106,16 @@ $users = $statement->fetchAll();
 
 
 <script>
-
+    $( document ).on('click','#delete-button',function(e) {
+        var $form = $(this).closest('form');
+        e.preventDefault();
+        $('#confirm').modal({
+            keyboard: false
+        })
+            .one('click', '#delete', function(e) {
+                $form.trigger('submit');
+            });
+    });
 </script>
 
 </body>

@@ -126,8 +126,19 @@ if (isset($_POST['submit'])) {
                                 <h3> Delete the company </h3>
                                 <p>Once you delete a repository, there is no going back. Please be certain.</p>
                                 <div align="center">
-                                    <?php $id = $company['id']; ?>
-                                    <a href="companyDelete.php?id=<?php echo $id; ?>"  class="btn btn-primary" name="save" type="submit">Delete</a>
+                                    <span type="button" id="delete-button"><i class="btn btn-primary">Delete</i></span>
+<!--                                    <a href="companyDelete.php?id=--><?php //echo $id; ?><!--"  class="btn btn-primary" name="save" type="submit">Delete</a>-->
+                                </div>
+                                <div id="confirm" class="modal animate fade-in-right">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <h3>Are you sure you want to delete this company?</h3>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" data-dismiss="modal" class="btn">Cancel</button>
+                                            <a href="companyDelete.php?id=<?php echo $company['id']; ?>" class="btn btn-danger">Delete</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -332,6 +343,17 @@ if (isset($_POST['submit'])) {
         placeholder: 'Add additional information.',
         tabsize: 5,
         height: 300
+    });
+
+    $( document ).on('click','#delete-button',function(e) {
+        var $form = $(this).closest('form');
+        e.preventDefault();
+        $('#confirm').modal({
+            keyboard: false
+        })
+            .one('click', '#delete', function(e) {
+                $form.trigger('submit');
+            });
     });
 </script>
 
