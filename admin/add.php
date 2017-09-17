@@ -7,21 +7,33 @@ if (isset($_POST['submit'])) {
 
     if ($_POST['work_mobile']){
         $work_mobile = 1;
+    } else {
+        $work_mobile = 0;
     }
     if ($_POST['qualification']){
         $qualification = 1;
+    } else {
+        $qualification = 0;
     }
     if ($_POST['service_type']){
         $service_type = 1;
+    } else {
+        $service_type = 0;
     }
     if ($_POST['job_category']){
         $job_category = 1;
+    } else {
+        $job_category = 0;
     }
     if ($_POST['prefecture']){
         $prefecture = 1;
+    } else {
+        $prefecture = 0;
     }
     if ($_POST['additional_info']){
         $additional_info = 1;
+    } else {
+        $additional_info = 0;
     }
 
     $statement = $conn->prepare("INSERT INTO `companies` (`name`, `pr`, `link`, `text`, `image`, `work_mobile`, `qualification`, `prefecture`, `service_type`, `job_category`, `additional_info`, `additional_text`, `count`) 
@@ -41,7 +53,7 @@ if (isset($_POST['submit'])) {
         "additional_text" => $_POST['additional_text'],
         "countClick" => 0
     ));
-    header('Location: list.php');
+    header('Location: list.php?message=2');
 } elseif (isset($_POST['cancel'])) {
     header('Location: add.php');
 }
