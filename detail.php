@@ -221,7 +221,7 @@ select `name` as name, `pr` as pr, `link` as link, `text` as text, `image` as im
                         <?php echo $company['additional_text']; ?>
                     </div>
                     <div class="col-xs-12 text-center">
-                        <a href="<?php echo $company['link']; ?>" class="btn btn-smart" target="_blank"> GO TO WEBSITE  <i class="fa fa-link"></i></a>
+                        <a href="<?php echo $company['link']; ?>" class="btn btn-smart" target="_blank"><?php echo $company['text']; ?><i class="fa fa-link"></i></a>
                     </div>
                 </div>
             </div>
