@@ -1,3 +1,6 @@
+<?php
+    require_once "recom.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -141,13 +144,14 @@
                         <div class="col-md-8 col-md-offset-2">
                             <div id="tab-1-content">
                                 <div class="row">
+                                    <?php foreach ($companiesLatest as $latest): ?>
                                     <div class="col-xs-12">
                                         <div class="box row">
-                                            <h3 class="text-center">BayCare</h3>
+                                            <h3 class="text-center"><?php echo $latest['name']; ?></h3>
                                             <hr/>
                                             <div class="col-sm-4">
-                                                <a href="https://px.a8.net/svt/ejp?a8mat=2TMS6I+4620I+2CDI+C2VV5" target="_blank" rel="nofollow">
-                                                    <img border="0" width="200" height="200" alt="" src="https://www23.a8.net/svt/bgt?aid=170704170007&wid=001&eno=01&mid=s00000010935002029000&mc=1"></a>
+                                                <a href="<?php echo $latest['link']; ?>" target="_blank" rel="nofollow">
+                                                    <img border="0" width="200" height="200" alt="" src="<?php echo $latest['image']; ?>"></a>
                                                 <img border="0" width="1" height="1" src="https://www14.a8.net/0.gif?a8mat=2TMS6I+4620I+2CDI+C2VV5" alt="">
                                             </div>
                                             <div class="col-sm-8">
@@ -160,154 +164,153 @@
                                                         <th>職種</th>
                                                     <tr/>
                                                     <tr>
-                                                        <td>
-                                                            <i class="fa fa-lg fa-check" aria-hidden="true"></i>
-                                                        </td>
-                                                        <td>
-                                                            <i class="fa fa-lg fa-check" aria-hidden="true"></i>
-                                                        </td>
-                                                        <td>
-                                                            <i class="fa fa-lg fa-times-circle-o" aria-hidden="true"></i>
-                                                        </td>
-                                                        <td>
-                                                            <i class="fa fa-lg fa-times-circle-o" aria-hidden="true"></i>
-                                                        </td>
-                                                        <td>
-                                                            <i class="fa fa-lg fa-check" aria-hidden="true"></i>
-                                                        </td>
-                                                    <tr/>
+                                                        <?php if ($latest['work_mobile'] == 1): ?>
+                                                            <td>
+                                                                <i class="fa fa-lg fa-check" aria-hidden="true"></i>
+                                                            </td>
+                                                        <?php else: ?>
+                                                            <td>
+                                                                <i class="fa fa-lg fa-times-circle-o" aria-hidden="true"></i>
+                                                            </td>
+                                                        <?php endif; ?>
+                                                        <?php if ($latest['qualification'] == 1): ?>
+                                                            <td>
+                                                                <i class="fa fa-lg fa-check" aria-hidden="true"></i>
+                                                            </td>
+                                                        <?php else: ?>
+                                                            <td>
+                                                                <i class="fa fa-lg fa-times-circle-o" aria-hidden="true"></i>
+                                                            </td>
+                                                        <?php endif; ?>
+                                                        <?php if ($latest['prefecture'] == 1): ?>
+                                                            <td>
+                                                                <i class="fa fa-lg fa-check" aria-hidden="true"></i>
+                                                            </td>
+                                                        <?php else: ?>
+                                                            <td>
+                                                                <i class="fa fa-lg fa-times-circle-o" aria-hidden="true"></i>
+                                                            </td>
+                                                        <?php endif; ?>
+                                                        <?php if ($latest['service_type'] == 1): ?>
+                                                            <td>
+                                                                <i class="fa fa-lg fa-check" aria-hidden="true"></i>
+                                                            </td>
+                                                        <?php else: ?>
+                                                            <td>
+                                                                <i class="fa fa-lg fa-times-circle-o" aria-hidden="true"></i>
+                                                            </td>
+                                                        <?php endif; ?>
+                                                        <?php if ($latest['job_category'] == 1): ?>
+                                                            <td>
+                                                                <i class="fa fa-lg fa-check" aria-hidden="true"></i>
+                                                            </td>
+                                                        <?php else: ?>
+                                                            <td>
+                                                                <i class="fa fa-lg fa-times-circle-o" aria-hidden="true"></i>
+                                                            </td>
+                                                        <?php endif; ?>
+                                                    </tr>
                                                 </table>
                                                 <p class="text-left">
-                                                    進研ゼミでおなじみのベネッセグループの介護士求人紹介サービスです。
-                                                    <br/>介護福祉士（介護士）やホームヘルパー、ケアマネージャーなど、介護職の求人転職情報をご紹介。
-                                                    <br/>さまざまな勤務形態から、ご自身にあった介護の職場をお探しいただけます。
+                                                    <?php echo $latest['pr']; ?>
                                                 </p>
                                             </div>
                                             <div class="col-xs-12 text-center" style="margin-top: 20px;">
-                                                <button class="btn btn-gray"> READ MORE <i class="fa fa-angle-double-right"></i></button>
-                                                <a class="btn btn-smart" href="https://px.a8.net/svt/ejp?a8mat=2TMS6I+4620I+2CDI+BZ8OY" target="_blank" rel="nofollow">あなたに本当に合ったお仕事をご紹介<br>
-                                                    ベネッセの介護士お仕事サポート</a>
+                                                <?php if ($latest['additional_info'] == 1): ?>
+                                                    <a href="<?php echo 'detail.php?id='.$latest['id']; ?>" class="btn btn-gray" target="_blank"> READ MORE <i class="fa fa-angle-double-right"></i></a>
+                                                <?php endif; ?>
+                                                <a class="btn btn-smart" href="<?php echo $latest['link']; ?>" target="_blank" rel="nofollow"><?php echo $latest['text']; ?></a>
                                                 <img border="0" width="1" height="1" src="https://www18.a8.net/0.gif?a8mat=2TMS6I+4620I+2CDI+BZ8OY" alt="">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-xs-12">
-                                        <div class="box row">
-                                            <h3 class="text-center">BayCare</h3>
-                                            <hr/>
-                                            <div class="col-sm-4">
-                                                <img class="img-responsive" src="assets/images/logo/logo2.png" />
-                                            </div>
-                                            <div class="col-sm-8">
-                                                <table class="table table-bordered">
-                                                    <tr>
-                                                        <th>仕事携帯</th>
-                                                        <th>資格</th>
-                                                        <th>都道府県</th>
-                                                        <th>サービス種別</th>
-                                                        <th>職種</th>
-                                                    <tr/>
-                                                    <tr>
-                                                        <td>
-                                                            <i class="fa fa-lg fa-check" aria-hidden="true"></i>
-                                                        </td>
-                                                        <td>
-                                                            <i class="fa fa-lg fa-check" aria-hidden="true"></i>
-                                                        </td>
-                                                        <td>
-                                                            <i class="fa fa-lg fa-times-circle-o" aria-hidden="true"></i>
-                                                        </td>
-                                                        <td>
-                                                            <i class="fa fa-lg fa-times-circle-o" aria-hidden="true"></i>
-                                                        </td>
-                                                        <td>
-                                                            <i class="fa fa-lg fa-check" aria-hidden="true"></i>
-                                                        </td>
-                                                    <tr/>
-                                                </table>
-                                                <p class="text-left">
-                                                    進研ゼミでおなじみのベネッセグループの介護士求人紹介サービスです。
-                                                    <br/>介護福祉士（介護士）やホームヘルパー、ケアマネージャーなど、介護職の求人転職情報をご紹介。
-                                                    <br/>さまざまな勤務形態から、ご自身にあった介護の職場をお探しいただけます。
-                                                </p>
-                                            </div>
-                                            <div class="col-xs-12 text-center" style="margin-top: 20px;">
-                                                <button class="btn btn-gray"> READ MORE <i class="fa fa-angle-double-right"></i></button>
-                                                <button class="btn btn-smart"> GO TO WEBSITE  <i class="fa fa-link"></i></button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12">
-                                        <div class="box row">
-                                            <h3 class="text-center">BayCare</h3>
-                                            <hr/>
-                                            <div class="col-sm-4">
-                                                <img class="img-responsive" src="assets/images/logo/logo3.png" />
-                                            </div>
-                                            <div class="col-sm-8">
-                                                <table class="table table-bordered">
-                                                    <tr>
-                                                        <th>仕事携帯</th>
-                                                        <th>資格</th>
-                                                        <th>都道府県</th>
-                                                        <th>サービス種別</th>
-                                                        <th>職種</th>
-                                                    <tr/>
-                                                    <tr>
-                                                        <td>
-                                                            <i class="fa fa-lg fa-check" aria-hidden="true"></i>
-                                                        </td>
-                                                        <td>
-                                                            <i class="fa fa-lg fa-check" aria-hidden="true"></i>
-                                                        </td>
-                                                        <td>
-                                                            <i class="fa fa-lg fa-times-circle-o" aria-hidden="true"></i>
-                                                        </td>
-                                                        <td>
-                                                            <i class="fa fa-lg fa-times-circle-o" aria-hidden="true"></i>
-                                                        </td>
-                                                        <td>
-                                                            <i class="fa fa-lg fa-check" aria-hidden="true"></i>
-                                                        </td>
-                                                    <tr/>
-                                                </table>
-                                                <p class="text-left">
-                                                    進研ゼミでおなじみのベネッセグループの介護士求人紹介サービスです。
-                                                    <br/>介護福祉士（介護士）やホームヘルパー、ケアマネージャーなど、介護職の求人転職情報をご紹介。
-                                                    <br/>さまざまな勤務形態から、ご自身にあった介護の職場をお探しいただけます。
-                                                </p>
-                                            </div>
-                                            <div class="col-xs-12 text-center" style="margin-top: 20px;">
-                                                <button class="btn btn-gray"> READ MORE <i class="fa fa-angle-double-right"></i></button>
-                                                <button class="btn btn-smart"> GO TO WEBSITE  <i class="fa fa-link"></i></button>
-                                            </div>
-                                        </div>
+                                    <?php endforeach; ?>
                                     </div>
                                 </div>
                             </div>
                             <div id="tab-2-content" style="display:none;">
                                 <div class="row">
-                                    <div class="col-xs-12">
-                                        <div class="recomend-box">
-                                            <div class="text-center"><img class="img-responsive logo" src="assets/images/logo/logo4.png"></div>
-                                            <hr style="margin: 5px 0;">
-                                            <h4 class="text-center">BayCare</h4>
+                                    <?php foreach ($companiesPopular as $popular): ?>
+                                        <div class="col-xs-12">
+                                            <div class="box row">
+                                                <h3 class="text-center"><?php echo $popular['name']; ?></h3>
+                                                <hr/>
+                                                <div class="col-sm-4">
+                                                    <a href="<?php echo $popular['link']; ?>" target="_blank" rel="nofollow">
+                                                        <img border="0" width="200" height="200" alt="" src="<?php echo $popular['image']; ?>"></a>
+                                                    <img border="0" width="1" height="1" src="https://www14.a8.net/0.gif?a8mat=2TMS6I+4620I+2CDI+C2VV5" alt="">
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <table class="table table-bordered">
+                                                        <tr>
+                                                            <th>仕事携帯</th>
+                                                            <th>資格</th>
+                                                            <th>都道府県</th>
+                                                            <th>サービス種別</th>
+                                                            <th>職種</th>
+                                                        <tr/>
+                                                        <tr>
+                                                            <?php if ($popular['work_mobile'] == 1): ?>
+                                                                <td>
+                                                                    <i class="fa fa-lg fa-check" aria-hidden="true"></i>
+                                                                </td>
+                                                            <?php else: ?>
+                                                                <td>
+                                                                    <i class="fa fa-lg fa-times-circle-o" aria-hidden="true"></i>
+                                                                </td>
+                                                            <?php endif; ?>
+                                                            <?php if ($popular['qualification'] == 1): ?>
+                                                                <td>
+                                                                    <i class="fa fa-lg fa-check" aria-hidden="true"></i>
+                                                                </td>
+                                                            <?php else: ?>
+                                                                <td>
+                                                                    <i class="fa fa-lg fa-times-circle-o" aria-hidden="true"></i>
+                                                                </td>
+                                                            <?php endif; ?>
+                                                            <?php if ($popular['prefecture'] == 1): ?>
+                                                                <td>
+                                                                    <i class="fa fa-lg fa-check" aria-hidden="true"></i>
+                                                                </td>
+                                                            <?php else: ?>
+                                                                <td>
+                                                                    <i class="fa fa-lg fa-times-circle-o" aria-hidden="true"></i>
+                                                                </td>
+                                                            <?php endif; ?>
+                                                            <?php if ($popular['service_type'] == 1): ?>
+                                                                <td>
+                                                                    <i class="fa fa-lg fa-check" aria-hidden="true"></i>
+                                                                </td>
+                                                            <?php else: ?>
+                                                                <td>
+                                                                    <i class="fa fa-lg fa-times-circle-o" aria-hidden="true"></i>
+                                                                </td>
+                                                            <?php endif; ?>
+                                                            <?php if ($popular['job_category'] == 1): ?>
+                                                                <td>
+                                                                    <i class="fa fa-lg fa-check" aria-hidden="true"></i>
+                                                                </td>
+                                                            <?php else: ?>
+                                                                <td>
+                                                                    <i class="fa fa-lg fa-times-circle-o" aria-hidden="true"></i>
+                                                                </td>
+                                                            <?php endif; ?>
+                                                        </tr>
+                                                    </table>
+                                                    <p class="text-left">
+                                                        <?php echo $popular['pr']; ?>
+                                                    </p>
+                                                </div>
+                                                <div class="col-xs-12 text-center" style="margin-top: 20px;">
+                                                    <?php if ($popular['additional_info'] == 1): ?>
+                                                        <a href="<?php echo 'detail.php?id='.$popular['id']; ?>" class="btn btn-gray" target="_blank"> READ MORE <i class="fa fa-angle-double-right"></i></a>
+                                                    <?php endif; ?>
+                                                    <a class="btn btn-smart" href="<?php echo $popular['link']; ?>" target="_blank" rel="nofollow"><?php echo $popular['text']; ?></a>
+                                                    <img border="0" width="1" height="1" src="https://www18.a8.net/0.gif?a8mat=2TMS6I+4620I+2CDI+BZ8OY" alt="">
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-xs-12">
-                                        <div class="recomend-box">
-                                            <div class="text-center"><img class="img-responsive logo" src="assets/images/logo/logo5.png"></div>
-                                            <hr style="margin: 5px 0;">
-                                            <h4 class="text-center">Home Hero</h4>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12">
-                                        <div class="recomend-box">
-                                            <div class="text-center"><img class="img-responsive logo" src="assets/images/logo/logo6.png"></div>
-                                            <hr style="margin: 5px 0;">
-                                            <h4 class="text-center">Japanese Name</h4>
-                                        </div>
-                                    </div>
+                                    <?php endforeach; ?>
                                 </div>
                             </div>
                         </div>

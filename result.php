@@ -74,77 +74,77 @@ WHERE `work_mobile` = :work_mobile AND `qualification` = :qualification AND `pre
     <header>
         <h2 style="margin-bottom: 20px;" class="text-center">Search Again</h2>
         <div class="div-form">
-            <form method="get" class="form-horizontal">
+            <form method="post" class="form-horizontal" action="result.php">
                 <div class="form-group">
                     <label class="col-xs-12 control-label">仕事携帯 :</label>
                     <div class="col-xs-12">
-                        <select data-placeholder="選びなさい" class="chosen-select" multiple style="width:100%;">
-                            <option style="display:none;" value="-">選びなさい</option>
-                            <option class="正社員・職員">正社員・職員</option>
-                            <option class="契約社員">契約社員</option>
-                            <option class="派遣・パート">派遣・パート</option>
-                            <option class="紹介予定派遣">紹介予定派遣</option>
+                        <select data-placeholder="選びなさい" class="chosen-select" name="work_mobile" style="width:100%;">
+                            <option style="display:none;" value="0">選びなさい</option>
+                            <option value="1">正社員・職員</option>
+                            <option value="1">契約社員</option>
+                            <option value="1">派遣・パート</option>
+                            <option value="1">紹介予定派遣</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-xs-12 control-label">資格 :</label>
                     <div class="col-xs-12">
-                        <select data-placeholder="選びなさい" class="chosen-select" multiple style="width:100%;">
-                            <option style="display:none;" value="-">選びなさい</option>
-                            <option class="介護職員初任者研修">介護職員初任者研修</option>
-                            <option class="介護福祉士">介護福祉士</option>
-                            <option class="ホームヘルパー２級">ホームヘルパー２級</option>
-                            <option class="ホームヘルパー１級">ホームヘルパー１級</option>
-                            <option class="実務者研修">実務者研修</option>
-                            <option class="介護職員基礎研修">介護職員基礎研修</option>
-                            <option class="社会福祉士">社会福祉士</option>
+                        <select data-placeholder="選びなさい" class="chosen-select" name="qualification" style="width:100%;">
+                            <option style="display:none;" value="0">選びなさい</option>
+                            <option value="1">介護職員初任者研修</option>
+                            <option value="1">介護福祉士</option>
+                            <option value="1">ホームヘルパー２級</option>
+                            <option value="1">ホームヘルパー１級</option>
+                            <option value="1">実務者研修</option>
+                            <option value="1">介護職員基礎研修</option>
+                            <option value="1">社会福祉士</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-group"><label class="col-xs-12 control-label">都道府県 :</label>
                     <div class="col-xs-12">
-                        <select data-placeholder="選びなさい" class="chosen-select" style="width:100%;">
-                            <option style="display:none;" value="-">選びなさい</option>
-                            <option value="北海道・東北">北海道・東北</option>
-                            <option value="関東">関東</option>
-                            <option value="甲信越・北陸">甲信越・北陸</option>
-                            <option value="東海">東海</option>
-                            <option value="近畿">近畿</option>
-                            <option value="中国・四国">中国・四国</option>
-                            <option value="九州・沖縄">九州・沖縄</option>
+                        <select data-placeholder="選びなさい" class="chosen-select" name="prefecture" style="width:100%;">
+                            <option style="display:none;" value="0">選びなさい</option>
+                            <option value="1">北海道・東北</option>
+                            <option value="1">関東</option>
+                            <option value="1">甲信越・北陸</option>
+                            <option value="1">東海</option>
+                            <option value="1">近畿</option>
+                            <option value="1">中国・四国</option>
+                            <option value="1">九州・沖縄</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-group"><label class="col-xs-12 control-label">サービス種別 :</label>
                     <div class="col-xs-12">
-                        <select data-placeholder="選びなさい" class="chosen-select" multiple style="width:100%;">
-                            <option style="display:none;" value="-">選びなさい</option>
-                            <option value="特別養護法人ホーム">特別養護法人ホーム</option>
-                            <option value="介護老人保健施設">介護老人保健施設</option>
-                            <option value="介護特養型医療施設">介護特養型医療施設</option>
-                            <option value="有料法人ホーム">有料法人ホーム</option>
-                            <option value="デイサービス">デイサービス</option>
-                            <option value="グループホーム">グループホーム</option>
-                            <option value="訪問介護事務所">訪問介護事務所</option>
-                            <option value="サービス付き高齢者向け住宅">サービス付き高齢者向け住宅</option>
-                            <option value="小規模多機能">小規模多機能</option>
-                            <option value="その他">その他</option>
+                        <select data-placeholder="選びなさい" class="chosen-select" name="service_type" style="width:100%;">
+                            <option style="display:none;" value="0">選びなさい</option>
+                            <option value="1">特別養護法人ホーム</option>
+                            <option value="1">介護老人保健施設</option>
+                            <option value="1">介護特養型医療施設</option>
+                            <option value="1">有料法人ホーム</option>
+                            <option value="1">デイサービス</option>
+                            <option value="1">グループホーム</option>
+                            <option value="1">訪問介護事務所</option>
+                            <option value="1">サービス付き高齢者向け住宅</option>
+                            <option value="1">小規模多機能</option>
+                            <option value="1">その他</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-group"><label class="col-xs-12 control-label">職種 :</label>
                     <div class="col-xs-12">
-                        <select data-placeholder="選びなさい" class="chosen-select" multiple style="width:100%;">
-                            <option style="display:none;" value="-">選びなさい</option>
-                            <option value="介護士">介護士</option>
-                            <option value="訪問介護員">訪問介護員</option>
-                            <option value="ケアマネージャー">ケアマネージャー</option>
-                            <option value="サービス提供責任者">サービス提供責任者</option>
-                            <option value="生活相談員">生活相談員</option>
-                            <option value="介護事務">介護事務</option>
-                            <option value="管理職">管理職</option>
-                            <option value="その他">その他</option>
+                        <select data-placeholder="選びなさい" class="chosen-select" name="job_category" style="width:100%;">
+                            <option style="display:none;" value="0">選びなさい</option>
+                            <option value="1">介護士</option>
+                            <option value="1">訪問介護員</option>
+                            <option value="1">ケアマネージャー</option>
+                            <option value="1">サービス提供責任者</option>
+                            <option value="1">生活相談員</option>
+                            <option value="1">介護事務</option>
+                            <option value="1">管理職</option>
+                            <option value="1">その他</option>
                         </select>
                     </div>
                 </div>
