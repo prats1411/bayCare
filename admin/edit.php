@@ -127,7 +127,7 @@ if (isset($_POST['submit'])) {
                                 <p>Once you delete a repository, there is no going back. Please be certain.</p>
                                 <div align="center">
                                     <?php $id = $company['id']; ?>
-                                    <a href="delete.php?id=<?php echo $id; ?>"  class="btn btn-primary" name="save" type="submit">Delete</a>
+                                    <a href="companyDelete.php?id=<?php echo $id; ?>"  class="btn btn-primary" name="save" type="submit">Delete</a>
                                 </div>
                             </div>
                         </div>

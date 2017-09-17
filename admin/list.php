@@ -5,8 +5,7 @@ require_once "application_top.php";
 $statement = $conn->prepare("
 select id as id, `name` as name, `pr` as pr, `link` as link, `text` as text, `image` as image, `work_mobile` as work_mobile,
 `qualification` as qualification, `prefecture` as prefecture, `service_type` as service_type, `job_category` as job_category,
-`additional_info` as additional_info, `additional_text` as additional_text, `count` as clicks from `companies` 
-");
+`additional_info` as additional_info, `additional_text` as additional_text, `count` as clicks from `companies` ORDER BY clicks, id DESC");
 $statement->execute();
 $companies = $statement->fetchAll();
 
