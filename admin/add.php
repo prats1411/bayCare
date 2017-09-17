@@ -41,7 +41,7 @@ if (isset($_POST['submit'])) {
         "additional_text" => $_POST['additional_text'],
         "countClick" => 0
     ));
-    header('Location: list.php');
+    header('Location: list.php?message=2');
 } elseif (isset($_POST['cancel'])) {
     header('Location: add.php');
 }

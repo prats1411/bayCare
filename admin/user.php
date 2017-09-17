@@ -12,7 +12,7 @@ if (isset($_POST['submit'])){
         "email" => $_POST['email'],
         "created" => date('Y-m-d')
     ));
-    header("Location: delete.php");
+    header("Location: delete.php?message=2");
 } elseif (isset($_POST['cancel'])) {
     header("Refresh:0");
 }

@@ -1,6 +1,38 @@
 <?php
 require_once "application_top.php";
 
+if ($_GET['message'] == 1){
+    echo "<script>
+                        operatorDeleted();
+                    function operatorDeleted (){
+                        setTimeout(function() {
+                        toastr.options = {
+                            closeButton: true,
+                            progressBar: true,
+                            showMethod: 'slideDown',
+                            timeOut: 6000
+                        };
+                        toastr.error('User Has Been Deleted');
+                    }, 1300);
+                    };
+                    </script>";
+} elseif ($_GET['message'] == 2){
+echo "<script>
+                        operatorAdded();
+                    function operatorAdded (){
+                        setTimeout(function() {
+                        toastr.options = {
+                            closeButton: true,
+                            progressBar: true,
+                            showMethod: 'slideDown',
+                            timeOut: 6000
+                        };
+                        toastr.success('User Has Been Added');
+                    }, 1300);
+                    };
+                    </script>";
+}
+
 $statement = $conn->prepare("select `id` as id, `name` as name, `username` as username, `email` as email from `users`");
 $statement->execute();
 $users = $statement->fetchAll();
@@ -24,6 +56,8 @@ $users = $statement->fetchAll();
     <link href="css/bootstrap-toggle.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link href="css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="css/plugins/toastr/toastr.min.css" rel="stylesheet">
+
 
 </head>
 
@@ -63,19 +97,22 @@ $users = $statement->fetchAll();
                                         <td><?php echo $user['username']; ?></td>
                                         <td><?php echo $user['email']; ?></td>
                                         <td><span type="button" id="delete-button"><i class="fa fa-2x fa-trash"></i></span></td>
+                                        <script>
+                                            var id = <?php echo $user['id']; ?>;
+                                        </script>
                                     </tr>
-                                        <div id="confirm" class="modal animate fade-in-right">
-                                            <div class="modal-content">
-                                                <div class="modal-body">
-                                                    <h3>Are you sure you want to delete this user?</h3>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" data-dismiss="modal" class="btn">Cancel</button>
-                                                    <a href="userDelete.php?id=<?php echo $user['id']; ?>" class="btn btn-danger">Delete</a>
-                                                </div>
+                                    <?php endforeach; ?>
+                                    <div id="confirm" class="modal animate fade-in-right">
+                                        <div class="modal-content">
+                                            <div class="modal-body">
+                                                <h3>Are you sure you want to delete this user?</h3>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" data-dismiss="modal" class="btn">Cancel</button>
+                                                <a href="userDelete.php?id=<?php echo $user['id']; ?>" class="btn btn-danger">Delete</a>
                                             </div>
                                         </div>
-                                    <?php endforeach; ?>
+                                    </div>
                                     </tbody>
                                 </table>
                             </div>
@@ -103,6 +140,9 @@ $users = $statement->fetchAll();
 
 <!-- iCheck -->
 <script src="js/plugins/iCheck/icheck.min.js"></script>
+
+<!-- toaster -->
+<script src="js/plugins/toastr/toastr.min.js"></script>
 
 
 <script>
