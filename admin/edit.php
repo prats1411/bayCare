@@ -5,7 +5,7 @@ if ($_GET['input']) {
 
     $id = $_GET['input'];
     $statement = $conn->prepare("
-select `name` as name, `pr` as pr, `link` as link, `text` as text, `image` as image, `work_mobile` as work_mobile,
+select `id` as id, `name` as name, `pr` as pr, `link` as link, `text` as text, `image` as image, `work_mobile` as work_mobile,
 `qualification` as qualification, `prefecture` as prefecture, `service_type` as service_type, `job_category` as job_category,
 `additional_info` as additional_info, `additional_text` as additional_text, `count` as clicks from `companies` WHERE `id` = '$id'");
     $statement->execute();
@@ -126,7 +126,8 @@ if (isset($_POST['submit'])) {
                                 <h3> Delete the company </h3>
                                 <p>Once you delete a repository, there is no going back. Please be certain.</p>
                                 <div align="center">
-                                    <a  class="btn btn-primary" name="save" type="submit">Delete</a>
+                                    <?php $id = $company['id']; ?>
+                                    <a href="delete.php?id=<?php echo $id; ?>"  class="btn btn-primary" name="save" type="submit">Delete</a>
                                 </div>
                             </div>
                         </div>
