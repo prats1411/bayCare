@@ -233,21 +233,25 @@ select `name` as name, `pr` as pr, `link` as link, `text` as text, `image` as im
                         <hr/>
                         <p>What's New</p>
                         <?php foreach ($companiesLatest as $latest): ?>
-                            <div class="recomend-box">
-                                <div class="text-center">
-                                    <img class="img-responsive logo" src="<?php echo $latest['image']; ?>">
-                                    <h4 class="text-center"><?php echo $latest['name']; ?></h4>
+                            <a href="<?php echo $latest['link']; ?>" target="_blank">
+                                <div class="recomend-box">
+                                    <div class="text-center">
+                                        <img class="img-responsive logo" src="<?php echo $latest['image']; ?>">
+                                        <h4 class="text-center"><?php echo $latest['name']; ?></h4>
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
                         <?php endforeach; ?>
                         <p>Most Popular</p>
                         <?php foreach ($companiesPopular as $popular): ?>
-                            <div class="recomend-box">
-                                <div class="text-center">
-                                    <img class="img-responsive logo" src="<?php echo $popular['image']; ?>">
-                                    <h4 class="text-center"><?php echo $popular['name']; ?></h4>
+                            <a href="<?php echo $latest['link']; ?>" target="_blank">
+                                <div class="recomend-box">
+                                    <div class="text-center">
+                                        <img class="img-responsive logo" src="<?php echo $popular['image']; ?>">
+                                        <h4 class="text-center"><?php echo $popular['name']; ?></h4>
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
                         <?php endforeach; ?>
                     </div>
                 </div>

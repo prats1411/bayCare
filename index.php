@@ -225,7 +225,6 @@
                                         </div>
                                     </div>
                                     <?php endforeach; ?>
-                                    </div>
                                 </div>
                             </div>
                             <div id="tab-2-content" style="display:none;">
