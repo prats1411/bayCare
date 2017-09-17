@@ -374,6 +374,8 @@ body {
     max-height: 200px;
     margin-bottom: 10px;
 }
-btn-open {
-
+a.btn-gray {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 900;
 }

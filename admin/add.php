@@ -163,7 +163,7 @@ if (isset($_POST['submit'])) {
                                     <div id="div-info" class="form-group">
                                         <label class="col-sm-2 control-label">Additional Information</label>
                                         <div class="container1 col-sm-10">
-                                            <textarea name="additional_text" style="margin-bottom: 20px;" required="required" class="form-control" placeholder="Info Content" id="infoadd" rows="4" aria-required="true"></textarea>
+                                            <textarea name="additional_text" style="margin-bottom: 20px;" class="form-control" placeholder="Info Content" id="infoadd" rows="4" aria-required="true"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group" align="center">
