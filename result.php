@@ -249,9 +249,9 @@ WHERE `work_mobile` = :work_mobile AND `qualification` = :qualification AND `pre
                             </div>
                             <div class="">
                                 <?php if ($company['additional_info'] == 1): ?>
-                                <a href="<?php echo 'detail.php?id='.$company['id']; ?>" class="btn btn-smart" target="_blank"> READ MORE <i class="fa fa-angle-double-right"></i></a>
+                                <a href="<?php echo 'detail.php?id='.$company['id']; ?>" class="btn btn-gray" target="_blank"> READ MORE <i class="fa fa-angle-double-right"></i></a>
                                 <?php endif; ?>
-                                <a href="<?php echo $company['link']; ?>" class="btn btn-smart" target="_blank"> GO TO WEBSITE  <i class="fa fa-link"></i></a>
+                                <a href="<?php echo $company['link']; ?>" class="btn btn-smart" target="_blank"> <?php echo $company['text']; ?>  <i class="fa fa-link"></i></a>
                             </div>
                         </div>
                         <?php endforeach; ?>
