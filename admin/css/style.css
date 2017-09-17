@@ -5089,3 +5089,8 @@ table {
   border:1px solid #e37667 ;
   padding:10px 30px;
 }
+
+.border {
+  border: 1px dashed #ddd;
+
+}

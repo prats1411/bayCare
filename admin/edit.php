@@ -126,7 +126,7 @@ if (isset($_POST['submit'])) {
                                 <h3> Delete the company </h3>
                                 <p>Once you delete a repository, there is no going back. Please be certain.</p>
                                 <div align="center">
-                                    <button class="btn btn-primary" name="save" type="submit">Delete</button>
+                                    <a  class="btn btn-primary" name="save" type="submit">Delete</a>
                                 </div>
                             </div>
                         </div>
@@ -252,12 +252,14 @@ if (isset($_POST['submit'])) {
                                         </table>
                                     </div>
                                 </div>
+
                                 <div id="div-info" class="form-group">
                                     <label class="col-sm-2 control-label">Additional Information</label>
                                     <div class="container1 col-sm-10">
                                         <textarea name="additional_text" style="margin-bottom: 20px;" class="form-control" placeholder="<?php $company['additional_text'] ?>" id="infoadd" rows="4" aria-required="true"></textarea>
                                     </div>
                                 </div>
+
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Count</label>
                                     <div class="col-sm-10">
@@ -310,7 +312,13 @@ if (isset($_POST['submit'])) {
     });
 
     var changeCheckbox = document.querySelector('.js-check-change');
-    $("#div-info").hide();
+    jQuery(document).ready(function () {
+        if ( changeCheckbox.checked == true ) {
+            $("#div-info").show();
+        } else {
+            $("#div-info").hide();
+        }
+    });
     changeCheckbox.onchange = function() {
         if(changeCheckbox.checked == true){
             $("#div-info").show(500);
@@ -318,6 +326,7 @@ if (isset($_POST['submit'])) {
             $("#div-info").hide(500);
         }
     };
+
     $('#infoadd').summernote({
         placeholder: 'Add additional information.',
         tabsize: 5,
