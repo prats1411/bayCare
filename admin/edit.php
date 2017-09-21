@@ -7,7 +7,7 @@ if ($_GET['input']) {
     $statement = $conn->prepare("
 select `id` as id, `name` as name, `pr` as pr, `link` as link, `text` as text, `image` as image, `work_mobile` as work_mobile,
 `qualification` as qualification, `prefecture` as prefecture, `service_type` as service_type, `job_category` as job_category,
-`additional_info` as additional_info, `additional_text` as additional_text, `count` as clicks from `companies` WHERE `id` = '$id'");
+`additional_info` as additional_info, `additional_text` as additional_text, `count` as clicks, `show` as `show` from `companies` WHERE `id` = '$id'");
     $statement->execute();
     $company = $statement->fetch();
 } else {
@@ -16,36 +16,37 @@ select `id` as id, `name` as name, `pr` as pr, `link` as link, `text` as text, `
 
 
 if (isset($_POST['submit'])) {
+//    var_dump($_POST['work_mobile']);die;
 
     if ($_POST['work_mobile']){
         $work_mobile = 1;
     } else {
-        $work_mobile = $company['work_mobile'];
+        $work_mobile = 0;
     }
     if (isset($_POST['qualification'])){
         $qualification = 1;
     } else {
-        $qualification = $company['qualification'];
+        $qualification = 0;
     }
     if (isset($_POST['service_type'])){
         $service_type = 1;
     } else {
-        $service_type = $company['service_type'];
+        $service_type = 0;
     }
     if (isset($_POST['job_category'])){
         $job_category = 1;
     } else {
-        $job_category = $company['job_category'];
+        $job_category = 0;
     }
     if (isset($_POST['prefecture'])){
         $prefecture = 1;
     } else {
-        $prefecture = $company['prefecture'];
+        $prefecture = 0;
     }
     if (isset($_POST['additional_info'])){
         $additional_info = 1;
     } else {
-        $additional_info = $company['additional_info'];
+        $additional_info = 0;
     }
     if (isset($_POST['additional_text'])){
         $additional_text = 1;
@@ -57,11 +58,16 @@ if (isset($_POST['submit'])) {
     } else {
         $count = $company['clicks'];
     }
+    if (isset($_POST['show'])){
+        $show = 1;
+    } else {
+        $show = 0;
+    }
 
     $statement = $conn->prepare("UPDATE `companies` SET `name` = :name_company, `pr` = :pr, `link` = :link, `text` = :text,
 `image` = :image, `work_mobile` = :work_mobile, `qualification` = :qualification, `prefecture` = :prefecture,
 `service_type` = :service_type, `job_category` = :job_category, `additional_info` = :additional_info, `additional_text` = :additional_text,
-`count` = :countClick WHERE `id` = '$id'");
+`count` = :countClick, `show` = :showInfo WHERE `id` = '$id'");
 
     $statement->execute(array(
         "name_company" => $_POST['name'],
@@ -76,7 +82,8 @@ if (isset($_POST['submit'])) {
         "job_category" => $job_category,
         "additional_info" => $additional_info,
         "additional_text" => $additional_text,
-        "countClick" => $count
+        "countClick" => $count,
+        "showInfo" => $show
     ));
     header('Location: list.php');
 }
@@ -246,6 +253,18 @@ if (isset($_POST['submit'])) {
                                                 <?php else: ?>
                                                     <td>
                                                         <input class="js-switch" type="checkbox" name="job_category" />
+                                                    </td>
+                                                <?php endif; ?>
+                                            <tr/>
+                                            <tr>
+                                                <th>Show Information</th>
+                                                <?php if ($company['show'] == 1): ?>
+                                                    <td>
+                                                        <input class="js-switch" type="checkbox" name="show" checked/>
+                                                    </td>
+                                                <?php else: ?>
+                                                    <td>
+                                                        <input class="js-switch" type="checkbox" name="show" />
                                                     </td>
                                                 <?php endif; ?>
                                             <tr/>
