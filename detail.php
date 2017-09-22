@@ -236,19 +236,19 @@ select `name` as name, `pr` as pr, `link` as link, `text` as text, `image` as im
                             <a href="<?php echo $latest['link']; ?>" target="_blank">
                                 <div class="recomend-box">
                                     <div class="text-center">
-                                        <img class="img-responsive logo" src="<?php echo $latest['image']; ?>">
-                                        <h4 class="text-center"><?php echo $latest['name']; ?></h4>
+                                        <h4 class="text-cente h4-class"><?php echo $latest['name']; ?></h4>
+                                        <p class="tasks-overflow text-center p-class"><?php echo $latest['pr']; ?></p>
                                     </div>
                                 </div>
                             </a>
                         <?php endforeach; ?>
                         <p>Most Popular</p>
                         <?php foreach ($companiesPopular as $popular): ?>
-                            <a href="<?php echo $latest['link']; ?>" target="_blank">
+                            <a href="<?php echo $popular['link']; ?>" target="_blank">
                                 <div class="recomend-box">
                                     <div class="text-center">
-                                        <img class="img-responsive logo" src="<?php echo $popular['image']; ?>">
-                                        <h4 class="text-center"><?php echo $popular['name']; ?></h4>
+                                        <h4 class="text-cente h4-class"><?php echo $popular['name']; ?></h4>
+                                        <p class="tasks-overflow text-center p-class"><?php echo $popular['pr']; ?></p>
                                     </div>
                                 </div>
                             </a>
@@ -266,6 +266,7 @@ select `name` as name, `pr` as pr, `link` as link, `text` as text, `image` as im
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 <script src="assets/jquery/jquery-ui-1.10.4.min.js"></script>
 <script src="assets/chosen/chosen.jquery.js"></script>
+<script src="assets/jquery/script.js"></script>
 
 <script>
     var config = {

@@ -128,6 +128,8 @@ body {
     display: block;
     margin:10px auto;
 }
+
+
 .logo {
     max-width: 200px;
     height: 70px;
@@ -138,6 +140,8 @@ body {
     box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.2);
     -webkit-transition: all 200ms ease-in;
 }
+
+
 #side-recommend {
     border:1px solid #ddd;
     margin:10px 0;
@@ -148,7 +152,17 @@ body {
     margin: 10px auto;
     width: 90% ;
 }
-#side-recommend p {
+.p-class {
+    color: #000;
+    font-weight:100;
+    font-size:16px;
+}
+.h4-class {
+    color: #000;
+    font-weight:600;
+    font-size:18px;
+}
+#side-recommend .p-class2 {
     color: #e37667;
     font-size:20px;
     font-weight: 600;
@@ -160,8 +174,13 @@ body {
     border-radius: 4px;
     max-width:500px;
     display: block;
-    margin:10px 20px;
     min-height: 0;
+    margin:10px 20px;
+}
+@media (max-width: 992px) {
+    #side-recommend .recomend-box{
+        margin:10px auto !important;
+    }
 }
 #side-recommend .recomend-box:hover{
     background-color: #fff;
@@ -172,6 +191,7 @@ body {
 #side-recommend .recomend-box h4{
     display: inline-block;
 }
+
 
 /* Slide Out Styles */
 .slideout-menu {
@@ -335,6 +355,7 @@ body {
     color: #fff;
     font-size: 18px;
     padding: 10px;
+    white-space: normal;
 }
 
 .btn .fa {
@@ -379,3 +400,8 @@ a.btn-gray {
     color: #fff;
     font-weight: 900;
 }
+
+a:hover {
+    text-decoration: none !important;
+}
+

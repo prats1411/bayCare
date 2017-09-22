@@ -247,7 +247,7 @@ WHERE `work_mobile` = :work_mobile AND `qualification` = :qualification AND `pre
                                     <?php echo $company['pr']; ?>
                                 </p>
                             </div>
-                            <div class="">
+                            <div class="col-xs-12">
                                 <?php if ($company['additional_info'] == 1): ?>
                                 <a href="<?php echo 'detail.php?id='.$company['id']; ?>" class="btn btn-gray" target="_blank"> READ MORE <i class="fa fa-angle-double-right"></i></a>
                                 <?php endif; ?>
@@ -263,24 +263,24 @@ WHERE `work_mobile` = :work_mobile AND `qualification` = :qualification AND `pre
                         <div class="row text-center">
                             <h3>Our Recommendations</h3>
                             <hr/>
-                            <p>What's New</p>
+                            <p class="p-class2">What's New</p>
                             <?php foreach ($companiesLatest as $latest): ?>
                             <a href="<?php echo $latest['link']; ?>" target="_blank">
                                 <div class="recomend-box">
                                     <div class="text-center">
-                                        <img class="img-responsive logo" src="<?php echo $latest['image']; ?>">
-                                        <h4 class="text-center"><?php echo $latest['name']; ?></h4>
+                                        <h4 class="text-cente h4-class"><?php echo $latest['name']; ?></h4>
+                                        <p class="tasks-overflow text-center p-class"><?php echo $latest['pr']; ?></p>
                                     </div>
                                 </div>
                             </a>
                             <?php endforeach; ?>
-                            <p>Most Popular</p>
+                            <p class="p-class2">Most Popular</p>
                             <?php foreach ($companiesPopular as $popular): ?>
-                            <a href="<?php echo $latest['link']; ?>" target="_blank">
+                            <a href="<?php echo $popular['link']; ?>" target="_blank">
                                 <div class="recomend-box">
                                     <div class="text-center">
-                                        <img class="img-responsive logo" src="<?php echo $popular['image']; ?>">
-                                        <h4 class="text-center"><?php echo $popular['name']; ?></h4>
+                                        <h4 class="text-cente h4-class"><?php echo $popular['name']; ?></h4>
+                                        <p class="tasks-overflow text-center p-class"><?php echo $popular['pr']; ?></p>
                                     </div>
                                 </div>
                             </a>
@@ -299,6 +299,7 @@ WHERE `work_mobile` = :work_mobile AND `qualification` = :qualification AND `pre
 <script src="assets/jquery/jquery-ui-1.10.4.min.js"></script>
 <script src="assets/chosen/chosen.jquery.js"></script>
 <script src="assets/jquery/slideout.min.js"></script>
+<script src="assets/jquery/script.js"></script>
 
 <script>
     var slideout = new Slideout({
