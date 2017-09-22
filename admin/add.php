@@ -35,6 +35,11 @@ if (isset($_POST['submit'])) {
     } else {
         $additional_info = 0;
     }
+    if ($_POST['show']){
+        $show = 1;
+    } else {
+        $show = 0;
+    }
 
     $statement = $conn->prepare("INSERT INTO `companies` (`name`, `pr`, `link`, `text`, `image`, `work_mobile`, `qualification`, `prefecture`, `service_type`, `job_category`, `additional_info`, `additional_text`, `count`) 
             VALUES(:name_company, :pr, :link, :text, :image, :work_mobile, :qualification, :prefecture, :service_type, :job_category, :additional_info, :additional_text, :countClick)");
@@ -162,6 +167,12 @@ if (isset($_POST['submit'])) {
                                                     <th>職種</th>
                                                     <td>
                                                         <input type="checkbox" class="js-switch" name="job_category" />
+                                                    </td>
+                                                <tr/>
+                                                <tr>
+                                                    <th>Show Information</th>
+                                                    <td>
+                                                        <input type="checkbox" class="js-check-change" checked name="additional_info" />
                                                     </td>
                                                 <tr/>
                                                 <tr>
