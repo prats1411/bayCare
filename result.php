@@ -34,7 +34,7 @@ if (!empty($_POST)){
 select id as id, `name` as name, `pr` as pr, `link` as link, `text` as text, `image` as image, `work_mobile` as work_mobile,
 `qualification` as qualification, `prefecture` as prefecture, `service_type` as service_type, `job_category` as job_category,
 `additional_info` as additional_info, `additional_text` as additional_text from `companies` 
-WHERE `work_mobile` = :work_mobile AND `qualification` = :qualification AND `prefecture` = :prefecture AND `service_type` = :service_type AND `job_category` = :job_category");
+WHERE `work_mobile` = :work_mobile AND `qualification` = :qualification AND `prefecture` = :prefecture AND `service_type` = :service_type AND `job_category` = :job_category AND `show` = 1");
     $statement->execute(array(':work_mobile' => $mobile,':qualification' => $qualification,':prefecture' => $prefecture,':service_type' => $service_type,':job_category' => $job_category));
     $companies = $statement->fetchAll();
 } else {
