@@ -172,7 +172,7 @@ if (isset($_POST['submit'])) {
                                                 <tr>
                                                     <th>Show Information</th>
                                                     <td>
-                                                        <input type="checkbox" class="js-check-change" checked name="additional_info" />
+                                                        <input type="checkbox" class="js-switch" checked name="show_info" />
                                                     </td>
                                                 <tr/>
                                                 <tr>

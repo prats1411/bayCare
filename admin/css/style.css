@@ -733,43 +733,7 @@ fieldset[disabled] .btn-warning.active {
   background-color: #f9b66d;
   border-color: #f9b66d;
 }
-.btn-danger {
-  background-color: #ed5565;
-  border-color: #ed5565;
-  color: #FFFFFF;
-}
-.btn-danger:hover,
-.btn-danger:focus,
-.btn-danger:active,
-.btn-danger.active,
-.open .dropdown-toggle.btn-danger {
-  background-color: #ec4758;
-  border-color: #ec4758;
-  color: #FFFFFF;
-}
-.btn-danger:active,
-.btn-danger.active,
-.open .dropdown-toggle.btn-danger {
-  background-image: none;
-}
-.btn-danger.disabled,
-.btn-danger.disabled:hover,
-.btn-danger.disabled:focus,
-.btn-danger.disabled:active,
-.btn-danger.disabled.active,
-.btn-danger[disabled],
-.btn-danger[disabled]:hover,
-.btn-danger[disabled]:focus,
-.btn-danger[disabled]:active,
-.btn-danger.active[disabled],
-fieldset[disabled] .btn-danger,
-fieldset[disabled] .btn-danger:hover,
-fieldset[disabled] .btn-danger:focus,
-fieldset[disabled] .btn-danger:active,
-fieldset[disabled] .btn-danger.active {
-  background-color: #ef6776;
-  border-color: #ef6776;
-}
+
 .btn-link {
   color: inherit;
 }
@@ -5092,5 +5056,12 @@ table {
 
 .border {
   border: 1px dashed #ddd;
+}
 
+.modal-content {
+  background-color: #fff;
+  margin: auto;
+  top: 30%;
+  width: 300px;
+  height: 170px;
 }

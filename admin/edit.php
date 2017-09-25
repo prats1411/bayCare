@@ -134,7 +134,6 @@ if (isset($_POST['submit'])) {
                                 <p>Once you delete a repository, there is no going back. Please be certain.</p>
                                 <div align="center">
                                     <span type="button" id="delete-button"><i class="btn btn-primary">Delete</i></span>
-<!--                                    <a href="companyDelete.php?id=--><?php //echo $id; ?><!--"  class="btn btn-primary" name="save" type="submit">Delete</a>-->
                                 </div>
                                 <div id="confirm" class="modal animate fade-in-right">
                                     <div class="modal-content">

@@ -54,6 +54,7 @@ select `name` as name, `pr` as pr, `link` as link, `text` as text, `image` as im
         <p> <i class="fa fa-bell"></i><span> Notice! </span> We are a 3rd party here to find you the best Home care.   </p>
     </div>
 </section>
+
 <!-- Search -->
 <section id="search" style="padding-top: 30px !important;">
     <div class="text-right" style="position: relative;">
@@ -141,6 +142,7 @@ select `name` as name, `pr` as pr, `link` as link, `text` as text, `image` as im
     </div>
 </section>
 
+<!-- Search again -->
 <section id="more">
     <div class="container">
         <div id="open" class="text-right hidden" style="position: relative;">
@@ -157,7 +159,9 @@ select `name` as name, `pr` as pr, `link` as link, `text` as text, `image` as im
                         </p>
                     </div>
                     <div class="logo-img col-sm-4">
-                        <img class="img-responsive" src="<?php echo $company['image']; ?>" />
+                        <a href="<?php echo $company['link']; ?>" target="_blank" rel="nofollow">
+                            <img class="img-responsive" src="<?php echo $company['image']; ?>" />
+                        </a>
                     </div>
                     <div class="col-sm-12">
                         <table class="table table-bordered">
@@ -233,21 +237,25 @@ select `name` as name, `pr` as pr, `link` as link, `text` as text, `image` as im
                         <hr/>
                         <p>What's New</p>
                         <?php foreach ($companiesLatest as $latest): ?>
-                            <div class="recomend-box">
-                                <div class="text-center">
-                                    <img class="img-responsive logo" src="<?php echo $latest['image']; ?>">
-                                    <h4 class="text-center"><?php echo $latest['name']; ?></h4>
+                            <a href="<?php echo $latest['link']; ?>" target="_blank">
+                                <div class="recomend-box">
+                                    <div class="text-center">
+                                        <h4 class="text-cente h4-class"><?php echo $latest['name']; ?></h4>
+                                        <p class="tasks-overflow text-center p-class"><?php echo $latest['pr']; ?></p>
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
                         <?php endforeach; ?>
                         <p>Most Popular</p>
                         <?php foreach ($companiesPopular as $popular): ?>
-                            <div class="recomend-box">
-                                <div class="text-center">
-                                    <img class="img-responsive logo" src="<?php echo $popular['image']; ?>">
-                                    <h4 class="text-center"><?php echo $popular['name']; ?></h4>
+                            <a href="<?php echo $popular['link']; ?>" target="_blank">
+                                <div class="recomend-box">
+                                    <div class="text-center">
+                                        <h4 class="text-cente h4-class"><?php echo $popular['name']; ?></h4>
+                                        <p class="tasks-overflow text-center p-class"><?php echo $popular['pr']; ?></p>
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
                         <?php endforeach; ?>
                     </div>
                 </div>
@@ -256,12 +264,12 @@ select `name` as name, `pr` as pr, `link` as link, `text` as text, `image` as im
     </div>
 </section>
 
-
 <!-- Bootstrap core JavaScript -->
 <script src="assets/jquery/jquery.min.js"></script>
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 <script src="assets/jquery/jquery-ui-1.10.4.min.js"></script>
 <script src="assets/chosen/chosen.jquery.js"></script>
+<script src="assets/jquery/script.js"></script>
 
 <script>
     var config = {
