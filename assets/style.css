@@ -404,4 +404,9 @@ a.btn-gray {
 a:hover {
     text-decoration: none !important;
 }
-
+.morecontent span {
+    display: none;
+}
+.morelink {
+    display: block;
+}

@@ -184,7 +184,9 @@ WHERE `work_mobile` = :work_mobile AND `qualification` = :qualification AND `pre
                             <h3 class="text-center"><?php echo $company['name']; ?></h3>
                             <hr/>
                             <div class="col-sm-4">
-                                <img class="img-responsive" src="<?php echo $company['image']; ?>" />
+                                <a href="<?php echo $company['link']; ?>" target="_blank" rel="nofollow">
+                                    <img class="img-responsive" src="<?php echo $company['image']; ?>" />
+                                </a>
                             </div>
                             <div class="col-sm-8">
                                 <table class="table table-bordered">

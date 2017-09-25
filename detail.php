@@ -54,6 +54,7 @@ select `name` as name, `pr` as pr, `link` as link, `text` as text, `image` as im
         <p> <i class="fa fa-bell"></i><span> Notice! </span> We are a 3rd party here to find you the best Home care.   </p>
     </div>
 </section>
+
 <!-- Search -->
 <section id="search" style="padding-top: 30px !important;">
     <div class="text-right" style="position: relative;">
@@ -141,6 +142,7 @@ select `name` as name, `pr` as pr, `link` as link, `text` as text, `image` as im
     </div>
 </section>
 
+<!-- Search again -->
 <section id="more">
     <div class="container">
         <div id="open" class="text-right hidden" style="position: relative;">
@@ -157,7 +159,9 @@ select `name` as name, `pr` as pr, `link` as link, `text` as text, `image` as im
                         </p>
                     </div>
                     <div class="logo-img col-sm-4">
-                        <img class="img-responsive" src="<?php echo $company['image']; ?>" />
+                        <a href="<?php echo $company['link']; ?>" target="_blank" rel="nofollow">
+                            <img class="img-responsive" src="<?php echo $company['image']; ?>" />
+                        </a>
                     </div>
                     <div class="col-sm-12">
                         <table class="table table-bordered">
@@ -259,7 +263,6 @@ select `name` as name, `pr` as pr, `link` as link, `text` as text, `image` as im
         </div>
     </div>
 </section>
-
 
 <!-- Bootstrap core JavaScript -->
 <script src="assets/jquery/jquery.min.js"></script>

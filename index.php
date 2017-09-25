@@ -151,8 +151,9 @@
                                             <hr/>
                                             <div class="col-sm-4">
                                                 <a href="<?php echo $latest['link']; ?>" target="_blank" rel="nofollow">
-                                                    <img border="0" width="200" height="200" alt="" src="<?php echo $latest['image']; ?>"></a>
-                                                <img border="0" width="1" height="1" src="https://www14.a8.net/0.gif?a8mat=2TMS6I+4620I+2CDI+C2VV5" alt="">
+                                                    <img border="0" width="200" height="200" alt="" src="<?php echo $latest['image']; ?>">
+                                                </a>
+
                                             </div>
                                             <div class="col-sm-8">
                                                 <table class="table table-bordered">

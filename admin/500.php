@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>404 Error</title>
+    <title>500 Error</title>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -25,7 +25,7 @@
 
         <div class="error-desc">
             The server encountered something unexpected that didn't allow it to complete the request. We apologize.<br/>
-            You can go back to main page: <br/><a href="index.html" class="btn btn-primary m-t">Dashboard</a>
+            You can go back to main page: <br/><a href="index.php" class="btn btn-primary m-t">Dashboard</a>
         </div>
     </div>
 
