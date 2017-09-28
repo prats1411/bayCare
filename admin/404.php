@@ -14,12 +14,16 @@
     <link href="css/animate.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
+    <!-- Fevicon -->
+    <link rel="shortcut icon" type="image/png" sizes="20x20" href="img/001.png"/>
+
 </head>
 
 <body class="gray-bg">
 
 
     <div class="middle-box text-center animated fadeInDown">
+        <img style="width: 120px; margin: auto;" class="img-responsive" src="img/001.png" />
         <h1>404</h1>
         <h3 class="font-bold">Page Not Found</h3>
 

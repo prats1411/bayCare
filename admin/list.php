@@ -60,7 +60,8 @@ $companies = $statement->fetchAll();
     <link href="css/plugins/iCheck/custom.css" rel="stylesheet">
     <link href="css/plugins/toastr/toastr.min.css" rel="stylesheet">
 
-
+    <!-- Fevicon -->
+    <link rel="shortcut icon" type="image/png" sizes="20x20" href="img/001.png"/>
 
 </head>
 

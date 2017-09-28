@@ -44,6 +44,9 @@ select `name` as name, `pr` as pr, `link` as link, `text` as text, `image` as im
     <link href="assets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="assets/chosen/chosen.css" rel="stylesheet">
 
+    <!-- Fevicon -->
+    <link rel="shortcut icon" type="image/png" sizes="20x20" href="assets/images/001.png"/>
+
 </head>
 
 <body>
@@ -51,6 +54,7 @@ select `name` as name, `pr` as pr, `link` as link, `text` as text, `image` as im
 <!-- Notice -->
 <section id="note">
     <div class="container text-center">
+        <img style="width: 80px;" class="img-responsive" src="assets/images/001.png" />
         <p> <i class="fa fa-bell"></i><span> Notice! </span> We are a 3rd party here to find you the best Home care.   </p>
     </div>
 </section>

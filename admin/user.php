@@ -2,18 +2,7 @@
 
 require_once "application_top.php";
 
-if (isset($_POST['submit'])){
-    $statement1 = $conn->prepare("INSERT INTO `users` (`name`, `username`, `password`, `email`, `created`) 
-          VALUES(:nameOfUser, :username, :password, :email, :created)");
-    $statement1->execute(array(
-        "nameOfUser" => $_POST['name'],
-        "username" => $_POST['username'],
-        "password" => $_POST['password'],
-        "email" => $_POST['email'],
-        "created" => date('Y-m-d')
-    ));
-    header("Location: delete.php?message=2");
-} elseif (isset($_POST['cancel'])) {
+if (isset($_POST['cancel'])) {
     header("Refresh:0");
 }
 
@@ -32,9 +21,11 @@ if (isset($_POST['submit'])){
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
     <link href="css/animate.css" rel="stylesheet">
-    <link href="css/bootstrap-toggle.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link href="css/plugins/iCheck/custom.css" rel="stylesheet">
+
+    <!-- Fevicon -->
+    <link rel="shortcut icon" type="image/png" sizes="20x20" href="img/001.png"/>
 
 </head>
 
@@ -57,7 +48,7 @@ if (isset($_POST['submit'])){
                             <h5>Following is the list of all the companies.</h5>
                         </div>
                         <div class="ibox-content">
-                            <form method="post" class="form-horizontal">
+                            <form method="post" action="insertdata.php" class="form-horizontal" onsubmit="return checkall();">
                                 <div class="form-group"><label class="col-sm-2 control-label">Name</label>
                                     <div class="col-sm-10">
                                         <input placeholder="Enter the name" type="text" name="name" class="form-control">
@@ -65,8 +56,8 @@ if (isset($_POST['submit'])){
                                 </div>
                                 <div class="form-group"><label class="col-sm-2 control-label">Email</label>
                                     <div class="col-sm-10">
-                                        <input placeholder="Enter the Email Address" type="email" class="form-control" name="email">
-                                        <span id="name_status"></span>
+                                        <input id="useremail" onkeyup="checkemail();" placeholder="Enter the Email Address" type="email" class="form-control" name="email">
+                                        <span id="email_status"></span>
                                     </div>
                                 </div>
                                 <div class="form-group"><label class="col-sm-2 control-label">Username</label>
@@ -88,7 +79,7 @@ if (isset($_POST['submit'])){
                                 <div class="form-group" align="center">
                                     <div class="col-sm-12">
                                         <button class="btn btn-white" name="cancel" type="submit">Cancel</button>
-                                        <button class="btn btn-primary" name="submit" type="submit">Save changes</button>
+                                        <input class="btn btn-primary" name="submit" type="submit">
                                     </div>
                                 </div>
                             </form>
@@ -119,6 +110,7 @@ if (isset($_POST['submit'])){
 
 
 <script>
+
     // chosen-select jQuery
     var config = {
         '.chosen-select'           : {},
@@ -176,10 +168,8 @@ if (isset($_POST['submit'])){
         return text;
     }
 
-    function checkname()
-    {
+    function checkname() {
         var name = document.getElementById( "username" ).value;
-
         if(name) {
             $.ajax({
                 type: 'post',
@@ -204,8 +194,7 @@ if (isset($_POST['submit'])){
 
     function checkemail()
     {
-        var email=document.getElementById( "UserEmail" ).value;
-
+        var email=document.getElementById( "useremail" ).value;
         if(email)
         {
             $.ajax({
