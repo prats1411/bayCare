@@ -57,6 +57,8 @@ $users = $statement->fetchAll();
     <link href="css/plugins/iCheck/custom.css" rel="stylesheet">
     <link href="css/plugins/toastr/toastr.min.css" rel="stylesheet">
 
+    <!-- Fevicon -->
+    <link rel="shortcut icon" type="image/png" sizes="20x20" href="img/001.png"/>
 
 </head>
 
@@ -95,10 +97,7 @@ $users = $statement->fetchAll();
                                         <td><?php echo $user['name']; ?></td>
                                         <td><?php echo $user['username']; ?></td>
                                         <td><?php echo $user['email']; ?></td>
-                                        <td><span type="button" id="delete-button"><i class="fa fa-2x fa-trash"></i></span></td>
-                                        <script>
-                                            var id = <?php echo $user['id']; ?>;
-                                        </script>
+                                        <td><span type="button" class="delete-button" data-toggle="modal" data-target="#confirm" data-hidden="<?php echo $user['id']; ?>"><i class="fa fa-2x fa-trash"></i></span></td>
                                     </tr>
                                     <?php endforeach; ?>
                                     <div id="confirm" class="modal animate fade-in-right">
@@ -108,7 +107,7 @@ $users = $statement->fetchAll();
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" data-dismiss="modal" class="btn">Cancel</button>
-                                                <a href="userDelete.php?id=<?php echo $user['id']; ?>" class="btn btn-danger">Delete</a>
+                                                <a id="abc" class="btn btn-danger">Delete</a>
                                             </div>
                                         </div>
                                     </div>
@@ -145,16 +144,13 @@ $users = $statement->fetchAll();
 
 
 <script>
-    $( document ).on('click','#delete-button',function(e) {
-        var $form = $(this).closest('form');
-        e.preventDefault();
-        $('#confirm').modal({
-            keyboard: false
-        })
-            .one('click', '#delete', function(e) {
-                $form.trigger('submit');
-            });
-    });
+    $(document).on('click', ".delete-button", function (event) {
+        var button = $(event.relatedTarget);
+        var hiddenVal = $(this).data('hidden');
+        var link = document.getElementById("abc");
+        var link2 = "userDelete.php?id=" + hiddenVal;
+        link.setAttribute("href", link2);
+    })
 </script>
 
 </body>

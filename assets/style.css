@@ -241,9 +241,14 @@ body {
     }
 }
 .panel-header {
-    margin:5px 10px 50px ;
+    margin:-50px 10px 50px ;
 }
 
+@media (max-width: 768px) {
+    .panel-header {
+        margin:0 10px 60px ;
+    }
+}
 #panel button {
     margin:10px;
 }

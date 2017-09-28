@@ -1,5 +1,4 @@
 <?php
-//error_reporting(E_ALL); ini_set('display_errors', 1);
 
 require_once "config.php";
 
@@ -40,6 +39,9 @@ if (isset($_POST['submit'])){
     <link href="css/animate.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
+    <!-- Fevicon -->
+    <link rel="shortcut icon" type="image/png" sizes="20x20" href="img/001.png"/>
+
 </head>
 
 <body class="gray-bg">
@@ -48,7 +50,7 @@ if (isset($_POST['submit'])){
         <div>
             <div>
 
-                <h1 class="logo-name">HI !</h1>
+                <img style="margin: auto; width: 250px;" class="img-responsive" src="img/logo-gray.png" />
 
             </div>
             <h3>Welcome to Admin Page</h3>

@@ -83,6 +83,9 @@ if (isset($_POST['submit'])) {
     <link href="css/style.css" rel="stylesheet">
     <link href="css/plugins/switchery/switchery.css" rel="stylesheet">
 
+    <!-- Fevicon -->
+    <link rel="shortcut icon" type="image/png" sizes="20x20" href="img/001.png"/>
+
 </head>
 
 <body>

@@ -16,6 +16,9 @@ require_once "application_top.php";
     <link href="css/animate.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
+    <!-- Fevicon -->
+    <link rel="shortcut icon" type="image/png" sizes="20x20" href="img/001.png"/>
+
 </head>
 
 <body>
@@ -62,7 +65,6 @@ require_once "application_top.php";
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 

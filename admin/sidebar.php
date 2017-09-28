@@ -3,6 +3,7 @@
         <ul class="nav" id="side-menu">
             <li class="nav-header">
                 <div class="profile-element">
+                    <img style="margin: 10px auto; width: 50px;" class="img-responsive" src="img/001.png" />
                     <p class="text-center" style="margin-bottom:5px; color: #fff; font-size: 16px;"> ADMIN </p>
                 </div>
             </li>

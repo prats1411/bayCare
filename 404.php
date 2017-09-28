@@ -12,12 +12,16 @@
     <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet">
     <link href="assets/style.css" rel="stylesheet">
 
+    <!-- Fevicon -->
+    <link rel="shortcut icon" type="image/png" sizes="20x20" href="assets/images/001.png"/>
+
 </head>
 
 <body class="gray-bg">
 
 
     <div class="middle-box text-center animated fadeInDown">
+        <img style="width: 80px; margin-top: 30px;" class="img-responsive" src="assets/images/001.png" />
         <h1>404</h1>
         <h3 class="font-bold">Page Not Found</h3>
 
