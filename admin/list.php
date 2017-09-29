@@ -2,38 +2,6 @@
 
 require_once "application_top.php";
 
-if ($_GET['message'] == 1){
-    echo "<script>
-                        operatorDeleted();
-                    function operatorDeleted (){
-                        setTimeout(function() {
-                        toastr.options = {
-                            closeButton: true,
-                            progressBar: true,
-                            showMethod: 'slideDown',
-                            timeOut: 6000
-                        };
-                        toastr.error('Company Has Been Deleted');
-                    }, 1300);
-                    };
-                    </script>";
-} elseif ($_GET['message'] == 2){
-    echo "<script>
-                        operatorAdded();
-                    function operatorAdded (){
-                        setTimeout(function() {
-                        toastr.options = {
-                            closeButton: true,
-                            progressBar: true,
-                            showMethod: 'slideDown',
-                            timeOut: 6000
-                        };
-                        toastr.success('Company Has Been Added');
-                    }, 1300);
-                    };
-                    </script>";
-}
-
 $statement = $conn->prepare("
 select id as id, `name` as name, `pr` as pr, `link` as link, `text` as text, `image` as image, `work_mobile` as work_mobile,
 `qualification` as qualification, `prefecture` as prefecture, `service_type` as service_type, `job_category` as job_category,
@@ -180,11 +148,41 @@ $companies = $statement->fetchAll();
             radioClass: 'iradio_square-green',
         });
     });
-
-//    $( "#button-edit" ).click(function() {
-//        $('input[name=input]:checked').val();
-//    });
 </script>
+
+<?php
+if ($_GET['message'] == 1){
+    echo "<script>
+                        operatorDeleted();
+                    function operatorDeleted (){
+                        setTimeout(function() {
+                        toastr.options = {
+                            closeButton: true,
+                            progressBar: true,
+                            showMethod: 'slideDown',
+                            timeOut: 6000
+                        };
+                        toastr.error('Company Has Been Deleted');
+                    }, 1300);
+                    };
+                    </script>";
+} elseif ($_GET['message'] == 2){
+    echo "<script>
+                        operatorAdded();
+                    function operatorAdded (){
+                        setTimeout(function() {
+                        toastr.options = {
+                            closeButton: true,
+                            progressBar: true,
+                            showMethod: 'slideDown',
+                            timeOut: 6000
+                        };
+                        toastr.success('Company Has Been Added');
+                    }, 1300);
+                    };
+                    </script>";
+}
+?>
 
 </body>
 </html>

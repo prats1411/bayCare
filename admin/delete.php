@@ -1,38 +1,6 @@
 <?php
 require_once "application_top.php";
 
-if ($_GET['message'] == 1){
-    echo "<script>
-                        operatorDeleted();
-                    function operatorDeleted (){
-                        setTimeout(function() {
-                        toastr.options = {
-                            closeButton: true,
-                            progressBar: true,
-                            showMethod: 'slideDown',
-                            timeOut: 6000
-                        };
-                        toastr.error('User Has Been Deleted');
-                    }, 1300);
-                    };
-                    </script>";
-} elseif ($_GET['message'] == 2){
-echo "<script>
-                        operatorAdded();
-                    function operatorAdded (){
-                        setTimeout(function() {
-                        toastr.options = {
-                            closeButton: true,
-                            progressBar: true,
-                            showMethod: 'slideDown',
-                            timeOut: 6000
-                        };
-                        toastr.success('User Has Been Added');
-                    }, 1300);
-                    };
-                    </script>";
-}
-
 $statement = $conn->prepare("select `id` as id, `name` as name, `username` as username, `email` as email from `users`");
 $statement->execute();
 $users = $statement->fetchAll();
@@ -152,6 +120,40 @@ $users = $statement->fetchAll();
         link.setAttribute("href", link2);
     })
 </script>
+
+<?php
+if ($_GET['message'] == 1){
+    echo "<script>
+                        operatorDeleted();
+                    function operatorDeleted (){
+                        setTimeout(function() {
+                        toastr.options = {
+                            closeButton: true,
+                            progressBar: true,
+                            showMethod: 'slideDown',
+                            timeOut: 6000
+                        };
+                        toastr.error('User Has Been Deleted');
+                    }, 1300);
+                    };
+                    </script>";
+} elseif ($_GET['message'] == 2){
+    echo "<script>
+                        operatorAdded();
+                    function operatorAdded (){
+                        setTimeout(function() {
+                        toastr.options = {
+                            closeButton: true,
+                            progressBar: true,
+                            showMethod: 'slideDown',
+                            timeOut: 6000
+                        };
+                        toastr.success('User Has Been Added');
+                    }, 1300);
+                    };
+                    </script>";
+}
+?>
 
 </body>
 </html>

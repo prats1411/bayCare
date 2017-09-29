@@ -6,10 +6,10 @@ if(isset($_POST['user_name']))
 {
     $name=$_POST['user_name'];
 
-    $checkdata=$conn->prepare(" SELECT `username` FROM users WHERE `username`='$name' ");
+    $checkdata=$conn->prepare(" SELECT `username` FROM users WHERE `username` LIKE '$name' ");
     $checkdata->execute();
 
-    if(count($checkdata->fetch()))
+    if(count($checkdata->fetchAll()))
     {
         echo "User Name Already Exist";
     }
@@ -24,10 +24,10 @@ if(isset($_POST['user_email']))
 {
     $emailId=$_POST['user_email'];
 
-    $checkdata1=$conn->prepare(" SELECT `email` FROM users WHERE `username`='$emailId' ");
+    $checkdata1=$conn->prepare(" SELECT `email` FROM users WHERE `email` LIKE '$emailId' ");
     $checkdata1->execute();
 
-    if(count($checkdata1->fetch()))
+    if(count($checkdata1->fetchAll()))
     {
         echo "Email Already Exist";
     }

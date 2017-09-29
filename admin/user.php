@@ -56,13 +56,13 @@ if (isset($_POST['cancel'])) {
                                 </div>
                                 <div class="form-group"><label class="col-sm-2 control-label">Email</label>
                                     <div class="col-sm-10">
-                                        <input id="useremail" onkeyup="checkemail();" placeholder="Enter the Email Address" type="email" class="form-control" name="email">
+                                        <input id="useremail" autocomplete="off" onkeyup="checkemail();" placeholder="Enter the Email Address" type="email" class="form-control" name="email">
                                         <span id="email_status"></span>
                                     </div>
                                 </div>
                                 <div class="form-group"><label class="col-sm-2 control-label">Username</label>
                                     <div class="col-sm-10">
-                                        <input id="username" onkeyup="checkname();" placeholder="Enter the Username" type="text" class="form-control" name="username">
+                                        <input id="username" autocomplete="off" onkeyup="checkname();" placeholder="Enter the Username" type="text" class="form-control" name="username">
                                         <span id="name_status"></span>
                                     </div>
                                 </div>
@@ -231,10 +231,12 @@ if (isset($_POST['cancel'])) {
         if((namehtml && emailhtml)=="OK")
         {
             return true;
+            console.log(true);
         }
         else
         {
             return false;
+            console.log(false);
         }
     }
 
