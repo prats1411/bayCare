@@ -1,68 +1,39 @@
 <?php
 
 require_once "config.php";
-if(isset($_POST['user_name'])) {
-    echo "OK";
-}
-if(isset($_POST['user_email'])) {
-    echo "error error error";
+
+if(isset($_POST['user_name']))
+{
+    $name=$_POST['user_name'];
+
+    $checkdata=$conn->prepare(" SELECT `username` FROM users WHERE `username`='$name' ");
+    $checkdata->execute();
+
+    if(count($checkdata->fetch()))
+    {
+        echo "User Name Already Exist";
+    }
+    else
+    {
+        echo "OK";
+    }
+    exit();
 }
 
-exit();
-//if(isset($_POST['user_name']))
-//{
-//    $name=$_POST['user_name'];
-//
-//    $checkdata=" SELECT name FROM user WHERE name='$name' ";
-//
-//    $query=mysql_query($checkdata);
-//
-//    if(mysql_num_rows($query)>0)
-//    {
-//        echo "User Name Already Exist";
-//    }
-//    else
-//    {
-//        echo "OK";
-//    }
-//    exit();
-//}
-//
-//if(isset($_POST['user_email']))
-//{
-//    $emailId=$_POST['user_email'];
-//
-//    $checkdata=" SELECT loginid FROM user WHERE loginid='$emailId' ";
-//
-//    $query=mysql_query($checkdata);
-//
-//    if(mysql_num_rows($query)>0)
-//    {
-//        echo "Email Already Exist";
-//    }
-//    else
-//    {
-//        echo "OK";
-//    }
-//    exit();
-//}
+if(isset($_POST['user_email']))
+{
+    $emailId=$_POST['user_email'];
 
-//if(isset($_POST['user_email']))
-//{
-//    $emailId=$_POST['user_email'];
-//
-//    $checkdata=" SELECT loginid FROM user WHERE loginid='$emailId' ";
-//
-//    $query=mysql_query($checkdata);
-//
-//    if(mysql_num_rows($query)>0)
-//    {
-//        echo "Email Already Exist";
-//    }
-//    else
-//    {
-//        echo "OK";
-//    }
-//    exit();
-//}
-?>
+    $checkdata1=$conn->prepare(" SELECT `email` FROM users WHERE `username`='$emailId' ");
+    $checkdata1->execute();
+
+    if(count($checkdata1->fetch()))
+    {
+        echo "Email Already Exist";
+    }
+    else
+    {
+        echo "OK";
+    }
+    exit();
+}
