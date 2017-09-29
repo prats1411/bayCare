@@ -49,7 +49,7 @@ if (isset($_POST['submit'])) {
         $additional_info = 0;
     }
     if (isset($_POST['additional_text'])){
-        $additional_text = 1;
+        $additional_text = $_POST['additional_text'];
     } else {
         $additional_text = $company['additional_text'];
     }
