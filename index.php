@@ -1,5 +1,6 @@
 <?php
     require_once "recom.php";
+    require_once "constant.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -70,13 +71,9 @@
                             <div class="col-sm-10">
                                 <select data-placeholder="Choose a Country..." name="prefecture" class="chosen-select" style="width:100%;" tabindex="2">
                                     <option style="display:none;" value="0">選びなさい</option>
-                                    <option value="1">北海道・東北</option>
-                                    <option value="1">関東</option>
-                                    <option value="1">甲信越・北陸</option>
-                                    <option value="1">東海</option>
-                                    <option value="1">近畿</option>
-                                    <option value="1">中国・四国</option>
-                                    <option value="1">九州・沖縄</option>
+                                    <?php foreach ($prefectures as $prefecture): ?>
+                                    <option value="1"><?php echo $prefecture; ?></option>
+                                    <?php endforeach; ?>
                                 </select>
                             </div>
                         </div>
