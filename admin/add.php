@@ -111,35 +111,35 @@ if (isset($_POST['submit'])) {
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">会社名</label>
                                         <div class="col-sm-10">
-                                            <input name="name" required="required" class="form-control" placeholder="Company Name" maxlength="255" id="name"/>
+                                            <input name="name" required="required" class="form-control" placeholder="会社名を記載してください" maxlength="255" id="name"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">会社の特徴、良い点など</label>
                                         <div class="col-sm-10">
-                                            <textarea name="pr" required="required" class="form-control" placeholder="PR of the Company" id="remarks" rows="4" aria-required="true"></textarea>
+                                            <textarea name="pr" required="required" class="form-control" placeholder="会社の自己紹介を記載してください" id="remarks" rows="4" aria-required="true"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">サイトのリンク</label>
                                         <div class="col-sm-10">
-                                            <input name="link" required="required" class="form-control" placeholder="Anchor Link" />
+                                            <input name="link" required="required" class="form-control" placeholder="リンクを記載してください" />
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">ボタンテキスト</label>
                                         <div class="col-sm-10">
-                                            <input name="text" required="required" class="form-control" placeholder="Text on Link" />
+                                            <input name="text" required="required" class="form-control" placeholder="ボタンテキストを記載してください" />
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">画像リンク</label>
                                         <div class="col-sm-10">
-                                            <input name="image" required="required" class="form-control" placeholder="Text on Link" />
+                                            <input name="image" required="required" class="form-control" placeholder="画像リンクを記載してください" />
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-sm-2 control-label">Choose </label>
+                                        <label class="col-sm-2 control-label">設定（あり/なし） </label>
                                         <div class="col-sm-10">
                                             <table class="table table-bordered">
                                                 <tr>
@@ -190,7 +190,7 @@ if (isset($_POST['submit'])) {
                                     <div id="div-info" class="form-group">
                                         <label class="col-sm-2 control-label">追加情報のご登録</label>
                                         <div class="container1 col-sm-10">
-                                            <textarea name="additional_text" style="margin-bottom: 20px;" class="form-control" placeholder="Info Content" id="infoadd" rows="4" aria-required="true"></textarea>
+                                            <textarea name="additional_text" style="margin-bottom: 20px;" class="form-control" placeholder="追加情報を記載してください" id="infoadd" rows="4" aria-required="true"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group" align="center">
