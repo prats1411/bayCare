@@ -55,18 +55,18 @@ select `name` as name, `pr` as pr, `link` as link, `text` as text, `image` as im
 <section id="note">
     <div class="container text-center">
         <img style="width: 80px;" class="img-responsive" src="assets/images/001.png" />
-        <p> <i class="fa fa-bell"></i><span> Notice! </span> We are a 3rd party here to find you the best Home care.   </p>
+        <p> <i class="fa fa-bell"></i><span> 通知! </span> 本サイトはベストな在宅医療サービスを見つけることが可能なサードパーティサイトでございます。 </p>
     </div>
 </section>
 
 <!-- Search -->
 <section id="search" style="padding-top: 30px !important;">
     <div class="text-right" style="position: relative;">
-        <button id="close"  class="btn btn_close" style="margin: 0 50px 10px 0;" > Close <i class="fa fa-times"></i></button>
+        <button id="close"  class="btn btn_close" style="margin: 0 50px 10px 0;" > 閉じる <i class="fa fa-times"></i></button>
     </div>
     <div class="container">
         <div id="search-box">
-            <h4> Kindly select from the below option for the best search results. </h4>
+            <h4> 下記選択肢からご希望にあった条件をご選択ください </h4>
             <hr/>
             <div class="row">
                 <form method="post" class="form-horizontal" action="result.php">
@@ -134,12 +134,12 @@ select `name` as name, `pr` as pr, `link` as link, `text` as text, `image` as im
                         </div>
                     </div>
                     <div class="text-center">
-                        <input type="submit" name="submit" value="Search" class="btn btn-default btn-submit arrow">
+                        <input type="submit" name="submit" value="この条件で検索" class="btn btn-default btn-submit arrow">
                     </div>
                 </form>
             </div>
             <div id="scroll_info" style="margin-top:20px;" class="text-center">
-                <h4 style="margin-bottom: 0;">Scroll for More Info</h4>
+                <h4 style="margin-bottom: 0;">詳細を表示</h4>
                 <i class="fa fa-3x fa-angle-down"></i>
             </div>
         </div>
@@ -150,7 +150,7 @@ select `name` as name, `pr` as pr, `link` as link, `text` as text, `image` as im
 <section id="more">
     <div class="container">
         <div id="open" class="text-right hidden" style="position: relative;">
-            <button class="btn btn-smart" style="margin: 20px 50px 10px 0;" >Search Again <i class="fa fa-search"></i></button>
+            <button class="btn btn-smart" style="margin: 20px 50px 10px 0;" >もう一度検索<i class="fa fa-search"></i></button>
         </div>
         <div class="row">
             <div class="col-md-8">
@@ -237,9 +237,9 @@ select `name` as name, `pr` as pr, `link` as link, `text` as text, `image` as im
                 <!-- recommendation -->
                 <div id="side-recommend">
                     <div class="row text-center">
-                        <h3>Our Recommendations</h3>
+                        <h3>おすすめ求人</h3>
                         <hr/>
-                        <p>What's New</p>
+                        <p>新着求人</p>
                         <?php foreach ($companiesLatest as $latest): ?>
                             <a href="<?php echo $latest['link']; ?>" target="_blank">
                                 <div class="recomend-box">
@@ -250,7 +250,7 @@ select `name` as name, `pr` as pr, `link` as link, `text` as text, `image` as im
                                 </div>
                             </a>
                         <?php endforeach; ?>
-                        <p>Most Popular</p>
+                        <p>人気求人</p>
                         <?php foreach ($companiesPopular as $popular): ?>
                             <a href="<?php echo $popular['link']; ?>" target="_blank">
                                 <div class="recomend-box">

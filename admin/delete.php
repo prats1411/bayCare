@@ -38,7 +38,7 @@ $users = $statement->fetchAll();
         <?php include_once "header.php"?>
         <div class="row wrapper border-bottom white-bg page-heading">
             <div class="col-lg-10">
-                <h2>Delete User</h2>
+                <h2>ユーザー削除</h2>
             </div>
         </div>
         <div class="wrapper wrapper-content animated fadeInRight">
@@ -46,14 +46,14 @@ $users = $statement->fetchAll();
                 <div class="col-lg-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <h5>Following are the active users.</h5>
+                            <h5>ご登録済みユーザー</h5>
                         </div>
                         <div class="ibox-content">
                             <div class="table-responsive">
                                 <table class="table table-striped">
                                     <thead>
                                     <tr>
-                                        <th>Name</th>
+                                        <th>お名前</th>
                                         <th data-breakpoints="xs">Username</th>
                                         <th data-breakpoints="xs sm md">Email-id</th>
                                         <th></th>
@@ -133,7 +133,7 @@ if ($_GET['message'] == 1){
                             showMethod: 'slideDown',
                             timeOut: 6000
                         };
-                        toastr.error('User Has Been Deleted');
+                        toastr.error('ユーザーが削除されました');
                     }, 1300);
                     };
                     </script>";
@@ -148,7 +148,7 @@ if ($_GET['message'] == 1){
                             showMethod: 'slideDown',
                             timeOut: 6000
                         };
-                        toastr.success('User Has Been Added');
+                        toastr.success('ユーザーが追加されました');
                     }, 1300);
                     };
                     </script>";

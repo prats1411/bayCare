@@ -7778,9 +7778,7 @@
         ['fontname', ['fontname']],
         ['color', ['color']],
         ['para', ['ul', 'ol', 'paragraph']],
-        ['table', ['table']],
-        ['insert', ['link', 'picture']],
-        ['view', [ 'codeview', 'help']]
+        ['table', ['table']]
       ],
 
       // popover

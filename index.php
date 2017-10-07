@@ -35,7 +35,7 @@
     <section id="note">
         <div class="container text-center">
             <img style="width: 80px;" class="img-responsive" src="assets/images/001.png" />
-            <p> <i class="fa fa-bell"></i><span> Notice! </span> We are a 3rd party here to find you the best Home care.   </p>
+            <p> <i class="fa fa-bell"></i><span> 通知! </span> 本サイトはベストな在宅医療サービスを見つけることが可能なサードパーティサイトでございます。 </p>
         </div>
     </section>
 
@@ -43,7 +43,7 @@
     <section id="search">
         <div class="container">
             <div id="search-box">
-                <h4> Kidnly select from the below option for the best search results. </h4>
+                <h4> 下記選択肢からご希望にあった条件をご選択ください。</h4>
                 <hr/>
                 <div class="row">
                     <form method="post" class="form-horizontal" action="result.php">
@@ -111,7 +111,7 @@
                             </div>
                         </div>
                         <div class="text-center">
-                            <input type="submit" name="submit" value="Search" class="btn btn-default btn-submit arrow">
+                            <input type="submit" name="submit" value="この条件で検索" class="btn btn-default btn-submit arrow">
                         </div>
                     </form>
                 </div>
@@ -124,7 +124,7 @@
         <div class="container">
             <div class="row">
                 <div class=" text-center">
-                    <h3>Our Recommendations</h3>
+                    <h3>おすすめ求人</h3>
                 </div>
                 <hr/>
                 <div class="col-md-8 col-md-offset-2">
@@ -132,10 +132,10 @@
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-6">
-                                    <a href="#" class="active" id="tab-1">What's New</a>
+                                    <a href="#" class="active" id="tab-1">新着求人</a>
                                 </div>
                                 <div class="col-xs-6">
-                                    <a href="#" id="tab-2">Most Popular</a>
+                                    <a href="#" id="tab-2">人気求人</a>
                                 </div>
                             </div>
                             <hr style="margin: 10px 0;">
@@ -221,7 +221,7 @@
                                             </div>
                                             <div class="col-xs-12 text-center" style="margin-top: 20px;">
                                                 <?php if ($latest['additional_info'] == 1): ?>
-                                                    <a href="<?php echo 'detail.php?id='.$latest['id']; ?>" class="btn btn-gray" target="_blank"> READ MORE <i class="fa fa-angle-double-right"></i></a>
+                                                    <a href="<?php echo 'detail.php?id='.$latest['id']; ?>" class="btn btn-gray" target="_blank"> 詳細を確認 <i class="fa fa-angle-double-right"></i></a>
                                                 <?php endif; ?>
                                                 <a class="btn btn-smart" href="<?php echo $latest['link']; ?>" target="_blank" rel="nofollow"><?php echo $latest['text']; ?></a>
                                                 <img border="0" width="1" height="1" src="https://www18.a8.net/0.gif?a8mat=2TMS6I+4620I+2CDI+BZ8OY" alt="">

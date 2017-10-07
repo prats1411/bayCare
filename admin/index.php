@@ -28,7 +28,7 @@ require_once "application_top.php";
             <?php include_once "header.php"?>
             <div class="row wrapper border-bottom white-bg page-heading">
                 <div class="col-lg-10">
-                    <h2>Dashboard</h2>
+                    <h2>管理ページ</h2>
                 </div>
             </div>
             <div class="row">
@@ -36,13 +36,13 @@ require_once "application_top.php";
                     <div class="wrapper wrapper-content animated fadeInRight">
                         <div class="ibox float-e-margins">
                             <div class="ibox-title">
-                                <h5>Company Dashboard</h5>
+                                <h5>会社ダッシュボード</h5>
                             </div>
                             <div class="ibox-content">
-                                <p> This block allows you to add new companies, also edit all their information or Top Recommendations rankings. </p>
+                                <p> ここでは新しい会社、おすすめランキングの追加、編集ができます。 </p>
                                 <div class="text-center">
-                                    <a href="add.php" class="btn btn-primary" name="submit" type="submit">Add Company</a>
-                                    <a href="edit.php" class="btn btn-primary" name="submit" type="submit">Manage Company</a>
+                                    <a href="add.php" class="btn btn-primary" name="submit" type="submit">会社追加</a>
+                                    <a href="edit.php" class="btn btn-primary" name="submit" type="submit">会社管理</a>
                                 </div>
                             </div>
                         </div>
@@ -52,13 +52,13 @@ require_once "application_top.php";
                     <div class="wrapper wrapper-content animated fadeInRight">
                         <div class="ibox float-e-margins">
                             <div class="ibox-title">
-                                <h5>Users Dashboard</h5>
+                                <h5>ユーザーダッシュボード</h5>
                             </div>
                             <div class="ibox-content">
-                                <p> This block allows you to add / delete users admins for the for accessing the admin page.   </p>
+                                <p> ここでは管理画面にアクセスできるユーザーを追加、削除ができます。</p>
                                 <div class="text-center">
-                                    <a href="user.php" class="btn btn-primary" name="submit" type="submit">Add User</a>
-                                    <a href="userDelete.php" class="btn btn-primary" name="submit" type="submit">Manage User</a>
+                                    <a href="user.php" class="btn btn-primary" name="submit" type="submit">ユーザー追加</a>
+                                    <a href="userDelete.php" class="btn btn-primary" name="submit" type="submit">ユーザー管理</a>
                                 </div>
                             </div>
                         </div>

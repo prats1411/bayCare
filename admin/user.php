@@ -37,7 +37,7 @@ if (isset($_POST['cancel'])) {
         <?php include_once "header.php"?>
         <div class="row wrapper border-bottom white-bg page-heading">
             <div class="col-lg-10">
-                <h2>Add User</h2>
+                <h2>ユーザー追加</h2>
             </div>
         </div>
         <div class="wrapper wrapper-content animated fadeInRight">
@@ -49,24 +49,24 @@ if (isset($_POST['cancel'])) {
                         </div>
                         <div class="ibox-content">
                             <form method="post" action="insertdata.php" class="form-horizontal" onsubmit="return checkall();">
-                                <div class="form-group"><label class="col-sm-2 control-label">Name</label>
+                                <div class="form-group"><label class="col-sm-2 control-label">お名前</label>
                                     <div class="col-sm-10">
                                         <input placeholder="Enter the name" type="text" name="name" class="form-control">
                                     </div>
                                 </div>
-                                <div class="form-group"><label class="col-sm-2 control-label">Email</label>
+                                <div class="form-group"><label class="col-sm-2 control-label">メールアドレス</label>
                                     <div class="col-sm-10">
                                         <input id="useremail" autocomplete="off" onkeyup="checkemail();" placeholder="Enter the Email Address" type="email" class="form-control" name="email">
                                         <span id="email_status"></span>
                                     </div>
                                 </div>
-                                <div class="form-group"><label class="col-sm-2 control-label">Username</label>
+                                <div class="form-group"><label class="col-sm-2 control-label">ユーザーネーム</label>
                                     <div class="col-sm-10">
                                         <input id="username" autocomplete="off" onkeyup="checkname();" placeholder="Enter the Username" type="text" class="form-control" name="username">
                                         <span id="name_status"></span>
                                     </div>
                                 </div>
-                                <div class="form-group"><label class="col-sm-2 control-label">Password </label>
+                                <div class="form-group"><label class="col-sm-2 control-label">パスワード</label>
                                     <div class="col-sm-10">
                                         <div class="input-group">
                                             <input placeholder="Password" name="password" type="" class="form-control" rel="gp" data-size="10" data-character-set="a-z,A-Z,0-9,#">
@@ -78,8 +78,7 @@ if (isset($_POST['cancel'])) {
                                 </div>
                                 <div class="form-group" align="center">
                                     <div class="col-sm-12">
-                                        <button class="btn btn-white" name="cancel" type="submit">Cancel</button>
-                                        <input class="btn btn-primary" name="submit" type="submit">
+                                        <input class="btn btn-primary" name="Submit" type="submit" value="取消">
                                     </div>
                                 </div>
                             </form>
@@ -129,11 +128,9 @@ if (isset($_POST['cancel'])) {
     var text = new Switchery(elem, {  color: '#1AB394' });
     $('#isOperator').change(function(){
         if($(this).is(":checked")) {
-            console.log("say hi");
             $("#dates").hide();
             $('#validity_chosen').hide();
         } else {
-            console.log("say bye");
             $("#dates").show();
             $('#validity_chosen').show();
         }

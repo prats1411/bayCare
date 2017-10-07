@@ -1,8 +1,8 @@
 $(document).ready(function() {
     var showChar = 70;
     var ellipsestext = "...";
-    var moretext = "Read More";
-    var lesstext = "Read Less";
+    var moretext = "省略";
+    var lesstext = "詳細";
 
 
     $('.tasks-overflow').each(function() {
@@ -17,7 +17,6 @@ $(document).ready(function() {
 
             $(this).html(html);
         }
-
     });
 
     $(".morelink").click(function(){
