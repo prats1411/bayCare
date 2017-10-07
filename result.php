@@ -76,7 +76,7 @@ WHERE `work_mobile` = :work_mobile AND `qualification` = :qualification AND `pre
 <body>
 <nav style="background-color: #f1f1f1;" id="menu">
     <header>
-        <h2 style="margin-bottom: 20px;" class="text-center">Search Again</h2>
+        <h2 style="margin-bottom: 20px;" class="text-center">もう一度検索</h2>
         <div class="div-form">
             <form method="post" class="form-horizontal" action="result.php">
                 <div class="form-group">
@@ -153,8 +153,8 @@ WHERE `work_mobile` = :work_mobile AND `qualification` = :qualification AND `pre
                     </div>
                 </div>
                 <div class="text-center">
-                    <button type="submit" name="submit" class="btn btn-default btn-submit"> Search<i class="fa fa-chevron-right"></i></button>
-                    <a style="margin-top: 10px;" id="cancel" name="cancel" class="btn btn-default">Cancel<i class="fa fa-times"></i></a>
+                    <button type="submit" name="submit" class="btn btn-default btn-submit"> この条件で検索 <i class="fa fa-chevron-right"></i></button>
+                    <a style="margin-top: 10px;" id="cancel" name="cancel" class="btn btn-default">取消<i class="fa fa-times"></i></a>
                 </div>
             </form>
         </div>
@@ -164,7 +164,7 @@ WHERE `work_mobile` = :work_mobile AND `qualification` = :qualification AND `pre
 <main id="panel" class="panel">
     <header class="panel-header">
         <button class="btn-hamburger js-slideout-toggle">
-            <span class="tooltip">Click To Search Again ! </span>
+            <span class="tooltip"> 検索画面に戻る ! </span>
         </button>
 
     </header>
@@ -172,7 +172,7 @@ WHERE `work_mobile` = :work_mobile AND `qualification` = :qualification AND `pre
     <section id="note">
         <div class="container text-center">
             <img style="width: 80px;" class="img-responsive" src="assets/images/001.png" />
-            <p> <i class="fa fa-bell"></i><span> Notice! </span> We are a 3rd party here to find you the best Home care.   </p>
+            <p> <i class="fa fa-bell"></i><span> 通知! </span> 本サイトはベストな在宅医療サービスを見つけることが可能なサードパーティサイトでございます。 </p>
         </div>
     </section>
     <!-- rest of the page -->
@@ -182,7 +182,7 @@ WHERE `work_mobile` = :work_mobile AND `qualification` = :qualification AND `pre
                 <div class="col-md-8">
                     <!-- Result-->
                     <div id="result">
-                        <h1> Results :- </h1>
+                        <h1> 検索結果 :- </h1>
                         <hr/>
                         <?php foreach ($companies as $company): ?>
                         <div class="box row">
@@ -256,7 +256,7 @@ WHERE `work_mobile` = :work_mobile AND `qualification` = :qualification AND `pre
                             </div>
                             <div class="col-xs-12">
                                 <?php if ($company['additional_info'] == 1): ?>
-                                <a href="<?php echo 'detail.php?id='.$company['id']; ?>" class="btn btn-gray" target="_blank"> READ MORE <i class="fa fa-angle-double-right"></i></a>
+                                <a href="<?php echo 'detail.php?id='.$company['id']; ?>" class="btn btn-gray" target="_blank"> 詳細を確認 <i class="fa fa-angle-double-right"></i></a>
                                 <?php endif; ?>
                                 <a href="<?php echo $company['link']; ?>" class="btn btn-smart" target="_blank"> <?php echo $company['text']; ?>  <i class="fa fa-link"></i></a>
                             </div>
@@ -268,9 +268,9 @@ WHERE `work_mobile` = :work_mobile AND `qualification` = :qualification AND `pre
                     <!-- recommendation -->
                     <div id="side-recommend">
                         <div class="row text-center">
-                            <h3>Our Recommendations</h3>
+                            <h3>おすすめ求人</h3>
                             <hr/>
-                            <p class="p-class2">What's New</p>
+                            <p class="p-class2">新着求人</p>
                             <?php foreach ($companiesLatest as $latest): ?>
                             <a href="<?php echo $latest['link']; ?>" target="_blank">
                                 <div class="recomend-box">
@@ -281,7 +281,7 @@ WHERE `work_mobile` = :work_mobile AND `qualification` = :qualification AND `pre
                                 </div>
                             </a>
                             <?php endforeach; ?>
-                            <p class="p-class2">Most Popular</p>
+                            <p class="p-class2">人気求人</p>
                             <?php foreach ($companiesPopular as $popular): ?>
                             <a href="<?php echo $popular['link']; ?>" target="_blank">
                                 <div class="recomend-box">

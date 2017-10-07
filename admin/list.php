@@ -41,7 +41,7 @@ $companies = $statement->fetchAll();
         <?php include_once "header.php"?>
         <div class="row wrapper border-bottom white-bg page-heading">
             <div class="col-lg-10">
-                <h2>Company Listing</h2>
+                <h2>会社一覧</h2>
             </div>
         </div>
         <div class="wrapper wrapper-content animated fadeInRight">
@@ -58,14 +58,14 @@ $companies = $statement->fetchAll();
                                     <thead>
                                     <tr>
                                         <th></th>
-                                        <th>Name </th>
+                                        <th>名前 </th>
                                         <th>仕事携帯 </th>
                                         <th>資格</th>
                                         <th>都道府県</th>
                                         <th>サービス種別</th>
                                         <th>職種</th>
-                                        <th>addi. info</th>
-                                        <th>count</th>
+                                        <th>追加情報</th>
+                                        <th>回数</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -109,7 +109,7 @@ $companies = $statement->fetchAll();
                                     </tbody>
                                 </table>
                                 <div class="text-center">
-                                    <button type="submit" id="button-edit" class="btn btn-sm btn-primary"> Edit / Delete </button> </span>
+                                    <button type="submit" id="button-edit" class="btn btn-sm btn-primary"> 編集 / 削除 </button> </span>
                                 </div>
                                 </form>
                             </div>
@@ -162,7 +162,7 @@ if ($_GET['message'] == 1){
                             showMethod: 'slideDown',
                             timeOut: 6000
                         };
-                        toastr.error('Company Has Been Deleted');
+                        toastr.error('会社情報が削除されました。');
                     }, 1300);
                     };
                     </script>";
@@ -177,7 +177,7 @@ if ($_GET['message'] == 1){
                             showMethod: 'slideDown',
                             timeOut: 6000
                         };
-                        toastr.success('Company Has Been Added');
+                        toastr.success('会社情報が追加されました。');
                     }, 1300);
                     };
                     </script>";

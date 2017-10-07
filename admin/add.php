@@ -96,7 +96,7 @@ if (isset($_POST['submit'])) {
             <?php include_once "header.php"?>
             <div class="row wrapper border-bottom white-bg page-heading">
                 <div class="col-lg-10">
-                    <h2> Add Company Listing</h2>
+                    <h2>会社リストの追加</h2>
                 </div>
             </div>
             <div class="wrapper wrapper-content animated fadeInRight">
@@ -104,36 +104,36 @@ if (isset($_POST['submit'])) {
                     <div class="col-lg-12">
                         <div class="ibox float-e-margins">
                             <div class="ibox-title">
-                                <h5>Fill the Company Details</h5>
+                                <h5>会社詳細</h5>
                             </div>
                             <div class="ibox-content">
                                 <form enctype="multipart/form-data" method="post" accept-charset="utf-8" id="form" class="form-horizontal" action="add.php">
                                     <div class="form-group">
-                                        <label class="col-sm-2 control-label">Company Name</label>
+                                        <label class="col-sm-2 control-label">会社名</label>
                                         <div class="col-sm-10">
                                             <input name="name" required="required" class="form-control" placeholder="Company Name" maxlength="255" id="name"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-sm-2 control-label">PR of the company</label>
+                                        <label class="col-sm-2 control-label">会社の特徴、良い点など</label>
                                         <div class="col-sm-10">
                                             <textarea name="pr" required="required" class="form-control" placeholder="PR of the Company" id="remarks" rows="4" aria-required="true"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-sm-2 control-label">Link</label>
+                                        <label class="col-sm-2 control-label">サイトのリンク</label>
                                         <div class="col-sm-10">
                                             <input name="link" required="required" class="form-control" placeholder="Anchor Link" />
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-sm-2 control-label">Text on Button</label>
+                                        <label class="col-sm-2 control-label">ボタンテキスト</label>
                                         <div class="col-sm-10">
                                             <input name="text" required="required" class="form-control" placeholder="Text on Link" />
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-sm-2 control-label">Image Source</label>
+                                        <label class="col-sm-2 control-label">画像リンク</label>
                                         <div class="col-sm-10">
                                             <input name="image" required="required" class="form-control" placeholder="Text on Link" />
                                         </div>
@@ -173,13 +173,13 @@ if (isset($_POST['submit'])) {
                                                     </td>
                                                 <tr/>
                                                 <tr>
-                                                    <th>Show Information</th>
+                                                    <th>情報を公開しますか</th>
                                                     <td>
                                                         <input type="checkbox" class="js-switch" checked name="show_info" />
                                                     </td>
                                                 <tr/>
                                                 <tr>
-                                                    <th>Additional Information</th>
+                                                    <th>追加情報のご登録</th>
                                                     <td id="info2" >
                                                         <input type="checkbox" class="js-check-change" name="additional_info" />
                                                     </td>
@@ -188,15 +188,15 @@ if (isset($_POST['submit'])) {
                                         </div>
                                     </div>
                                     <div id="div-info" class="form-group">
-                                        <label class="col-sm-2 control-label">Additional Information</label>
+                                        <label class="col-sm-2 control-label">追加情報のご登録</label>
                                         <div class="container1 col-sm-10">
                                             <textarea name="additional_text" style="margin-bottom: 20px;" class="form-control" placeholder="Info Content" id="infoadd" rows="4" aria-required="true"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group" align="center">
                                         <div class="col-sm-12">
-                                            <button class="btn btn-white" name="cancel" type="submit">Cancel</button>
-                                            <button class="btn btn-primary" name="submit" type="submit">Add Company</button>
+                                            <button class="btn btn-white" name="cancel" type="submit">取消</button>
+                                            <button class="btn btn-primary" name="submit" type="submit">会社追加</button>
                                         </div>
                                     </div>
                                 </form>
